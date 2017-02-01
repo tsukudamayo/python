@@ -5,4 +5,4 @@ pictures = os.listdir(sys.argv[1])
 print(pictures)
 
 for i, picture in enumerate(pictures):
-    Image.open(picture).resize((480, 360)).save(str(i) + '.png')
+    Image.open(str(sys.argv[1]) + '\\' + str(picture)).resize((480, 360)).save(str(sys.argv[1]) + '\\' + str(i) + '.png')
