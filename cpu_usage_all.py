@@ -3,7 +3,7 @@ from datetime import datetime
 import psutil
 
 start_time = datetime.now()
-logfile = open('C:\\Users\\lx15120118\\var\\log\\sim\\perf\\resource\\cpu _usage_' + str(start_time.strftime('%Y%m%d_%H%M%S')) + '.log', 'a')
+logfile = open('C:\\Users\\lx15120118\\var\\log\\sim\\perf\\resource\\cpu _usage_all_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
 
 while(True):
     try:
