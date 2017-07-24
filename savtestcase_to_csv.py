@@ -6,12 +6,12 @@ from openpyxl import load_workbook
 import sys
 
 wb = load_workbook(str(sys.argv[1]))
-m = sys.argv[2]
-n = sys.argv[3]
+#m = sys.argv[2]
+#n = sys.argv[3]
 
 all_sheetnames = wb.get_sheet_names()
 print(all_sheetnames)
-sheetnames = all_sheetnames[int(m):int(n)]
+sheetnames = all_sheetnames[int(10):int(16)]
 print(sheetnames)
 
 for sheetname in sheetnames:

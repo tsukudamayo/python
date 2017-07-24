@@ -23,7 +23,7 @@ def sav_testcase(xlsx, sheet, csv):
     
     data = pd.read_excel(xlsx_file, sheetname=sheetname)
     
-    test_case = data.iloc[:,1:17]
+    test_case = data.iloc[:,:39]
     print(test_case)
     
     test_case.to_csv(str(csv))
