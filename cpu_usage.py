@@ -16,7 +16,7 @@ import psutil
 # get timestamp
 start_time = datetime.now()
 # get home_directory
-home = os.environ['HOME']
+home = os.environ['HOMEPATH']
 # make logfile
 logfile = open(str(home) + '\\var\\log\\perf\\resource\\cpu_usage_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
 
