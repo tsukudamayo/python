@@ -15,14 +15,16 @@ line[5]: cpu4(logical2)-usage-free(%)
 ---------------------------------------
 """
 
-import sys
+import os,sys
 from datetime import datetime
 import psutil
 
 # get timestamp
 start_time = datetime.now()
-# make logfilw
-logfile = open('C:\\Users\\lx15120118\\var\\log\\sim\\perf\\resource\\cpu _usage_all_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
+# get home directory
+home = os.environ['HOME']
+# make logfile
+logfile = open(str(home) + '\\var\\log\\perf\\resource\\cpu _usage_all_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
 
 # keep on output logfile, until press ctrl+C
 while(True):

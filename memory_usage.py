@@ -13,15 +13,17 @@ line[6]: memory-usage-available(byte)
 ---------------------------------------
 """
 
-import sys
+import os,sys
 import time
 from datetime import datetime
 import psutil
 
 # get timestamp
 start_time = datetime.now()
+# get home directory
+home = os.environ['HOME']
 # make logfile
-logfile = open('C:\\Users\\lx15120118\\var\\log\\sim\\perf\\resource\\memory_usage_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
+logfile = open(str(home) + '\\var\\log\\perf\\resource\\memory_usage_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
 
 # keep on outputting logfile, until pressed ctrl+C
 while(True):

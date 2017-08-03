@@ -9,14 +9,16 @@ line[2]: cpu-usage-percent(%)
 ---------------------------------------
 """
 
-import sys
+import os,sys
 from datetime import datetime
 import psutil
 
 # get timestamp
 start_time = datetime.now()
+# get home_directory
+home = os.environ['HOME']
 # make logfile
-logfile = open('C:\\Users\\lx15120118\\var\\log\\sim\\perf\\resource\\cpu_usage_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
+logfile = open(str(home) + '\\var\\log\\perf\\resource\\cpu_usage_' + str(start_time.strftime('%Y%m%d')) + '.log', 'a')
 
 # keep on that output logfile, until press ctrl+C
 while(True):
