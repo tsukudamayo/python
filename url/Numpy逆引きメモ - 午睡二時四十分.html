@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html data-admin-domain="//blog.hatena.ne.jp" data-author="mizti" data-avail-langs="ja en" data-blog="mizti.hatenablog.com" data-blog-host="mizti.hatenablog.com" data-blog-is-public="1" data-blog-name="午睡二時四十分" data-blog-uri="http://mizti.hatenablog.com/" data-blog-uuid="12704830469095743384" data-blogs-uri-base="http://mizti.hatenablog.com" data-brand="hatenablog" data-data-layer="{&quot;hatenablog&quot;:{&quot;pro&quot;:&quot;free&quot;,&quot;permalink_entry&quot;:{&quot;hour&quot;:&quot;22&quot;,&quot;author_name&quot;:&quot;mizti&quot;,&quot;date&quot;:&quot;2016-12-13&quot;,&quot;categories&quot;:&quot;&quot;,&quot;title&quot;:&quot;Numpy\u9006\u5f15\u304d\u30e1\u30e2&quot;,&quot;uri&quot;:&quot;http://mizti.hatenablog.com/entry/2016/12/13/222408&quot;},&quot;router_type&quot;:&quot;blogs&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;blog&quot;:{&quot;force_pc_view&quot;:&quot;false&quot;,&quot;enable_ads&quot;:&quot;true&quot;,&quot;name&quot;:&quot;\u5348\u7761\u4e8c\u6642\u56db\u5341\u5206&quot;,&quot;enable_keyword_link&quot;:&quot;true&quot;,&quot;owner_name&quot;:&quot;mizti&quot;,&quot;uri&quot;:&quot;http://mizti.hatenablog.com/&quot;},&quot;brand&quot;:&quot;hatenablog&quot;,&quot;analytics&quot;:{&quot;property_id&quot;:&quot;&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;,&quot;brand_property_id&quot;:&quot;&quot;,&quot;separated_property_id&quot;:&quot;UA-29716941-21&quot;}}}" data-device="pc" data-dont-recommend-pro="false" data-globalheader-color="b" data-globalheader-type="pc" data-has-touch-view="1" data-page="entry" data-plus-available="" data-pro="false" data-router-type="blogs" data-static-domain="https://cdn.blog.st-hatena.com" data-version="a4fd1b2d45708a7e7b7d1be6fa5cfb47" itemscope="" itemtype="http://schema.org/Article" data-initial-state="{}" lang="ja"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/osd.js"></script><script async="" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/cbgapi.loaded_1"></script><script async="" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/cbgapi.loaded_0"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/ads"></script><script id="ox_acj_2aa032f025f8818" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/acj.json" async="" type="text/javascript"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/td.js" async="" type="text/javascript"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/bid" async="" type="text/javascript"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/dfp.json" type="text/javascript" async=""></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/notices.asc" async=""></script>
+  
+
+  
+
+
+
+  
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=7; IE=9; IE=10; IE=11">
+  <title>Numpy逆引きメモ - 午睡二時四十分</title>
+
+  
+  <link rel="canonical" href="http://mizti.hatenablog.com/entry/2016/12/13/222408">
+
+
+
+  
+  
+
+<meta itemprop="name" content="Numpy逆引きメモ - 午睡二時四十分">
+
+  <meta itemprop="image" content="https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png">
+
+
+  <meta property="og:title" content="Numpy逆引きメモ - 午睡二時四十分">
+<meta property="og:type" content="article">
+  <meta property="og:url" content="http://mizti.hatenablog.com/entry/2016/12/13/222408">
+
+  
+  
+  
+  <meta property="og:image" content="https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png">
+
+    <meta property="og:description" content="Numpyでよく使う操作のメモ。自分用、随時追記 生成 指定した内容の行列を生成 1で埋めた行列を生成 0で埋めた行列を生成 対角行列の生成 ランダム要素で埋めた行列を生成 指定区間の数列を生成する 情報取得 行列の要素数を取得する 行列の形状を取得する 行列の次元数を取得する 行列のrankを取得する 形の一致する二つの行列で値が一致する数をカウントする 行列から最大値を抽出する 行列から最大値のindexを取り出す 軸を指定してsumの最大値を取り出す 特定の条件を満たす要素のindexを取得する 形状操作 行列の次元数を追加する 行列を結合する（連結する） Flattenする 軸操作 多…">
+<meta property="og:site_name" content="午睡二時四十分">
+
+  <meta property="article:published_time" content="1481635448">
+
+      <meta name="twitter:card" content="summary">  <meta name="twitter:title" content="Numpy逆引きメモ - 午睡二時四十分">    <meta name="twitter:description" content="Numpyでよく使う操作のメモ。自分用、随時追記 生成 指定した内容の行列を生成 1で埋めた行列を生成 0で埋めた行列を生成 対角行列の生成 ランダム要素で埋めた行列を生成 指定区間の数列を生成する 情報取得 行列の要素数を取得する 行列の形状を取得する 行列の次元数を取得する 行列のrankを取得する 形の一致する二…">  <meta name="twitter:app:name:iphone" content="はてなブログアプリ">
+  <meta name="twitter:app:id:iphone" content="583299321">
+  <meta name="twitter:app:url:iphone" content="hatenablog:///open?uri=http%3A%2F%2Fmizti.hatenablog.com%2Fentry%2F2016%2F12%2F13%2F222408">
+  
+    <meta name="description" content="Numpyでよく使う操作のメモ。自分用、随時追記 生成 指定した内容の行列を生成 1で埋めた行列を生成 0で埋めた行列を生成 対角行列の生成 ランダム要素で埋めた行列を生成 指定区間の数列を生成する 情報取得 行列の要素数を取得する 行列の形状を取得する 行列の次元数を取得する 行列のrankを取得する 形の一致する二…">
+
+  
+<script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/td_htn_access.js" type="text/javascript" async=""></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/recaptcha__en.js" async="" type="text/javascript"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/sdk.js" id="facebook-jssdk"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/gpt.js" type="text/javascript" async=""></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/audience.js" type="text/javascript" async=""></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/amzn_ads.js" type="text/javascript" async=""></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/jstag" type="text/javascript" async=""></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/analytics.js" async="" type="text/javascript"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/gtm.js" async=""></script><script>
+(function() {
+  var html = document.documentElement;
+  if (!html) return;
+  var json = html.getAttribute('data-data-layer');
+  if (!json) return;
+  var value = JSON.parse(json);
+  if (!value) return;
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+  window.dataLayer.push(value);
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P4CXTW');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+  <link rel="shortcut icon" href="https://cdn.blog.st-hatena.com/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="https://cdn.blog.st-hatena.com/images/common/meta-icon-global.png">
+
+  
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://mizti.hatenablog.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="http://mizti.hatenablog.com/rss">
+<link rel="alternate" type="application/json+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fmizti.hatenablog.com%2Fentry%2F2016%2F12%2F13%2F222408&amp;format=json" title="oEmbed Profile of Numpy逆引きメモ">
+<link rel="alternate" type="text/xml+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fmizti.hatenablog.com%2Fentry%2F2016%2F12%2F13%2F222408&amp;format=xml" title="oEmbed Profile of Numpy逆引きメモ">
+  
+  <link rel="author" href="http://www.hatena.ne.jp/mizti/">
+
+
+  
+    <link rel="stylesheet" type="text/css" href="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/blog.css">
+
+    
+  <link rel="stylesheet" type="text/css" href="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/304f6e3ea88f9dfb477aa086a13e60b57493dfd3.css">
+  
+
+  
+
+  
+<script> </script>
+
+  
+<style>
+  div#google_afc_user,
+  div.google-afc-user-container,
+  div.google_afc_image,
+  div.google_afc_blocklink {
+      display: block !important;
+  }
+</style>
+
+
+  
+<script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/button.js" async="" charset="utf-8" type="text/javascript"></script><script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/entries.json"></script><script async="" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/pubads_impl_140.js"></script><link href="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/container.html" rel="prefetch"><link type="text/css" href="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/widgets.css" rel="stylesheet" id="stylesheet.widgets.amazon.com"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(http://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+
+  <body class="page-entry">
+    
+    <div id="header-container">
+     <div id="sp-suggest" style="display: none;"><a id="sp-suggest-link" href="#">スマートフォン用の表示で見る</a></div>
+    </div>
+
+    <div id="globalheader-container" data-brand="hatenablog">
+  <iframe id="globalheader" allowtransparency="true" frameborder="0" height="37"></iframe>
+</div>
+
+
+    <div id="container">
+      <div id="container-inner">
+        <header id="blog-title" data-brand="hatenablog">
+  <div id="blog-title-inner">
+    <div id="blog-title-content">
+      <h1 id="title"><a href="http://mizti.hatenablog.com/">午睡二時四十分</a></h1>
+      
+    </div>
+  </div>
+</header>
+
+        
+
+        
+        
+
+
+
+
+<div id="content" class="hfeed">
+  <div id="content-inner">
+    <div id="wrapper">
+      <div id="main">
+        <div id="main-inner">
+          
+
+
+          
+  
+  <!-- google_ad_section_start -->
+  <!-- rakuten_ad_target_begin -->
+  
+  
+  
+
+  
+
+  
+    
+      
+        <article class="entry hentry js-entry-article date-first autopagerize_page_element chars-6800 words-1000 mode-markdown entry-odd" id="entry-10328749687198865953" data-keyword-campaign="" data-uuid="10328749687198865953" data-publication-type="entry">
+  <div class="entry-inner">
+    <header class="entry-header">
+    <div class="entry-date date first">
+    <a href="http://mizti.hatenablog.com/archive/2016/12/13" rel="nofollow">
+      <time pubdate="" datetime="2016-12-13T13:24:08Z" title="2016-12-13T13:24:08Z">
+        <span class="date-year">2016</span><span class="hyphen">-</span><span class="date-month">12</span><span class="hyphen">-</span><span class="date-day">13</span>
+      </time>
+    </a>
+  </div>
+  <h1 class="entry-title">
+  <a href="http://mizti.hatenablog.com/entry/2016/12/13/222408" class="entry-title-link bookmark">Numpy逆引きメモ</a>
+</h1>
+
+  
+  
+
+
+  
+
+  
+
+</header>
+
+    
+
+    <div class="entry-content">
+  
+    <ul>
+<li>Numpyでよく使う操作のメモ。自分用、随時追記</li>
+</ul>
+
+
+<ul class="table-of-contents">
+    <li><a href="#%E7%94%9F%E6%88%90">生成</a><ul>
+            <li><a href="#%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E5%86%85%E5%AE%B9%E3%81%AE%E8%A1%8C%E5%88%97%E3%82%92%E7%94%9F%E6%88%90">指定した内容の行列を生成</a></li>
+            <li><a href="#1%E3%81%A7%E5%9F%8B%E3%82%81%E3%81%9F%E8%A1%8C%E5%88%97%E3%82%92%E7%94%9F%E6%88%90">1で埋めた行列を生成</a></li>
+            <li><a href="#0%E3%81%A7%E5%9F%8B%E3%82%81%E3%81%9F%E8%A1%8C%E5%88%97%E3%82%92%E7%94%9F%E6%88%90">0で埋めた行列を生成</a></li>
+            <li><a href="#%E5%AF%BE%E8%A7%92%E8%A1%8C%E5%88%97%E3%81%AE%E7%94%9F%E6%88%90">対角行列の生成</a></li>
+            <li><a href="#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E8%A6%81%E7%B4%A0%E3%81%A7%E5%9F%8B%E3%82%81%E3%81%9F%E8%A1%8C%E5%88%97%E3%82%92%E7%94%9F%E6%88%90">ランダム要素で埋めた行列を生成</a></li>
+            <li><a href="#%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%96%93%E3%81%AE%E6%95%B0%E5%88%97%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B">指定区間の数列を生成する</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97">情報取得</a><ul>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">行列の要素数を取得する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E5%BD%A2%E7%8A%B6%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">行列の形状を取得する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E6%AC%A1%E5%85%83%E6%95%B0%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">行列の次元数を取得する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AErank%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">行列のrankを取得する</a></li>
+            <li><a href="#%E5%BD%A2%E3%81%AE%E4%B8%80%E8%87%B4%E3%81%99%E3%82%8B%E4%BA%8C%E3%81%A4%E3%81%AE%E8%A1%8C%E5%88%97%E3%81%A7%E5%80%A4%E3%81%8C%E4%B8%80%E8%87%B4%E3%81%99%E3%82%8B%E6%95%B0%E3%82%92%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B">形の一致する二つの行列で値が一致する数をカウントする</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%8B%E3%82%89%E6%9C%80%E5%A4%A7%E5%80%A4%E3%82%92%E6%8A%BD%E5%87%BA%E3%81%99%E3%82%8B">行列から最大値を抽出する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%8B%E3%82%89%E6%9C%80%E5%A4%A7%E5%80%A4%E3%81%AEindex%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99">行列から最大値のindexを取り出す</a></li>
+            <li><a href="#%E8%BB%B8%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%A6sum%E3%81%AE%E6%9C%80%E5%A4%A7%E5%80%A4%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99">軸を指定してsumの最大値を取り出す</a></li>
+            <li><a href="#%E7%89%B9%E5%AE%9A%E3%81%AE%E6%9D%A1%E4%BB%B6%E3%82%92%E6%BA%80%E3%81%9F%E3%81%99%E8%A6%81%E7%B4%A0%E3%81%AEindex%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">特定の条件を満たす要素のindexを取得する</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E5%BD%A2%E7%8A%B6%E6%93%8D%E4%BD%9C">形状操作</a><ul>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E6%AC%A1%E5%85%83%E6%95%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B">行列の次元数を追加する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%82%92%E7%B5%90%E5%90%88%E3%81%99%E3%82%8B%E9%80%A3%E7%B5%90%E3%81%99%E3%82%8B">行列を結合する（連結する）</a></li>
+            <li><a href="#Flatten%E3%81%99%E3%82%8B">Flattenする</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E8%BB%B8%E6%93%8D%E4%BD%9C">軸操作</a><ul>
+            <li><a href="#%E5%A4%9A%E9%87%8D%E3%83%AA%E3%82%B9%E3%83%88%E8%A6%81%E7%B4%A0%E3%81%AE%E6%9C%80%E5%A4%A7%E5%80%A4%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%83%AA%E3%82%B9%E3%83%88%E3%81%A7%E8%BF%94%E3%81%99">多重リスト要素の最大値のインデックスをリストで返す</a></li>
+            <li><a href="#%E5%A4%9A%E6%AC%A1%E5%85%83%E8%A1%8C%E5%88%97%E3%81%8B%E3%82%89%E7%89%B9%E5%AE%9A%E6%AC%A1%E5%85%83%E3%81%A0%E3%81%91%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99">多次元行列から特定次元だけ抜き出す</a></li>
+            <li><a href="#%E8%A6%81%E7%B4%A0%E3%81%AE%E9%A0%86%E7%95%AA%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B">要素の順番を入れ替える</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E6%BC%94%E7%AE%97">演算</a><ul>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E7%A9%8D%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B">行列の積を求める</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E8%A6%81%E7%B4%A0%E3%81%AE%E5%92%8C%E3%82%92%E5%8F%96%E3%82%8B">行列要素の和を取る</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%E7%9A%84%E6%93%8D%E4%BD%9C">線形代数的操作</a><ul>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%82%92%E8%BB%A2%E7%BD%AE%E3%81%99%E3%82%8B">行列を転置する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E5%BC%8F%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B">行列式を出力する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AEtrace%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B">行列のtraceを出力する</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E5%AF%BE%E8%A7%92%E8%A6%81%E7%B4%A0%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99">行列の対角要素を抜き出す</a></li>
+            <li><a href="#%E5%AF%BE%E8%A7%92%E8%A6%81%E7%B4%A0%E3%81%8B%E3%82%89%E5%AF%BE%E8%A7%92%E8%A1%8C%E5%88%97%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B">対角要素から対角行列を生成する</a></li>
+            <li><a href="#%E3%81%82%E3%82%8B%E8%A1%8C%E5%88%97%E3%81%AE%E5%9B%BA%E6%9C%89%E5%80%A4%E3%81%AE%E5%AF%BE%E8%A7%92%E8%A1%8C%E5%88%97%E3%82%92%E5%BE%97%E3%82%8B">ある行列の固有値の対角行列を得る</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E5%9B%BA%E6%9C%89%E5%80%A4%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B">行列の固有値を求める</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E5%9B%BA%E6%9C%89%E5%80%A4%E5%9B%BA%E6%9C%89%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B">行列の固有値、固有ベクトルを求める</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E4%BD%9C%E3%82%8B">行列の逆行列を作る</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E3%81%AE%E5%AF%BE%E8%A7%92%E5%8C%96%E3%82%92%E8%A1%8C%E3%81%86">行列の対角化を行う</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%E3%82%A4%E3%83%87%E3%82%A3%E3%82%AA%E3%83%A0">その他よく使うイディオム</a><ul>
+            <li><a href="#%E5%A4%9A%E6%AC%A1%E5%85%83%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E3%82%92%E3%82%A4%E3%83%86%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%99%E3%82%8B">多次元配列の要素をイテレーションする</a></li>
+            <li><a href="#%E8%A1%8C%E5%88%97%E8%A6%81%E7%B4%A0%E3%81%AE%E5%9E%8B%E3%82%92%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B">行列要素の型を変換する</a></li>
+            <li><a href="#print%E3%81%97%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AB%E7%9C%81%E7%95%A5%E3%81%9B%E3%81%9A%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B">printしたときに省略せずに表示する</a></li>
+        </ul>
+    </li>
+</ul>
+
+<h1 id="生成">生成</h1>
+
+<h4 id="指定した内容の行列を生成">指定した内容の行列を生成</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; x = np.array([[<span class="synConstant">0</span>,<span class="synConstant">1</span>],[<span class="synConstant">3</span>,<span class="synConstant">4</span>]])
+&gt;&gt;&gt; x
+array([[<span class="synConstant">0</span>, <span class="synConstant">1</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+</pre>
+
+
+<h4 id="1で埋めた行列を生成">1で埋めた行列を生成</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.ones([<span class="synConstant">2</span>,<span class="synConstant">3</span>])
+array([[ <span class="synConstant">1.</span>,  <span class="synConstant">1.</span>,  <span class="synConstant">1.</span>],
+       [ <span class="synConstant">1.</span>,  <span class="synConstant">1.</span>,  <span class="synConstant">1.</span>]])
+</pre>
+
+
+<h4 id="0で埋めた行列を生成">0で埋めた行列を生成</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.zeros([<span class="synConstant">2</span>,<span class="synConstant">3</span>])
+array([[ <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>]])
+</pre>
+
+
+<h4 id="対角行列の生成">対角行列の生成</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.eye(<span class="synConstant">4</span>)
+array([[ <span class="synConstant">1.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">1.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">1.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">1.</span>]])
+</pre>
+
+
+<p>必ず正方行列になる。</p>
+
+<h4 id="ランダム要素で埋めた行列を生成">ランダム要素で埋めた行列を生成</h4>
+
+<p>一様分布</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">np.random.uniform(<span class="synConstant">2</span>, -<span class="synConstant">3</span>, (<span class="synConstant">5</span>, <span class="synConstant">4</span>))
+</pre>
+
+
+<p>上記の意味: 2から-3の間の値で埋めた5, 4の行列を生成する (4つの値が入ったリストが5つ入っているリスト)</p>
+
+<h4 id="指定区間の数列を生成する">指定<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B6%E8%B4%D6">区間</a>の数列を生成する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; X = np.arange(<span class="synConstant">10</span>)
+&gt;&gt;&gt; X
+array([<span class="synConstant">0</span>, <span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>, <span class="synConstant">4</span>, <span class="synConstant">5</span>, <span class="synConstant">6</span>, <span class="synConstant">7</span>, <span class="synConstant">8</span>, <span class="synConstant">9</span>])
+</pre>
+
+
+<p>Stepや始点・終点も指定可</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; X = np.arange(<span class="synConstant">8</span>,<span class="synConstant">20</span>,<span class="synConstant">2</span>)
+&gt;&gt;&gt; X
+array([ <span class="synConstant">8</span>, <span class="synConstant">10</span>, <span class="synConstant">12</span>, <span class="synConstant">14</span>, <span class="synConstant">16</span>, <span class="synConstant">18</span>])
+</pre>
+
+
+<p>指定数がStepの倍数でない場合</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; X = np.arange(<span class="synConstant">70</span>,<span class="synConstant">40</span>,-<span class="synConstant">11</span>)
+&gt;&gt;&gt; X
+array([<span class="synConstant">70</span>, <span class="synConstant">59</span>, <span class="synConstant">48</span>])
+</pre>
+
+
+<p>型指定も可</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; X = np.arange(<span class="synConstant">10.</span>,dtype=np.float32)
+&gt;&gt;&gt; X
+array([ <span class="synConstant">0.</span>,  <span class="synConstant">1.</span>,  <span class="synConstant">2.</span>,  <span class="synConstant">3.</span>,  <span class="synConstant">4.</span>,  <span class="synConstant">5.</span>,  <span class="synConstant">6.</span>,  <span class="synConstant">7.</span>,  <span class="synConstant">8.</span>,  <span class="synConstant">9.</span>], dtype=float32)
+</pre>
+
+
+<h1 id="情報取得">情報取得</h1>
+
+<h4 id="行列の要素数を取得する">行列の要<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C1%C7%BF%F4">素数</a>を取得する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h = np.array([<span class="synConstant">2</span>,<span class="synConstant">3</span>,<span class="synConstant">4</span>])
+&gt;&gt;&gt; h.size
+<span class="synConstant">3</span>
+&gt;&gt;&gt; h = np.array([[<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>],[<span class="synConstant">4</span>,<span class="synConstant">5</span>,<span class="synConstant">6</span>]])
+&gt;&gt;&gt; h.size
+<span class="synConstant">6</span>
+</pre>
+
+
+<h4 id="行列の形状を取得する">行列の形状を取得する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h = np.array([[<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>],[<span class="synConstant">4</span>,<span class="synConstant">5</span>,<span class="synConstant">6</span>]])
+&gt;&gt;&gt; h.shape
+(<span class="synConstant">2</span>, <span class="synConstant">3</span>)
+</pre>
+
+
+<h4 id="行列の次元数を取得する">行列の次元数を取得する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h = np.array([[<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>],[<span class="synConstant">4</span>,<span class="synConstant">5</span>,<span class="synConstant">6</span>]])
+&gt;&gt;&gt; h.ndim
+<span class="synConstant">2</span>
+</pre>
+
+
+<h4 id="行列のrankを取得する">行列のrankを取得する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+&gt;&gt;&gt; np.linalg.matrix_rank(A)
+<span class="synConstant">2</span>
+</pre>
+
+
+<h4 id="形の一致する二つの行列で値が一致する数をカウントする">形の一致する二つの行列で値が一致する数をカウントする</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; y=np.array([<span class="synConstant">1</span>,<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>,<span class="synConstant">7</span>])
+&gt;&gt;&gt; t=np.array([<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>,<span class="synConstant">4</span>,<span class="synConstant">7</span>])
+&gt;&gt;&gt;
+&gt;&gt;&gt; np.<span class="synIdentifier">sum</span>(y==t)
+<span class="synConstant">2</span>
+</pre>
+
+
+<h4 id="行列から最大値を抽出する">行列から最大値を抽出する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; hoge = np.array([[<span class="synConstant">3</span>,<span class="synConstant">4</span>,<span class="synConstant">5</span>],[<span class="synConstant">2</span>,<span class="synConstant">3</span>,<span class="synConstant">4</span>]])
+&gt;&gt;&gt; hoge.__class__
+&lt;<span class="synStatement">class</span> <span class="synConstant">'numpy.ndarray'</span>&gt;
+&gt;&gt;&gt; np.<span class="synIdentifier">max</span>(hoge)
+<span class="synConstant">5</span>
+</pre>
+
+
+<h4 id="行列から最大値のindexを取り出す">行列から最大値のindexを取り出す</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; hoge = np.ndarray([[<span class="synConstant">3</span>,<span class="synConstant">4</span>,<span class="synConstant">5</span>],[<span class="synConstant">2</span>,<span class="synConstant">3</span>,<span class="synConstant">4</span>]])
+&gt;&gt;&gt; np.argmax(hoge)
+<span class="synConstant">2</span>
+</pre>
+
+
+<h4 id="軸を指定してsumの最大値を取り出す">軸を指定してsumの最大値を取り出す</h4>
+
+<pre class="code" data-lang="" data-unlink="">&gt;&gt;&gt; A = np.array([[3,4,5],[2,3,4]])
+&gt;&gt;&gt; np.max(A, axis=0)
+array([3, 4, 5])
+&gt;&gt;&gt; np.max(A, axis=1)
+array([5, 4])</pre>
+
+
+<h4 id="特定の条件を満たす要素のindexを取得する">特定の条件を満たす要素のindexを取得する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; a
+array([ <span class="synConstant">1</span>,  <span class="synConstant">3</span>,  <span class="synConstant">4</span>,  <span class="synConstant">2</span>,  <span class="synConstant">5</span>,  <span class="synConstant">8</span>, <span class="synConstant">10</span>])
+&gt;&gt;&gt; np.where(a&gt;<span class="synConstant">3</span>)
+(array([<span class="synConstant">2</span>, <span class="synConstant">4</span>, <span class="synConstant">5</span>, <span class="synConstant">6</span>]),)
+&gt;&gt;&gt;
+&gt;&gt;&gt; np.where(a==<span class="synConstant">3</span>)
+(array([<span class="synConstant">1</span>]),)
+</pre>
+
+
+<h1 id="形状操作">形状操作</h1>
+
+<h4 id="行列の次元数を追加する">行列の次元数を追加する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h = np.array([<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>])
+&gt;&gt;&gt; h
+array([<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>])
+&gt;&gt;&gt;
+&gt;&gt;&gt; h = h[np.newaxis,:]
+&gt;&gt;&gt; h
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>]])
+
+&gt;&gt;&gt; h = h[:, np.newaxis]
+&gt;&gt;&gt; h
+array([[<span class="synConstant">1</span>],
+       [<span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>]])
+</pre>
+
+
+<h4 id="行列を結合する連結する">行列を結合する（連結する）</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+&gt;&gt;&gt; B
+array([<span class="synConstant">5</span>, <span class="synConstant">6</span>])
+</pre>
+
+
+<p>のとき、</p>
+
+<p>縦に連結</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.r_[A,B]
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>],
+       [<span class="synConstant">5</span>, <span class="synConstant">6</span>],
+       [<span class="synConstant">7</span>, <span class="synConstant">8</span>]])
+</pre>
+
+
+<p>横に連結</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.c_[A,B]
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">5</span>, <span class="synConstant">6</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>, <span class="synConstant">7</span>, <span class="synConstant">8</span>]])
+</pre>
+
+
+<h4 id="Flattenする">Flattenする</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; a = np.array([[<span class="synConstant">1</span>,<span class="synConstant">2</span>], [<span class="synConstant">3</span>,<span class="synConstant">4</span>]])
+&gt;&gt;&gt; a.flatten()
+array([<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>, <span class="synConstant">4</span>])
+</pre>
+
+
+<h1 id="軸操作">軸操作</h1>
+
+<h4 id="多重リスト要素の最大値のインデックスをリストで返す">多重リスト要素の最大値のインデックスをリストで返す</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; y = [[<span class="synConstant">1</span>,<span class="synConstant">2</span>,<span class="synConstant">3</span>],[<span class="synConstant">5</span>,<span class="synConstant">6</span>,<span class="synConstant">7</span>]]
+&gt;&gt;&gt; t = [[<span class="synConstant">0</span>,<span class="synConstant">0</span>,<span class="synConstant">1</span>],[<span class="synConstant">0</span>,<span class="synConstant">1</span>,<span class="synConstant">0</span>]]
+&gt;&gt;&gt; np.argmax(y, axis=<span class="synConstant">1</span>)
+&gt;&gt;&gt; y = np.argmax(y, axis=<span class="synConstant">1</span>)
+&gt;&gt;&gt;y
+array([<span class="synConstant">2</span>, <span class="synConstant">2</span>])
+&gt;&gt;&gt; t = np.argmax(t, axis=<span class="synConstant">1</span>)
+&gt;&gt;&gt; t
+array([<span class="synConstant">2</span>, <span class="synConstant">1</span>])
+</pre>
+
+
+<h4 id="多次元行列から特定次元だけ抜き出す">多次元行列から特定次元だけ抜き出す</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">data = [
+[<span class="synConstant">1</span>           ,<span class="synConstant">0.4834</span>],
+[<span class="synConstant">2</span>           ,<span class="synConstant">0.5526</span>],
+[<span class="synConstant">3</span>           ,<span class="synConstant">0.6076</span>],
+[<span class="synConstant">4</span>           ,<span class="synConstant">0.5436</span>],
+...
+[<span class="synConstant">299</span>         ,<span class="synConstant">0.9718</span>],
+[<span class="synConstant">300</span>         ,<span class="synConstant">0.97</span>]
+]
+</pre>
+
+
+<p>という2次元行列があるときに、</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">[<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>, ... <span class="synConstant">299</span>, <span class="synConstant">300</span>]
+</pre>
+
+
+<p>を抜き出すには</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">data[: , <span class="synConstant">0</span>]
+</pre>
+
+
+
+
+<pre class="code lang-python" data-lang="python" data-unlink="">[<span class="synConstant">0.4834</span>, <span class="synConstant">0.5526</span>, <span class="synConstant">0.6076</span>, ... <span class="synConstant">0.97</span>]
+</pre>
+
+
+<p>を抜き出すには</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">data[:, <span class="synConstant">1</span>]
+</pre>
+
+
+<p>とすればよい</p>
+
+<p>他の例:</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; y
+array([[<span class="synConstant">0</span>, <span class="synConstant">1</span>],
+       [<span class="synConstant">2</span>, <span class="synConstant">3</span>],
+       [<span class="synConstant">4</span>, <span class="synConstant">5</span>]])
+</pre>
+
+
+<p>に対して、</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; y[:,<span class="synConstant">0</span>]
+array([<span class="synConstant">0</span>, <span class="synConstant">2</span>, <span class="synConstant">4</span>])
+&gt;&gt;&gt; y[:,<span class="synConstant">1</span>]
+array([<span class="synConstant">1</span>, <span class="synConstant">3</span>, <span class="synConstant">5</span>])
+&gt;&gt;&gt; y[:,-<span class="synConstant">1</span>]
+array([<span class="synConstant">1</span>, <span class="synConstant">3</span>, <span class="synConstant">5</span>])
+</pre>
+
+
+<p>(要<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C1%C7%BF%F4">素数</a>2なので、前から数えて1番目と後ろから数えて-1番目は同じ)</p>
+
+<h4 id="要素の順番を入れ替える">要素の順番を入れ替える</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; y
+array([[<span class="synConstant">0</span>, <span class="synConstant">1</span>],
+       [<span class="synConstant">2</span>, <span class="synConstant">3</span>],
+       [<span class="synConstant">4</span>, <span class="synConstant">5</span>]])
+&gt;&gt;&gt; y[:,::-<span class="synConstant">1</span>]
+array([[<span class="synConstant">1</span>, <span class="synConstant">0</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">5</span>, <span class="synConstant">4</span>]])
+</pre>
+
+
+<h1 id="演算">演算</h1>
+
+<h4 id="行列の積を求める">行列の積を求める</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; X = np.array([[<span class="synConstant">2</span>,<span class="synConstant">3</span>],[<span class="synConstant">3</span>,<span class="synConstant">4</span>]])
+&gt;&gt;&gt; Y = np.array([<span class="synConstant">2</span>,<span class="synConstant">2</span>])
+&gt;&gt;&gt; X.dot(Y)
+array([<span class="synConstant">10</span>, <span class="synConstant">14</span>])
+</pre>
+
+
+<p>"*"による演算は、要素同士の掛け算になるため注意。</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; X = np.array([[<span class="synConstant">2</span>,<span class="synConstant">3</span>],[<span class="synConstant">3</span>,<span class="synConstant">4</span>]])
+&gt;&gt;&gt; Y = np.array([<span class="synConstant">2</span>,<span class="synConstant">2</span>])
+&gt;&gt;&gt; X*Y
+array([[<span class="synConstant">4</span>, <span class="synConstant">6</span>],
+       [<span class="synConstant">6</span>, <span class="synConstant">8</span>]])
+</pre>
+
+
+<h4 id="行列要素の和を取る">行列要素の和を取る</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+&gt;&gt;&gt; np.<span class="synIdentifier">sum</span>(A)
+<span class="synConstant">10</span>
+</pre>
+
+
+<h1 id="線形代数的操作"><a class="keyword" href="http://d.hatena.ne.jp/keyword/%C0%FE%B7%C1%C2%E5%BF%F4">線形代数</a>的操作</h1>
+
+<h4 id="行列を転置する">行列を転置する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>, <span class="synConstant">5</span>],
+       [<span class="synConstant">6</span>, <span class="synConstant">7</span>, <span class="synConstant">8</span>]])
+&gt;&gt;&gt; np.transpose(h)
+array([[<span class="synConstant">1</span>, <span class="synConstant">3</span>, <span class="synConstant">6</span>],
+       [<span class="synConstant">2</span>, <span class="synConstant">4</span>, <span class="synConstant">7</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">5</span>, <span class="synConstant">8</span>]])
+</pre>
+
+
+<p>もしくは</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>, <span class="synConstant">5</span>],
+       [<span class="synConstant">6</span>, <span class="synConstant">7</span>, <span class="synConstant">8</span>]])
+&gt;&gt;&gt; h.transpose()
+array([[<span class="synConstant">1</span>, <span class="synConstant">3</span>, <span class="synConstant">6</span>],
+       [<span class="synConstant">2</span>, <span class="synConstant">4</span>, <span class="synConstant">7</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">5</span>, <span class="synConstant">8</span>]])
+</pre>
+
+
+<p>transposeは、数式に似せて</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; h.T
+array([[<span class="synConstant">1</span>, <span class="synConstant">3</span>, <span class="synConstant">6</span>],
+       [<span class="synConstant">2</span>, <span class="synConstant">4</span>, <span class="synConstant">7</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">5</span>, <span class="synConstant">8</span>]])
+</pre>
+
+
+<p>と書くこともできる</p>
+
+<p>多次元行列については、引数を与えなければx,y,z =&gt; z,y,xのように逆順になるが、
+順番を与えることもできる</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; x.transpose(<span class="synConstant">0</span>,<span class="synConstant">1</span>,<span class="synConstant">2</span>)
+array([[[ <span class="synConstant">0</span>,  <span class="synConstant">1</span>,  <span class="synConstant">2</span>],
+        [ <span class="synConstant">3</span>,  <span class="synConstant">4</span>,  <span class="synConstant">5</span>]],
+
+       [[ <span class="synConstant">6</span>,  <span class="synConstant">7</span>,  <span class="synConstant">8</span>],
+        [ <span class="synConstant">9</span>, <span class="synConstant">10</span>, <span class="synConstant">11</span>]]])
+&gt;&gt;&gt; x.transpose(<span class="synConstant">0</span>,<span class="synConstant">2</span>,<span class="synConstant">1</span>)
+array([[[ <span class="synConstant">0</span>,  <span class="synConstant">3</span>],
+        [ <span class="synConstant">1</span>,  <span class="synConstant">4</span>],
+        [ <span class="synConstant">2</span>,  <span class="synConstant">5</span>]],
+
+       [[ <span class="synConstant">6</span>,  <span class="synConstant">9</span>],
+        [ <span class="synConstant">7</span>, <span class="synConstant">10</span>],
+        [ <span class="synConstant">8</span>, <span class="synConstant">11</span>]]])
+&gt;&gt;&gt; x.transpose(<span class="synConstant">2</span>,<span class="synConstant">0</span>,<span class="synConstant">1</span>)
+array([[[ <span class="synConstant">0</span>,  <span class="synConstant">3</span>],
+        [ <span class="synConstant">6</span>,  <span class="synConstant">9</span>]],
+
+       [[ <span class="synConstant">1</span>,  <span class="synConstant">4</span>],
+        [ <span class="synConstant">7</span>, <span class="synConstant">10</span>]],
+
+       [[ <span class="synConstant">2</span>,  <span class="synConstant">5</span>],
+        [ <span class="synConstant">8</span>, <span class="synConstant">11</span>]]])
+</pre>
+
+
+<h4 id="行列式を出力する"><a class="keyword" href="http://d.hatena.ne.jp/keyword/%B9%D4%CE%F3%BC%B0">行列式</a>を出力する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+&gt;&gt;&gt; np.linalg.det(A)
+-<span class="synConstant">2.0000000000000004</span>
+</pre>
+
+
+
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; P
+array([[<span class="synConstant">2</span>, <span class="synConstant">3</span>],
+       [<span class="synConstant">4</span>, <span class="synConstant">5</span>]])
+&gt;&gt;&gt; np.linalg.det(P)
+-<span class="synConstant">2.0</span>
+</pre>
+
+
+<h4 id="行列のtraceを出力する">行列のtraceを出力する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+&gt;&gt;&gt; np.trace(A)
+<span class="synConstant">5</span> 
+</pre>
+
+
+<h4 id="行列の対角要素を抜き出す">行列の対角要素を抜き出す</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+
+&gt;&gt;&gt; np.diag(A)
+array([<span class="synConstant">1</span>, <span class="synConstant">4</span>])
+</pre>
+
+
+<p>np.diag(A)は、Aの対角要素を返す。</p>
+
+<h4 id="対角要素から対角行列を生成する">対角要素から対角行列を生成する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; a
+array([ <span class="synConstant">1.</span>,  <span class="synConstant">2.</span>,  <span class="synConstant">3.</span>])
+
+&gt;&gt;&gt; np.diag(a)
+array([[ <span class="synConstant">1.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">2.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">3.</span>]])
+</pre>
+
+
+<h4 id="ある行列の固有値の対角行列を得る">ある行列の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>の対角行列を得る</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.diag(np.linalg.eigvals(A))
+array([[-<span class="synConstant">0.37228132</span>,  <span class="synConstant">0.</span>        ],
+       [ <span class="synConstant">0.</span>        ,  <span class="synConstant">5.37228132</span>]])
+</pre>
+
+
+<h4 id="行列の固有値を求める">行列の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>を求める</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+
+&gt;&gt;&gt; np.linalg.eigvals(A)
+array([-<span class="synConstant">0.37228132</span>,  <span class="synConstant">5.37228132</span>])
+</pre>
+
+
+<h4 id="行列の固有値固有ベクトルを求める">行列の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%A5%D9%A5%AF%A5%C8%A5%EB">固有ベクトル</a>を求める</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+
+&gt;&gt;&gt; la, P = np.linalg.eig(A)
+&gt;&gt;&gt; la
+array([-<span class="synConstant">0.37228132</span>,  <span class="synConstant">5.37228132</span>])
+&gt;&gt;&gt; P
+array([[-<span class="synConstant">0.82456484</span>, -<span class="synConstant">0.41597356</span>],
+       [ <span class="synConstant">0.56576746</span>, -<span class="synConstant">0.90937671</span>]])
+</pre>
+
+
+<p>laが<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>、Pが<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%A5%D9%A5%AF%A5%C8%A5%EB">固有ベクトル</a>。
+la[n]がP[n,:]に対応する。</p>
+
+<h4 id="行列の逆行列を作る">行列の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B5%D5%B9%D4%CE%F3">逆行列</a>を作る</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; np.linalg.inv(A)
+array([[-<span class="synConstant">2.</span> ,  <span class="synConstant">1.</span> ],
+       [ <span class="synConstant">1.5</span>, -<span class="synConstant">0.5</span>]])
+</pre>
+
+
+<h4 id="行列の対角化を行う">行列の対角化を行う</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[ <span class="synConstant">0</span>, <span class="synConstant">14</span>,  <span class="synConstant">2</span>],
+       [-<span class="synConstant">1</span>,  <span class="synConstant">9</span>, -<span class="synConstant">1</span>],
+       [-<span class="synConstant">2</span>,  <span class="synConstant">4</span>,  <span class="synConstant">8</span>]])
+</pre>
+
+
+<p>のとき、</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; l, P = np.linalg.eig(A)
+&gt;&gt;&gt; l
+array([ <span class="synConstant">4.</span>,  <span class="synConstant">6.</span>,  <span class="synConstant">7.</span>])
+&gt;&gt;&gt; P
+array([[  <span class="synConstant">9.42809042e-01</span>,  -<span class="synConstant">9.12870929e-01</span>,  -<span class="synConstant">8.94427191e-01</span>],
+       [  <span class="synConstant">2.35702260e-01</span>,  -<span class="synConstant">3.65148372e-01</span>,  -<span class="synConstant">4.47213595e-01</span>],
+       [  <span class="synConstant">2.35702260e-01</span>,  -<span class="synConstant">1.82574186e-01</span>,   <span class="synConstant">2.25257672e-15</span>]])
+</pre>
+
+
+<p>lが<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>、Pが<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%A5%D9%A5%AF%A5%C8%A5%EB">固有ベクトル</a>を組み合わせて作った行列。
+l[n]がP[n,:]に対応する(nは0,1,2)</p>
+
+<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>を対角行列化する</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; D = np.diag(l)
+&gt;&gt;&gt; D
+array([[ <span class="synConstant">4.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">6.</span>,  <span class="synConstant">0.</span>],
+       [ <span class="synConstant">0.</span>,  <span class="synConstant">0.</span>,  <span class="synConstant">7.</span>]])
+</pre>
+
+
+<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/PDP">PDP</a><sup>-1</sup>がAと一致することを確認</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; P.dot(np.diag(l)).dot(np.linalg.inv(P))
+array([[  <span class="synConstant">9.79179023e-16</span>,   <span class="synConstant">1.40000000e+01</span>,   <span class="synConstant">2.00000000e+00</span>],
+       [ -<span class="synConstant">1.00000000e+00</span>,   <span class="synConstant">9.00000000e+00</span>,  -<span class="synConstant">1.00000000e+00</span>],
+       [ -<span class="synConstant">2.00000000e+00</span>,   <span class="synConstant">4.00000000e+00</span>,   <span class="synConstant">8.00000000e+00</span>]])
+</pre>
+
+
+<h1 id="その他よく使うイディオム">その他よく使うイディオム</h1>
+
+<h4 id="多次元配列の要素をイテレーションする">多次元配列の要素を<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A4%A5%C6%A5%EC%A1%BC%A5%B7%A5%E7%A5%F3">イテレーション</a>する</h4>
+
+<p>配列の要素のインデックスを順番に取得できる</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; x
+array([[<span class="synConstant">0</span>, <span class="synConstant">1</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+&gt;&gt;&gt; it = np.nditer(x, flags=[<span class="synConstant">'multi_index'</span>], op_flags=[<span class="synConstant">'readwrite'</span>])
+&gt;&gt;&gt; it
+&lt;numpy.nditer <span class="synIdentifier">object</span> at <span class="synConstant">0x10a444c10</span>&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; it.multi_index
+(<span class="synConstant">0</span>, <span class="synConstant">0</span>)
+&gt;&gt;&gt; it.iternext()
+<span class="synIdentifier">True</span>
+&gt;&gt;&gt; it.multi_index
+(<span class="synConstant">0</span>, <span class="synConstant">1</span>)
+&gt;&gt;&gt; it.iternext()
+<span class="synIdentifier">True</span>
+&gt;&gt;&gt; it.multi_index
+(<span class="synConstant">1</span>, <span class="synConstant">0</span>)
+&gt;&gt;&gt; it.iternext()
+<span class="synIdentifier">True</span>
+&gt;&gt;&gt; it.multi_index
+(<span class="synConstant">1</span>, <span class="synConstant">1</span>)
+&gt;&gt;&gt; it.iternext()
+<span class="synIdentifier">False</span>
+</pre>
+
+
+<h4 id="行列要素の型を変換する">行列要素の型を変換する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">&gt;&gt;&gt; A
+array([[<span class="synConstant">1</span>, <span class="synConstant">2</span>],
+       [<span class="synConstant">3</span>, <span class="synConstant">4</span>]])
+
+&gt;&gt;&gt; A.astype(<span class="synConstant">"float32"</span>)
+array([[ <span class="synConstant">1.</span>,  <span class="synConstant">2.</span>],
+       [ <span class="synConstant">3.</span>,  <span class="synConstant">4.</span>]], dtype=float32)
+</pre>
+
+
+<p>（わかりづらいが、小数点が付いてfloat型になっている）</p>
+
+<h4 id="printしたときに省略せずに表示する">printしたときに省略せずに表示する</h4>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">np.set_printoptions(threshold=np.inf)
+</pre>
+
+
+<p>をコードのどこかで宣言したあとでprint</p>
+
+  
+</div>
+
+    
+  <footer class="entry-footer">
+    
+    <p class="entry-footer-section">
+  <span class="author vcard"><span class="fn" data-load-nickname="1" data-user-name="mizti">mizti</span></span>
+  <span class="entry-footer-time"><a href="http://mizti.hatenablog.com/entry/2016/12/13/222408"><time data-relative="" datetime="2016-12-13T13:24:08Z" title="2016-12-13T13:24:08Z" pubdate="" class="updated">235日前</time></a></span>
+</p>
+
+    
+  <div class="hatena-star-container">
+  <span class="hatena-star-comment-container"><img class="hatena-star-comment-button" style="cursor: pointer; margin: 0px; padding: 0px; border: medium none; vertical-align: middle; display: none;" title="Comments" alt="Comments" tabindex="0" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/comment.gif"></span><span class="hatena-star-star-container"><img class="hatena-star-add-button" style="cursor: pointer; margin: 0px 3px; padding: 0px; border: medium none; vertical-align: middle;" title="Add Star" alt="Add Star" tabindex="0" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/hatena-star-add-button.png"></span></div>
+  <div class="hatena-star-metadata" style="display: none">
+    <a class="hatena-star-permalink" href="http://mizti.hatenablog.com/entry/2016/12/13/222408">Numpy逆引きメモ</a>
+  </div>
+
+
+    
+<div class="social-buttons">
+  
+  
+    <div class="social-button-item">
+      <iframe style="width: 84px; height: 40px;" src="javascript:false" scrolling="no" title="この記事をはてなブックマークに追加" class="hatena-bookmark-button-frame" frameborder="0" height="40" width="84"></iframe>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div fb-iframe-plugin-query="app_id=719729204785177&amp;container_width=0&amp;href=http%3A%2F%2Fmizti.hatenablog.com%2Fentry%2F2016%2F12%2F13%2F222408&amp;layout=box_count&amp;locale=ja_JP&amp;sdk=joey" fb-xfbml-state="rendered" class="fb-share-button fb_iframe_widget" data-layout="box_count" data-href="http://mizti.hatenablog.com/entry/2016/12/13/222408"><span style="vertical-align: bottom; width: 61px; height: 40px;"><iframe class="" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/share_button.html" style="border: medium none; visibility: visible; width: 61px; height: 40px;" title="fb:share_button Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f261110c44cb38" frameborder="0" height="1000px" width="1000px"></iframe></span></div>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <iframe data-url="http://mizti.hatenablog.com/entry/2016/12/13/222408" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/tweet_button.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 66px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 24px;"><iframe title="G+" data-gapiattached="true" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/fastbutton.html" name="I0_1501988302537" id="I0_1501988302537" vspace="0" tabindex="0" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div>
+    </div>
+  
+  
+  
+  
+</div>
+
+    
+  
+    
+    <div class="google-afc-image test-google-rectangle-ads ">
+      
+      <script>
+  var hatenadfp = hatenadfp || {};
+  hatenadfp.adUnits = hatenadfp.adUnits || [];
+  hatenadfp.adUnits.push(
+    
+      
+      
+      { unitName: 'blog_user', size: [[300, 250], [336, 280], [468, 60], ["fluid"]], divId: 'google_afc_user_container_0', allowContentMatch: true }
+    
+  );
+  hatenadfp.isNGContent = false;
+  
+</script>
+
+      <div data-google-query-id="CK6Y37nOwdUCFQozlgodErcGzQ" id="google_afc_user_container_0" class="google-afc-user-container  google_afc_blocklink2_5 google_afc_boder"><div style="border: 0pt none; display: inline-block; width: 468px; height: 60px;" id="google_ads_iframe_/4374287/blog_user_0__container__"><iframe data-is-safeframe="true" marginheight="0" marginwidth="0" scrolling="no" name="" title="3rd party ad content" id="google_ads_iframe_/4374287/blog_user_0" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/container.html" style="border: 0px none; vertical-align: bottom;" frameborder="0" height="60" width="468"></iframe></div></div>
+      
+        <a href="http://blog.hatena.ne.jp/guide/pro" class="open-pro-modal" data-guide-pro-modal-ad-url="http://hatenablog.com/guide/pro/modal/ad">広告を非表示にする</a>
+      
+      
+    </div>
+  
+
+
+    <div class="customized-footer">
+      
+
+        
+
+        
+
+          <div class="entry-footer-modules" id="entry-footer-secondary-modules">      <div class="hatena-module hatena-module-related-entries">
+  <div class="hatena-module-title">
+    関連記事
+  </div>
+  <div class="hatena-module-body">
+    <ul class="related-entries hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://mizti.hatenablog.com/entry/2017/01/22/103503">
+  <img alt="着彩済イラストから綺麗に線画を抽出する方法" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/httpscdn-ak.jpg" class="urllist-image related-entries-image" title="着彩済イラストから綺麗に線画を抽出する方法" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://mizti.hatenablog.com/archive/2017/01/22" rel="nofollow">
+    <time pubdate="" datetime="2017-01-22T01:35:03Z" title="2017-01-22T01:35:03Z">
+      2017-01-22
+    </time>
+  </a>
+</div>
+
+          <a href="http://mizti.hatenablog.com/entry/2017/01/22/103503" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">着彩済イラストから綺麗に線画を抽出する方法</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">機械学習のテーマの一つとして自動着彩があります。この中で、…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://mizti.hatenablog.com/entry/chainer_dataset">
+  <img alt="chainerの独自datasetの作り方" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/httpscdn-ak.png" class="urllist-image related-entries-image" title="chainerの独自datasetの作り方" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://mizti.hatenablog.com/archive/2017/01/13" rel="nofollow">
+    <time pubdate="" datetime="2017-01-12T17:26:24Z" title="2017-01-12T17:26:24Z">
+      2017-01-13
+    </time>
+  </a>
+</div>
+
+          <a href="http://mizti.hatenablog.com/entry/chainer_dataset" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">chainerの独自datasetの作り方</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">chainerで独自データセットクラスを作るための方法を明示的に示…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://mizti.hatenablog.com/entry/2016/12/18/120902">
+  <img alt="生成モデルpix2pixを動かしてみる" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/httpscdn-ak_002.png" class="urllist-image related-entries-image" title="生成モデルpix2pixを動かしてみる" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://mizti.hatenablog.com/archive/2016/12/18" rel="nofollow">
+    <time pubdate="" datetime="2016-12-18T03:09:02Z" title="2016-12-18T03:09:02Z">
+      2016-12-18
+    </time>
+  </a>
+</div>
+
+          <a href="http://mizti.hatenablog.com/entry/2016/12/18/120902" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">生成モデルpix2pixを動かしてみる</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">pix2pix is 何 2016年11月に発表された、任意の画像を入力にし…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://mizti.hatenablog.com/entry/2016/12/10/224426">
+  <img alt="できるだけ丁寧にGANとDCGANを理解する" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/httpchart.png" class="urllist-image related-entries-image" title="できるだけ丁寧にGANとDCGANを理解する" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://mizti.hatenablog.com/archive/2016/12/10" rel="nofollow">
+    <time pubdate="" datetime="2016-12-10T13:44:26Z" title="2016-12-10T13:44:26Z">
+      2016-12-10
+    </time>
+  </a>
+</div>
+
+          <a href="http://mizti.hatenablog.com/entry/2016/12/10/224426" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">できるだけ丁寧にGANとDCGANを理解する</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">目的 Chainerの扱いに慣れてきたので、ニューラルネットワーク…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://mizti.hatenablog.com/entry/font_chainer1">
+  <img alt="Chainerでフォントを識別してみる (1)" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/httpscdn-ak_003.png" class="urllist-image related-entries-image" title="Chainerでフォントを識別してみる (1)" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://mizti.hatenablog.com/archive/2016/11/26" rel="nofollow">
+    <time pubdate="" datetime="2016-11-26T10:40:01Z" title="2016-11-26T10:40:01Z">
+      2016-11-26
+    </time>
+  </a>
+</div>
+
+          <a href="http://mizti.hatenablog.com/entry/font_chainer1" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">Chainerでフォントを識別してみる (1)</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">Chainerで何か分類してみるにあたって、1. 分類できて嬉しい 2.…</div>
+      </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+  </div>
+        
+
+      
+    </div>
+    
+  <div class="comment-box">
+    
+    <ul class="comment">
+      <li class="read-more-comments" style="display: none;"><a>もっと読む</a></li>
+    </ul>
+    
+      <a style="display: none;" class="leave-comment-title">コメントを書く</a>
+    
+  </div>
+
+  </footer>
+
+  </div>
+</article>
+
+      
+      
+    
+  
+
+  
+  <!-- rakuten_ad_target_end -->
+  <!-- google_ad_section_end -->
+  
+  
+  
+  <div class="pager pager-permalink permalink">
+    
+      
+      <span class="pager-prev">
+        <a href="http://mizti.hatenablog.com/entry/2016/12/18/120902" rel="prev">
+          <span class="pager-arrow">« </span>
+          生成モデルpix2pixを動かしてみる
+        </a>
+      </span>
+    
+    
+      
+      <span class="pager-next">
+        <a href="http://mizti.hatenablog.com/entry/2016/12/11/233115" rel="next">
+          Chainer環境をAWSのUbuntu16.04+CUDA8.0上…
+          <span class="pager-arrow"> »</span>
+        </a>
+      </span>
+    
+  </div>
+
+
+  
+
+
+
+        </div>
+      </div>
+
+      <aside id="box1">
+  <div id="box1-inner">
+  </div>
+</aside>
+
+    </div><!-- #wrapper -->
+
+    
+<aside id="box2">
+  
+  <div id="box2-inner">
+    
+      
+
+<div class="hatena-module hatena-module-profile">
+  <div class="hatena-module-title">
+    プロフィール
+  </div>
+  <div class="hatena-module-body">
+    
+    <a href="http://mizti.hatenablog.com/about" class="profile-icon-link">
+      <img src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/profile.gif" alt="id:mizti" class="profile-icon">
+    </a>
+    
+
+    
+    <span class="id">
+      <a href="http://mizti.hatenablog.com/about" class="hatena-id-link"><span data-load-nickname="1" data-user-name="mizti">id:mizti</span></a>
+      
+  
+    
+    
+  
+
+
+    </span>
+    
+
+    
+
+    
+
+    
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box">
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button unsubscribing">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once="">
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div style="display: block;" class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">17</span>
+  </div>
+</div>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+    <div class="hatena-module-title">よかった本とか</div>
+  <div class="hatena-module-body">
+    <script charset="utf-8" type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/q.js"> </script><script charset="utf-8" type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/8001_7.js"> </script><div class="amazon_widget_JP_8001_0" id="amazon_widget_JP_8001_0"><div id="amzn_wdgt_t_8001_0" class="amzn_wdgt" style="border: 1px solid #636363;color:#9C0000;background: #FFFFFF;width:194px;"> <div class="amzn_wdgt_pad" style="padding: 0 0 0 0 ;"><div class="wdgt_hd" style="border-bottom: 1px solid #636363;padding-bottom:10px;text-align: left;font: bold 12px / 1em Verdana, Arial, Helvetica, sans-serif;color:#000000;background:#DEDEDE;">よかった本とか</div><div id="wdgt_brdr" class="wdgt_brdr" style=""><div class="wdgt_tl_pad"><div class="wdgt_tl" style="height:88px;width:188px"><div class="asin_img" style="height:56px;"><a style="float:left;border-bottom: none; text-decoration:none;" target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/512ru2i5gyL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30BC%u30ED%u304B%u3089%u4F5C%u308BDeep%20Learning%20%u2015Python%u3067%u5B66%u3076%u30C7%u30A3%u30FC%u30D7%u30E9%u30FC%u30CB%u30F3%u30B0%u306E%u7406%u8AD6%u3068%u5B9F%u88C5%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u658E%u85E4%20%u5EB7%u6BC5%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Sep%2024%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star45_tpng.png%27/%3E%2866%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%203%2C672%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u672C%u5F53%u306B%u4E00%u304B%u3089%u30CB%u30E5%u30FC%u30E9%u30EB%u30CD%u30C3%u30C8%u30EF%u30FC%u30AF%u3092%u66F8%u3044%u3066%u4ED5%u7D44%u307F%u3092%u7406%u89E3%u3067%u304D%u308B%u826F%u66F8%u3067%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4873117585");' onmouseout="_amzn_popup.hide()" href="https://www.amazon.co.jp/%E3%82%BC%E3%83%AD%E3%81%8B%E3%82%89%E4%BD%9C%E3%82%8BDeep-Learning-%E2%80%95Python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%90%86%E8%AB%96%E3%81%A8%E5%AE%9F%E8%A3%85-%E6%96%8E%E8%97%A4-%E5%BA%B7%E6%AF%85/dp/4873117585/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22"><img src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/512ru2i5gyL.jpg" style="border: none;margin:0;border-bottom: none; text-decoration:none;" height="56" width="40"></a></div><div style="color: #000000 !important;;" class="asin_h1"><a target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/512ru2i5gyL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30BC%u30ED%u304B%u3089%u4F5C%u308BDeep%20Learning%20%u2015Python%u3067%u5B66%u3076%u30C7%u30A3%u30FC%u30D7%u30E9%u30FC%u30CB%u30F3%u30B0%u306E%u7406%u8AD6%u3068%u5B9F%u88C5%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u658E%u85E4%20%u5EB7%u6BC5%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Sep%2024%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star45_tpng.png%27/%3E%2866%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%203%2C672%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u672C%u5F53%u306B%u4E00%u304B%u3089%u30CB%u30E5%u30FC%u30E9%u30EB%u30CD%u30C3%u30C8%u30EF%u30FC%u30AF%u3092%u66F8%u3044%u3066%u4ED5%u7D44%u307F%u3092%u7406%u89E3%u3067%u304D%u308B%u826F%u66F8%u3067%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4873117585");' onmouseout="_amzn_popup.hide()" style="border-bottom: none; text-decoration:none;color: #000000 !important;text-decoration :underline;" href="https://www.amazon.co.jp/%E3%82%BC%E3%83%AD%E3%81%8B%E3%82%89%E4%BD%9C%E3%82%8BDeep-Learning-%E2%80%95Python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%90%86%E8%AB%96%E3%81%A8%E5%AE%9F%E8%A3%85-%E6%96%8E%E8%97%A4-%E5%BA%B7%E6%AF%85/dp/4873117585/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22">ゼロから作るDeep Learni…</a></div><div style="color: #000000 !important;;" class="asin_h2"><a target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/512ru2i5gyL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30BC%u30ED%u304B%u3089%u4F5C%u308BDeep%20Learning%20%u2015Python%u3067%u5B66%u3076%u30C7%u30A3%u30FC%u30D7%u30E9%u30FC%u30CB%u30F3%u30B0%u306E%u7406%u8AD6%u3068%u5B9F%u88C5%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u658E%u85E4%20%u5EB7%u6BC5%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Sep%2024%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star45_tpng.png%27/%3E%2866%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%203%2C672%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u672C%u5F53%u306B%u4E00%u304B%u3089%u30CB%u30E5%u30FC%u30E9%u30EB%u30CD%u30C3%u30C8%u30EF%u30FC%u30AF%u3092%u66F8%u3044%u3066%u4ED5%u7D44%u307F%u3092%u7406%u89E3%u3067%u304D%u308B%u826F%u66F8%u3067%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4873117585");' onmouseout="_amzn_popup.hide()" style="border-bottom: none; text-decoration:none;color: #000000 !important;" href="https://www.amazon.co.jp/%E3%82%BC%E3%83%AD%E3%81%8B%E3%82%89%E4%BD%9C%E3%82%8BDeep-Learning-%E2%80%95Python%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E7%90%86%E8%AB%96%E3%81%A8%E5%AE%9F%E8%A3%85-%E6%96%8E%E8%97%A4-%E5%BA%B7%E6%AF%85/dp/4873117585/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22">斎藤 康毅 (単行本（ソフトカバー…</a></div><div onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/512ru2i5gyL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30BC%u30ED%u304B%u3089%u4F5C%u308BDeep%20Learning%20%u2015Python%u3067%u5B66%u3076%u30C7%u30A3%u30FC%u30D7%u30E9%u30FC%u30CB%u30F3%u30B0%u306E%u7406%u8AD6%u3068%u5B9F%u88C5%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u658E%u85E4%20%u5EB7%u6BC5%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Sep%2024%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star45_tpng.png%27/%3E%2866%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2582%25BC%25E3%2583%25AD%25E3%2581%258B%25E3%2582%2589%25E4%25BD%259C%25E3%2582%258BDeep-Learning-%25E2%2580%2595Python%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2587%25E3%2582%25A3%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%258B%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E7%2590%2586%25E8%25AB%2596%25E3%2581%25A8%25E5%25AE%259F%25E8%25A3%2585-%25E6%2596%258E%25E8%2597%25A4-%25E5%25BA%25B7%25E6%25AF%2585/dp/4873117585/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%203%2C672%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u672C%u5F53%u306B%u4E00%u304B%u3089%u30CB%u30E5%u30FC%u30E9%u30EB%u30CD%u30C3%u30C8%u30EF%u30FC%u30AF%u3092%u66F8%u3044%u3066%u4ED5%u7D44%u307F%u3092%u7406%u89E3%u3067%u304D%u308B%u826F%u66F8%u3067%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4873117585");' onmouseout="_amzn_popup.hide()" class="asin_cmnt" style="cursor:pointer;width:188px;color: #9C0000 !important;">本当に一からニューラルネットワークを書いて仕組みを理解できる良書でした</div></div></div><div class="wdgt_tl_pad"><div class="wdgt_tl" style="height:88px;width:188px"><div class="asin_img" style="height:56px;"><a style="float:left;border-bottom: none; text-decoration:none;" target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/51FaE9vztvL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u8EAB%u306B%u3064%u304F%20%u30D9%u30A4%u30BA%u7D71%u8A08%u5B66%20%28%u30D5%u30A1%u30FC%u30B9%u30C8%u30D6%u30C3%u30AFSTEP%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u6D8C%u4E95%20%u826F%u5E78%2C%20%u6D8C%u4E95%20%u8C9E%u7F8E%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Apr%2013%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star30_tpng.png%27/%3E%283%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%202%2C030%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u751F%u6210%u30E2%u30C7%u30EB%u3068%u304B%u3067%u51FA%u3066%u304F%u308B%u78BA%u7387%u5206%u91CE%u306E%u6570%u5F0F%u306B%u82E6%u624B%u611F%u304C%u3042%u3063%u305F%u306E%u3067%u8AAD%u307F%u307E%u3057%u305F%u3002%u7406%u89E3%u3057%u3065%u3089%u3044%u98DB%u8E8D%u3082%u306A%u304F%u3001%u52A9%u304B%u308A%u307E%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4774180742");' onmouseout="_amzn_popup.hide()" href="https://www.amazon.co.jp/%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8F-%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E5%AD%A6-%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%96%E3%83%83%E3%82%AFSTEP-%E6%B6%8C%E4%BA%95-%E8%89%AF%E5%B9%B8/dp/4774180742/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22"><img src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/51FaE9vztvL.jpg" style="border: none;margin:0;border-bottom: none; text-decoration:none;" height="56" width="40"></a></div><div style="color: #000000 !important;;" class="asin_h1"><a target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/51FaE9vztvL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u8EAB%u306B%u3064%u304F%20%u30D9%u30A4%u30BA%u7D71%u8A08%u5B66%20%28%u30D5%u30A1%u30FC%u30B9%u30C8%u30D6%u30C3%u30AFSTEP%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u6D8C%u4E95%20%u826F%u5E78%2C%20%u6D8C%u4E95%20%u8C9E%u7F8E%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Apr%2013%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star30_tpng.png%27/%3E%283%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%202%2C030%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u751F%u6210%u30E2%u30C7%u30EB%u3068%u304B%u3067%u51FA%u3066%u304F%u308B%u78BA%u7387%u5206%u91CE%u306E%u6570%u5F0F%u306B%u82E6%u624B%u611F%u304C%u3042%u3063%u305F%u306E%u3067%u8AAD%u307F%u307E%u3057%u305F%u3002%u7406%u89E3%u3057%u3065%u3089%u3044%u98DB%u8E8D%u3082%u306A%u304F%u3001%u52A9%u304B%u308A%u307E%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4774180742");' onmouseout="_amzn_popup.hide()" style="border-bottom: none; text-decoration:none;color: #000000 !important;text-decoration :underline;" href="https://www.amazon.co.jp/%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8F-%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E5%AD%A6-%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%96%E3%83%83%E3%82%AFSTEP-%E6%B6%8C%E4%BA%95-%E8%89%AF%E5%B9%B8/dp/4774180742/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22">身につく ベイズ統計学 (ファ…</a></div><div style="color: #000000 !important;;" class="asin_h2"><a target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/51FaE9vztvL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u8EAB%u306B%u3064%u304F%20%u30D9%u30A4%u30BA%u7D71%u8A08%u5B66%20%28%u30D5%u30A1%u30FC%u30B9%u30C8%u30D6%u30C3%u30AFSTEP%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u6D8C%u4E95%20%u826F%u5E78%2C%20%u6D8C%u4E95%20%u8C9E%u7F8E%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Apr%2013%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star30_tpng.png%27/%3E%283%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%202%2C030%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u751F%u6210%u30E2%u30C7%u30EB%u3068%u304B%u3067%u51FA%u3066%u304F%u308B%u78BA%u7387%u5206%u91CE%u306E%u6570%u5F0F%u306B%u82E6%u624B%u611F%u304C%u3042%u3063%u305F%u306E%u3067%u8AAD%u307F%u307E%u3057%u305F%u3002%u7406%u89E3%u3057%u3065%u3089%u3044%u98DB%u8E8D%u3082%u306A%u304F%u3001%u52A9%u304B%u308A%u307E%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4774180742");' onmouseout="_amzn_popup.hide()" style="border-bottom: none; text-decoration:none;color: #000000 !important;" href="https://www.amazon.co.jp/%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8F-%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E5%AD%A6-%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%96%E3%83%83%E3%82%AFSTEP-%E6%B6%8C%E4%BA%95-%E8%89%AF%E5%B9%B8/dp/4774180742/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22">涌井 良幸, 涌井 貞美 (単行本（…</a></div><div onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A315px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/51FaE9vztvL._SL75_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A53px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u8EAB%u306B%u3064%u304F%20%u30D9%u30A4%u30BA%u7D71%u8A08%u5B66%20%28%u30D5%u30A1%u30FC%u30B9%u30C8%u30D6%u30C3%u30AFSTEP%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%u6D8C%u4E95%20%u826F%u5E78%2C%20%u6D8C%u4E95%20%u8C9E%u7F8E%20%28%u5358%u884C%u672C%uFF08%u30BD%u30D5%u30C8%u30AB%u30D0%u30FC%uFF09%20-%20Apr%2013%2C%202016%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star30_tpng.png%27/%3E%283%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A107px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E8%25BA%25AB%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%258F-%25E3%2583%2599%25E3%2582%25A4%25E3%2582%25BA%25E7%25B5%25B1%25E8%25A8%2588%25E5%25AD%25A6-%25E3%2583%2595%25E3%2582%25A1%25E3%2583%25BC%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AFSTEP-%25E6%25B6%258C%25E4%25BA%2595-%25E8%2589%25AF%25E5%25B9%25B8/dp/4774180742/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A100px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%202%2C030%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u751F%u6210%u30E2%u30C7%u30EB%u3068%u304B%u3067%u51FA%u3066%u304F%u308B%u78BA%u7387%u5206%u91CE%u306E%u6570%u5F0F%u306B%u82E6%u624B%u611F%u304C%u3042%u3063%u305F%u306E%u3067%u8AAD%u307F%u307E%u3057%u305F%u3002%u7406%u89E3%u3057%u3065%u3089%u3044%u98DB%u8E8D%u3082%u306A%u304F%u3001%u52A9%u304B%u308A%u307E%u3057%u305F%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4774180742");' onmouseout="_amzn_popup.hide()" class="asin_cmnt" style="cursor:pointer;width:188px;color: #9C0000 !important;">生成モデルとかで出てくる確率分野の数式に苦手感があったので読みました。理解し…</div></div></div><div class="wdgt_tl_pad"><div class="wdgt_tl" style="height:88px;width:188px"><div class="asin_img" style="height:32px;"><a style="float:left;border-bottom: none; text-decoration:none;" target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A326px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/418TT5XXYXL._SX64_SY54_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A64px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30D6%u30C3%u30AF%u30B9%u30C8%u30C3%u30D1%u30FC%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%20%28%u5358%u884C%u672C%20-%20Jul%202004%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star40_tpng.png%27/%3E%28157%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A97px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A90px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%20864%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u30B3%u30FC%u30C9%u3084%u6570%u5F0F%u306E%u5199%u7D4C%u306B%u4FBF%u5229%u306A%u6280%u8853%u66F8%u306E%u53CB%u3002%u3053%u308C%u306F%u672C%u3082%u75DB%u307E%u306A%u304F%u3066%u826F%u3044%u3067%u3059%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4902756064");' onmouseout="_amzn_popup.hide()" href="https://www.amazon.co.jp/%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%83%88%E3%83%83%E3%83%91%E3%83%BC/dp/4902756064/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22"><img src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/418TT5XXYXL.jpg" style="border: none;margin:0;border-bottom: none; text-decoration:none;" height="32" width="40"></a></div><div style="color: #000000 !important;;" class="asin_h1"><a target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A326px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/418TT5XXYXL._SX64_SY54_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A64px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30D6%u30C3%u30AF%u30B9%u30C8%u30C3%u30D1%u30FC%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%20%28%u5358%u884C%u672C%20-%20Jul%202004%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star40_tpng.png%27/%3E%28157%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A97px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A90px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%20864%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u30B3%u30FC%u30C9%u3084%u6570%u5F0F%u306E%u5199%u7D4C%u306B%u4FBF%u5229%u306A%u6280%u8853%u66F8%u306E%u53CB%u3002%u3053%u308C%u306F%u672C%u3082%u75DB%u307E%u306A%u304F%u3066%u826F%u3044%u3067%u3059%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4902756064");' onmouseout="_amzn_popup.hide()" style="border-bottom: none; text-decoration:none;color: #000000 !important;text-decoration :underline;" href="https://www.amazon.co.jp/%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%83%88%E3%83%83%E3%83%91%E3%83%BC/dp/4902756064/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22">ブックストッパー</a></div><div style="color: #000000 !important;;" class="asin_h2"><a target="_blank" onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A326px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/418TT5XXYXL._SX64_SY54_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A64px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30D6%u30C3%u30AF%u30B9%u30C8%u30C3%u30D1%u30FC%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%20%28%u5358%u884C%u672C%20-%20Jul%202004%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star40_tpng.png%27/%3E%28157%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A97px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A90px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%20864%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u30B3%u30FC%u30C9%u3084%u6570%u5F0F%u306E%u5199%u7D4C%u306B%u4FBF%u5229%u306A%u6280%u8853%u66F8%u306E%u53CB%u3002%u3053%u308C%u306F%u672C%u3082%u75DB%u307E%u306A%u304F%u3066%u826F%u3044%u3067%u3059%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4902756064");' onmouseout="_amzn_popup.hide()" style="border-bottom: none; text-decoration:none;color: #000000 !important;" href="https://www.amazon.co.jp/%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9%E3%83%88%E3%83%83%E3%83%91%E3%83%BC/dp/4902756064/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22"> (単行本 - Jul 2004)</a></div><div onmouseover='_amzn_utils._amzn_popup_callback_helper();_a=this; _amzn_popup.showpreview("%3Cdiv%20id%3D%27wdgt_pop_tl%27%20class%3D%27wdgt_pop_tl%27%20style%3D%22background%3Awhite%3B%22%3E%3Cimg%20onclick%3D%27_amzn_popup.hideNow%28%29%27%20style%3D%27top%3A0px%3Bdisplay%3Ablock%3Bright%3A0px%3Bposition%3Aabsolute%3Bborder%3Anone%3Bmargin%3A0%3Bfloat%3Aright%3Bcursor%3Apointer%3Bpadding%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/close-fly-over-new.gif%27%20hspace%3D0%20/%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border%3A5px%20solid%20%23cccccc%3Bwidth%3A326px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20valign%3Dtop%20align%3Dleft%20cellspacing%3D0%20cellpadding%3D0%20style%3D%22top%3A0px%3Bleft%3A0px%22%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%20align%3Dleft%3E%3Cdiv%20style%3D%22padding%3A6px%3B%22%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cimg%20src%3D%27https%3A//images-fe.ssl-images-amazon.com/images/I/418TT5XXYXL._SX64_SY54_.jpg%27%20class%3D%27asin_img%27%20hspace%3D0%20%20style%3D%22width%3A64px%3B%22%20/%3E%3C/a%3E%3C/div%3E%3C/td%3E%3Ctd%20align%3Dleft%3E%3Cdiv%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20valign%3Dtop%20style%3D%20%22width%3A250px%22%3E%3Ctr%3E%3Ctd%3E%3Ctable%20cellspacing%3D%220%22%20cellpadding%3D%220%22%20style%3D%22width%3A232px%22%3E%3Ctr%3E%3Ctd%3E%3Ca%20target%3D%27_blank%27%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h1%27%20style%3D%22width%3A232px%3B%22%3E%u30D6%u30C3%u30AF%u30B9%u30C8%u30C3%u30D1%u30FC%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%3E%3Ctd%20valign%3Dtop%3E%3Ca%20target%3D%27_blank%27%20%20href%3D%27https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%27%3E%3Cdiv%20class%3D%27asin_h2%27%20style%3D%22width%3A232px%3B%22%3E%20%28%u5358%u884C%u672C%20-%20Jul%202004%29%3C/div%3E%3C/a%3E%3C/td%3E%3C/tr%3E%3Ctr%20valign%3Dtop%20%3E%3Ctd%20valign%3Dtop%3E%3Cdiv%20class%3D%22asin_review%22%3E%3Ca%20%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.jp/product-reviews/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cimg%20style%3D%27height%3A11px%3B%20width%3A56px%3Bborder%3A%20none%3Bmargin%3A0%3B%27%20src%3D%27http%3A//wms-fe.amazon-adsystem.com/JP/img/star40_tpng.png%27/%3E%28157%u30EC%u30D3%u30E5%u30FC%29%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3Ctd%20align%3Dright%20valign%3D%22top%22%20style%3D%22width%3A18px%22%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign%3Dleft%20colspan%3D2%3E%3Cdiv%20class%3D%22cssbutton%22%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-right2-sm-sec.gif%27%29%20no-repeat%20right%20top%3B%20width%3A97px%3Bpadding-bottom%3A9px%3B%22%3E%3Ca%20target%3D%22_blank%22%20href%3D%22https%3A//www.amazon.co.jp/%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2583%25E3%2583%2591%25E3%2583%25BC/dp/4902756064/ref%3Das_sl_pc_tf_mfw%3F%26linkCode%3Dwey%26tag%3Dtabularasa059-22%22%3E%3Cdiv%20style%3D%22background%3Aurl%28%27http%3A//wms-fe.amazon-adsystem.com/JP/img/btn-mid-slider2-sm-sec.gif%27%29%20no-repeat%20left%20top%3B%20width%3A90px%3B%22%3E%3Cspan%20class%3D%22cssbuttonleft%22%20%3E%u4ECA%u3059%u3050%u8CB7%u3046%3C/span%3E%3Cspan%20class%3D%22cssbuttonright%22%3E%uFFE5%20864%3C/span%3E%3C/div%3E%3C/a%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20colspan%20%3D%202%3E%3Cdiv%20class%3D%27asin_cmnt%27%20style%3D%22width%3A317px%22%3B%3E%u30B3%u30FC%u30C9%u3084%u6570%u5F0F%u306E%u5199%u7D4C%u306B%u4FBF%u5229%u306A%u6280%u8853%u66F8%u306E%u53CB%u3002%u3053%u308C%u306F%u672C%u3082%u75DB%u307E%u306A%u304F%u3066%u826F%u3044%u3067%u3059%3C/div%3E%3Cdiv%20style%3D%27clear%3Aleft%27%3E%3C/div%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/div%3E", _a, event, 500,"tabularasa059-22","wey", "JP", "4902756064");' onmouseout="_amzn_popup.hide()" class="asin_cmnt" style="cursor:pointer;width:188px;color: #9C0000 !important;">コードや数式の写経に便利な技術書の友。これは本も痛まなくて良いです</div></div></div></div><div class="wdgt_pgn" style="padding-bottom: 10px; color:#000000;" id="wdgt_pgn"><div class="pgn_cnt"></div></div><div id="wdgt_ft" class="wdgt_ft" style="height: 50px;padding: 5px 5px 5px 3px; border-top: 1px solid #636363;color:#000000 !important;background:#DEDEDE;;"><a target="_blank" style="text-decoration: none; float: left; font-size:12px; color: #000000 !important; " href="https://www.amazon.jp/ref=as_sl_pc_tf_mfw?&amp;linkCode=wey&amp;tag=tabularasa059-22"><img alt="Amazon.co.jp" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/amazon-logo-b_tpng.png" height="23" width="87" border="0"></a><br><div class="ft_cnt"><a target="_blank" style="padding: 2px 0 0 0px; text-decoration: none; float: right; font-size: 10px;; color: #ABABAB !important;" href="http://rcm-fe.amazon-adsystem.com/e/cm/privacy-policy.html/ref=as_sl_pc_tf_mfw?o=9&amp;linkCode=wey&amp;tag=tabularasa059-22">プライバシー規約</a></div></div></div></div></div><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/popup.js"> </script>
+<script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/nifty.js"> </script>
+<script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/colors.js"> </script>
+ <noscript><A rel="nofollow" HREF="http://ws-fe.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Ftabularasa059-22%2F8001%2F91bdbaff-0c8c-4496-a15b-8c942aedd81c&Operation=NoScript">Amazon.co.jp ウィジェット</A></noscript>
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+    <div class="hatena-module-title">Amazon</div>
+  <div class="hatena-module-body">
+    <script type="text/javascript"><!--
+amazon_ad_tag = "tabularasa059-22"; amazon_ad_width = "160"; amazon_ad_height = "600"; amazon_ad_link_target = "new";//--></script>
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/ads.js"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/ads-common.js" type="text/javascript"></script><iframe src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/cm.html" marginwidth="0" marginheight="0" border="0" style="border:none;" scrolling="no" frameborder="0" height="600" width="160"></iframe>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-search-box">
+  <div class="hatena-module-title">
+    検索
+  </div>
+  <div class="hatena-module-body">
+    <form class="search-form" role="search" action="http://mizti.hatenablog.com/search" method="get">
+      <input name="q" class="search-module-input" placeholder="記事を検索" required="" type="text">
+      <input value="検索" class="search-module-button" type="submit">
+    </form>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-recent-entries ">
+  <div class="hatena-module-title">
+    <a href="http://mizti.hatenablog.com/archive">
+      最新記事
+    </a>
+  </div>
+  <div class="hatena-module-body">
+    <ul class="recent-entries hatena-urllist ">
+  
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2017/06/14/201227" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">スレッドとキューとキューランナーとコーディネータの関係</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2017/05/20/220645" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">Tensorflow + Jupyterのsave &amp; restore時のトラブルとその回避方法</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2017/01/30/231724" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">動画紹介: 確率的ニューラルネットワークについて</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2017/01/22/103503" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">着彩済イラストから綺麗に線画を抽出する方法</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/chainer_dataset" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">chainerの独自datasetの作り方</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-entries-access-ranking" data-count="5" data-source="access" data-enable_customize_format="0" data-display_entry_category="0" data-display_entry_image="0" data-display_entry_image_size_width="100" data-display_entry_image_size_height="100" data-display_entry_body_length="0" data-display_entry_date="0" data-display_entry_title_length="20" data-restrict_entry_title_length="0" data-display_bookmark_count="0">
+  <div class="hatena-module-title">
+    
+      アクセスの多い記事
+    
+  </div>
+  <div class="hatena-module-body">
+    
+  <ul class="entries-access-ranking hatena-urllist ">
+  
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-1">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2016/12/10/224426" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">できるだけ丁寧にGANとDCGANを理解する</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-2">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2013/01/27/204343" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">指定したファイルの更新があったらコマンドを自動実行するシェルスクリプト</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-3">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/chainer_dataset" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">chainerの独自datasetの作り方</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-4">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/2016/12/18/120902" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">生成モデルpix2pixを動かしてみる</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-5">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+          
+          <a href="http://mizti.hatenablog.com/entry/deeplearningwithawsstepfunction" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">AWS Step FunctionsとLambdaでディープラーニングの訓練を全自動化する</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+</ul>
+</div>
+</div>
+
+    
+    
+  </div>
+</aside>
+
+
+  </div>
+</div>
+
+
+
+
+
+        
+
+        
+  <script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/hatena_dfp2.js"></script>
+
+
+        
+
+      </div>
+    </div><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/popup.js"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/nifty.js"></script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/colors.js"></script>
+    
+<footer id="footer" data-brand="hatenablog">
+  <div id="footer-inner">
+    <address>
+      <a href="http://mizti.hatenablog.com/">
+        <img src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/blog-icon-noimage.png" alt="午睡二時四十分" height="16" width="16">
+        <span class="footer-address-name">午睡二時四十分</span>
+      </a>
+    </address>
+    <p class="services">
+      Powered by <a href="http://hatenablog.com/">Hatena Blog</a>
+      |
+        <a href="http://www.hatena.ne.jp/faq/report/blog?target_label=mizti&amp;target_url=http%3A%2F%2Fblog.hatena.ne.jp%2Fgo%3Fblog%3Dhttp%253A%252F%252Fmizti.hatenablog.com%252Fentry%252F2016%252F12%252F13%252F222408&amp;location=http%3A%2F%2Fblog.hatena.ne.jp%2Fgo%3Fblog%3Dhttp%253A%252F%252Fmizti.hatenablog.com%252Fentry%252F2016%252F12%252F13%252F222408" class="report-abuse-link test-report-abuse-link" target="_blank">ブログを報告する</a>
+    </p>
+  </div>
+</footer>
+
+
+    
+
+    
+  <script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/HatenaStar.js"></script>
+
+
+    
+  <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="http://staticxx.facebook.com/connect/xd_arbiter/r/XBwzv5Yrm_1.js?version=42#channel=f3060d89999230e&amp;origin=http%3A%2F%2Fmizti.hatenablog.com" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/XBwzv5Yrm_1_002.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+  
+    js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=719729204785177&version=v2.7";
+  
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    
+
+
+    
+
+<div style="display: none;" class="quote-box">
+  <div style="display: block;" class="tooltip-quote tooltip-quote-star">
+    <i class="blogicon-star" title="引用スターをつける"></i>
+  </div>
+  <div style="display: block;" class="tooltip-quote tooltip-quote-stock">
+    <i class="blogicon-quote" title="引用をストック"></i>
+  </div>
+  <div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet">
+    <a class="js-tweet-quote" target="_blank" data-track-name="quote-tweet" data-track-once=""><i class="blogicon-twitter" title="引用してツイートする"></i></a>
+  </div>
+</div>
+
+<div class="message-box" id="quote-star-message-box" style="display: none; position: absolute;">
+  スターをつけました
+</div>
+
+<div class="quote-stock-panel" id="quote-stock-message-box" style="position: absolute; z-index: 3000">
+  <div class="message-box" id="quote-stock-succeeded-message" style="display: none">
+    <p>引用をストックしました</p>
+    <button class="btn btn-primary" id="quote-stock-show-editor-button" data-track-name="curation-quote-edit-button">ストック一覧を見る</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="message-box" id="quote-login-required-message" style="display: none">
+    <p>引用するにはまずログインしてください</p>
+    <button class="btn btn-primary" id="quote-login-button">ログイン</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="quote-stock-failed-message" style="display: none">
+    <p>引用をストックできませんでした。再度お試しください</p>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="unstockable-quote-message-box" style="display: none; position: absolute; z-index: 3000;">
+    <p>限定公開記事のため引用できません。</p>
+  </div>
+</div>
+
+<script type="x-underscore-template" id="js-requote-button-template">
+  <div class="requote-button js-requote-button">
+    <button class="requote-button-btn tipsy-top" title="引用する"><i class="blogicon-quote"></i></button>
+  </div>
+</script>
+
+
+
+    
+    <div id="hidden-subscribe-button" style="display: none;">
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box">
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button unsubscribing">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once="">
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div style="display: block;" class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">17</span>
+  </div>
+</div>
+
+    </div>
+
+    
+  <script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/widgets.js"></script>
+
+<script gapi_processed="true" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/platform.js" async="" defer="defer">
+  { lang: 'ja', "parsetags": "explicit" }
+</script>
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+
+  <script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/react-with-addons.js"></script>
+  <script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/react-dom.js"></script>
+
+
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/jquery_003.js"></script>
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/jquery-ui.js"></script>
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/jquery.js"></script>
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/jquery_002.js"></script>
+
+
+
+
+<script id="hatenablog-js" data-env="production" type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/hatenablog.js" crossorigin="anonymous"></script><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; display: none;"></div>
+<script type="text/javascript" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/texts-ja.js"></script>
+
+
+  <script type="text/javascript">Hatena.Diary.GlobalHeader.init()</script>
+
+
+<script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/api.js" async="" defer="defer"></script>
+
+
+
+
+    
+
+
+
+
+
+  
+
+
+<div style="display: none;" id="cboxOverlay"></div><div style="display: none;" tabindex="-1" role="dialog" class="" id="colorbox"><div id="cboxWrapper"><div><div style="float: left;" id="cboxTopLeft"></div><div style="float: left;" id="cboxTopCenter"></div><div style="float: left;" id="cboxTopRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxMiddleLeft"></div><div style="float: left;" id="cboxContent"><div style="float: left;" id="cboxTitle"></div><div style="float: left;" id="cboxCurrent"></div><button id="cboxPrevious" type="button"></button><button id="cboxNext" type="button"></button><button id="cboxSlideshow" type="button"></button><div style="float: left;" id="cboxLoadingOverlay"></div><div style="float: left;" id="cboxLoadingGraphic"></div></div><div style="float: left;" id="cboxMiddleRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxBottomLeft"></div><div style="float: left;" id="cboxBottomCenter"></div><div style="float: left;" id="cboxBottomRight"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><div style="top: -9999px; z-index: -9999;"></div><script charset="UTF-8" type="text/javascript">!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["addRecord","set","trackEvent","trackPageview","trackClicks","ready"],a=0;a<s.length;a++){var c=s[a];e[t].prototype[c]=r(c)}var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/1.7.2/td.min.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("Treasure",this);</script><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/aid" charset="UTF-8" type="text/javascript"></script><iframe aria-hidden="true" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/postmessageRelay.html" id="oauth2relay379835298" name="oauth2relay379835298"></iframe><iframe style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_132281324295"></iframe><script src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/q" charset="utf-8"></script><iframe src="Numpy%E9%80%86%E5%BC%95%E3%81%8D%E3%83%A1%E3%83%A2%20-%20%E5%8D%88%E7%9D%A1%E4%BA%8C%E6%99%82%E5%9B%9B%E5%8D%81%E5%88%86_files/pd.html" style="display:none;" height="0" width="0"></iframe><div style="padding: 0px 5px; visibility: hidden; clear: both; position: absolute; left: 0px; top: 0px; overflow: auto; font: 9px Verdana,Arial,Helvetica,sans-serif; width: 133px;" id="amzn_wdgts_splitTextBlockJP80010"> (単行本 - Jul 2004)</div><div id="amzn_popup_div"></div><div class="" style="padding: 0px 5px; visibility: hidden; clear: both; position: absolute; left: 0px; top: 0px; overflow: auto; font: 9px Verdana,Arial,Helvetica,sans-serif; width: 133px;" id="amzn_wdgts_trimTextBlockJP80010"> (単行本 - Jul 2004)</div><div style="padding: 0px 5px; visibility: hidden; clear: both; position: absolute; left: 0px; top: 0px; overflow: auto; font: 9px Verdana,Arial,Helvetica,sans-serif;" id="amzn_wdgts_calculateBlockHeightJP80010"> (単行本 - Jul 2004)</div><div style="color: rgb(0, 0, 0); position: absolute; display: none; z-index: 10002; left: 0px; top: 0px; background-color: rgb(255, 255, 255); border: 0px none; padding: 0px; text-align: center;"><div style="text-align: left; margin: 0px; padding: 0px;"></div></div></body></html>

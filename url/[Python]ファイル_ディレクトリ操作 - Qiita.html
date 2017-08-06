@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>[Python]ファイル/ディレクトリ操作 - Qiita</title><meta content="width=device-width,initial-scale=1" name="viewport"><meta content="毎回調べるの面倒なので、Pythonでファイル/ディレクトリ操作する方法をまとめておく。
+
+
+パスが存在するかチェックする
+
+
+ipython
+In [1]: import os
+存在するファイル
+In [2]: os.path.exists(&quot;./test1/test1.txt&quot;)
+Out[2]: True
+存在しないファイル
+In [3]: os.path.exists(&quot;./test1/test1.doc&quot;)
+Out[3]: False
+存在するディレクトリ
+In..." name="description"><meta content="summary" name="twitter:card"><meta content="@Qiita" name="twitter:site"><meta content="[Python]ファイル/ディレクトリ操作 - Qiita" property="og:title"><meta content="article" property="og:type"><meta content="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054" property="og:url"><meta content="http://cdn.qiita.com/assets/qiita-fb-2887e7b4aad86fd8c25cea84846f2236.png" property="og:image"><meta content="毎回調べるの面倒なので、Pythonでファイル/ディレクトリ操作する方法をまとめておく。
+
+## パスが存在するかチェックする
+```lang:ipython
+In [1]: import os
+存在するファイル
+In [2]: os..." property="og:description"><meta content="Qiita" property="og:site_name"><meta content="564524038" property="fb:admins"><link rel="shortcut icon" type="image/x-icon" href="https://cdn.qiita.com/assets/favicons/public/production-4ff10c1e1e2b5fcb353ff9cafdd56c70.ico"><link rel="apple-touch-icon" type="image/png" href="https://cdn.qiita.com/assets/favicons/public/apple-touch-icon-f9a6afad761ec2306e10db2736187c8b.png"><link href="http://qiita.com/opensearch.xml" rel="search" title="Qiita" type="application/opensearchdescription+xml"><link rel="stylesheet" media="all" href="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/public-4b8a79ceeeffda266a337e5dbb37d087.css"><meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="mnrtpzcTl+JP+QL87iNM/Qt/l9zMHXjbXmNeVGZFogwdhzy2vwVx2+/3J1JWhiKJh5n9Xw2imGceYBltZGuDNQ=="><iframe src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/activityi.html" style="display: none; visibility: hidden;" height="0" width="0"></iframe><iframe src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/activityi_002.html" style="display: none; visibility: hidden;" height="0" width="0"></iframe><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/pageviews.js" async="" type="text/javascript"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/osd.js"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/segment.js" async="" type="text/javascript"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/tdim-0.js" async=""></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/uwt.js" async=""></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/809797712462041"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/996402550503199"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/954575148009345"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/437265843064161"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/262978464137256"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/256605841418458"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/386990638325508"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/fbevents.js" async=""></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/gtm_003.js" async="" type="text/javascript"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/ads"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/audience.js" async="" type="text/javascript"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/itm.js" async=""></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/conversion_async.js" async="" type="text/javascript"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/conversion_async.js" async="" type="text/javascript"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/gtm_002.js" async=""></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/cbgapi.loaded_1"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/cbgapi.loaded_0"></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/button.js" async="" charset="utf-8" type="text/javascript"></script><script async="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/pubads_impl_140.js"></script><link href="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/container.html" rel="prefetch"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(http://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head><body class=" with-js"><noscript><iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-TBQWPN" style="display:none;visibility:hidden" width="0"></iframe></noscript><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/gtm.js" async=""></script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/analytics.js" async=""></script><script id="optimizely-jssdk" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/52738645.js" async=""></script><script id="google-analytics-jssdk" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/ga.js" async=""></script><script id="twitter-jssdk" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/widgets.js" async=""></script><script id="facebook-jssdk" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/all.js" async=""></script><script gapi_processed="true" id="google-plusone-jssdk" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/plusone.js" async=""></script><script id="pocket-btn-js" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/btn.js" async=""></script><script>
+  document.body.className = document.body.className.replace('without-js', '') + ' with-js';
+  window.Qiita = {"asset_host":"cdn.qiita.com","TLD":"com","controller_path":"public/items","controller_action":"public/items#show","controller":"items","action":"show","action_path":"public/items#show","env":"production","flash":{},"is_team_page":false,"request_parameters":{"controller":"public/items","action":"show","user_id":"supersaiakujin","type":"items","id":"12451cd2b8315fe7d054"},"root_domain":"qiita.com","variant":null,"config":{"mixpanel":{"per_team":"c0a2116368b33b44b5029ebd2cc9b094","public":"be87616606b0e26a87689099aab2c4e5","team":"b7c0342acba2dbc8742484d98788efb3"},"default_locale":"ja","locale":"en"},"team":null,"user":null,"GIT_BRANCH":null,"DEBUG":false};
+
+</script>
+<div class="headerContainer headerContainer-public" role="navigation"><script type="application/json" class="js-react-on-rails-component" data-component-name="HeaderContainer" data-dom-id="HeaderContainer-react-component-7823c002-34a9-46e5-855c-0623940e4797">{"user":null,"team":null,"news":{"type":"Release","content":"Qiitaユーザー向けのMastodon、Qiitadon を試験的に公開しました","url":"http://blog.qiita.com/post/161193715974/qiitadon?utm_source=qiita\u0026utm_medium=header_news"},"initial_unread_count":null,"siteid_image":"https://cdn.qiita.com/siteid-reverse.png","is_team_page":false,"on_team_setting":false,"show_post_menu":true,"show_search_menu":true,"is_fluid":false,"locale":"en"}</script>
+    <div id="HeaderContainer-react-component-7823c002-34a9-46e5-855c-0623940e4797"><header class="sharedHeader sharedHeader-public" data-reactroot=""><div class="sharedHeader_inner"><div class="sharedHeader_left"><span class="sharedHeader_logo open"><a href="http://qiita.com/" class="sharedHeader_logo_main"><span class="sharedHeader_logo_figure"><svg viewBox="0 0 75 26" xmlns="http://www.w3.org/2000/svg"><title>Qiita</title><path d="M24.6 12.2C24.6 6.2 20 0 12.2 0 6.2 0 0 4.6 0 12.4c0 6 4.6 12.2 12.4 12.2 2.5 0 5-.8 7.1-2.3l3.6 3.6 1.6-1.6-3.4-3.4c2.1-2.3 3.3-5.3 3.3-8.7zm-12.4-10c5.7 0 10.2 4.4 10.2 10.1 0 4.9-3.8 10.1-10.1 10.1s-10.1-5.1-10.1-10c0-6.4 5.1-10.2 10-10.2zM30.5 7.1h2.1v17h-2.1zM31.5 4.8c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM40 4.8c-1 0-1.8-.8-1.8-1.8S39 1.2 40 1.2s1.8.8 1.8 1.8S41 4.8 40 4.8zM39 7.1h2.1v17H39zM53.7 24.4c-3.9 0-6.2-3-6.2-6v-16h2.1v4.7H57v2.1h-7.4v9.3c0 1.9 1.5 3.9 4.1 3.9.7 0 1.4-.2 2-.6l.2-.1 1 1.8-.2.1c-.9.5-2 .8-3 .8zM67.6 24.5c-5.7 0-9.1-4.5-9.1-8.9 0-5.7 4.5-9.1 8.9-9.1 2.3 0 4.1.8 5.4 2.3V7.1h2.1v17h-2.1v-1.9c-1.2 1.5-3 2.3-5.2 2.3zm-.2-15.9c-3.4 0-6.8 2.6-6.8 7 0 3.4 2.6 6.8 7 6.8 2 0 4-.9 5.3-2.5v-8.8c-1.4-1.6-3.3-2.5-5.5-2.5z"></path></svg></span></a></span><form method="get" action="/search" class="navbar-form navbar-left searchForm"><div class="searchForm_queryWrapper"><input name="q" autocomplete="off" placeholder="Search" class="form-control searchForm_query"><div style="" class="searchForm_wiseSearchButton"><i class="fa fa-caret-down"></i></div></div></form><div class="navbar-text headerNews hidden-xs hidden-sm"><div class="headerNews_label label label-warning">Release</div><a href="http://blog.qiita.com/post/161193715974/qiitadon?utm_source=qiita&amp;utm_medium=header_news" target="_blank" class="navbar-link">Qiitaユーザー向けのMastodon、Qiitadon を試験的に公開しました</a></div></div><div class="sharedHeader_right"><div class="sharedHeader_registerUser"><a href="http://qiita.com/signup?redirect_to=%2Fsupersaiakujin%2Fitems%2F12451cd2b8315fe7d054" class="btn btn-warning navbar-btn navbar-right">Sign up</a></div><div class="sharedHeader_loginUser"><a href="http://qiita.com/login?redirect_to=%2Fsupersaiakujin%2Fitems%2F12451cd2b8315fe7d054" data-label="LoginButtonAtNavbar">Log in</a></div></div></div></header></div>
+    
+</div><div id="main"><script type="application/ld+json">{  "@context": "http://schema.org",  "@type": "BreadcrumbList",  "itemListElement": [    {      "@type": "ListItem",      "position": 1,      "item": {        "@id": "/",        "name": "Qiita"      }    },    {      "@type": "ListItem",      "position": 2,      "item": {        "@id": "/items",        "name": "Items"      }    },    {      "@type": "ListItem",      "position": 3,      "item": {        "@id": "/tags/Python",        "name": "Python"      }    }  ]}</script><article itemscope="" itemtype="http://schema.org/Article"><div class="ArticleMainHeader "><div class="container"></div><div class="container"><div class="row s-flex-align-center"><div class="col-sm-9"><h1 class="ArticleMainHeader__title" itemprop="headline">[Python]ファイル/ディレクトリ操作</h1><ul class="TagList"><li class="TagList__item" data-count="11650"><a class="u-link-unstyled TagList__label" href="http://qiita.com/tags/Python"><img alt="Python" class="TagList__icon" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/medium.jpg"><span>Python</span></a></li></ul></div><div class="col-sm-3"><div class="itemsShowHeaderStock"><ul class="list-unstyled itemsShowHeaderStock_statusList"><li><div class="itemsShowHeaderStock_count stock"><span class="fa fa-thumbs-up"></span><span class="js-likecount">105</span></div><div class="itemsShowHeaderStock_countText">Like</div></li><li><div class="itemsShowHeaderStock_count" content="0 UserComments" itemprop="commentCount"><span class="fa fa-comment"></span>0</div><div class="itemsShowHeaderStock_countText">Comment</div></li></ul></div><div class="js-likebutton" data-props="{&quot;like_status&quot;:false,&quot;like_count&quot;:105,&quot;uuid&quot;:&quot;12451cd2b8315fe7d054&quot;,&quot;likable_type&quot;:&quot;Article&quot;,&quot;position&quot;:&quot;article-header&quot;}"><div class="LikeButton" data-reactroot=""><button class="p-button"><span class="fa fa-fw fa-thumbs-up"></span><span>Like</span></button></div></div><ul class="list-inline ArticleMainHeader__users"><li class="js-hovercard" data-hovercard-target-name="hiroyuki827"><a itemprop="url" href="http://qiita.com/hiroyuki827"><img alt="hiroyuki827" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1490530804.png"></a></li><li class="js-hovercard" data-hovercard-target-name="taigafuse"><a itemprop="url" href="http://qiita.com/taigafuse"><img alt="taigafuse" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/photo.jpg"></a></li><li class="js-hovercard" data-hovercard-target-name="Ryosuke_n"><a itemprop="url" href="http://qiita.com/Ryosuke_n"><img alt="Ryosuke_n" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473720420.jpeg"></a></li><li class="js-hovercard" data-hovercard-target-name="kensuke1984"><a itemprop="url" href="http://qiita.com/kensuke1984"><img alt="kensuke1984" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473719567.jpeg"></a></li><li class="js-hovercard" data-hovercard-target-name="KentFujii"><a itemprop="url" href="http://qiita.com/KentFujii"><img alt="KentFujii" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473697713.jpeg"></a></li><li class="js-hovercard" data-hovercard-target-name="koreaki_Yolo"><a itemprop="url" href="http://qiita.com/koreaki_Yolo"><img alt="koreaki_Yolo" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/Kb4-6DYJ_normal.jpg"></a></li><li class="js-hovercard" data-hovercard-target-name="TORATAN"><a itemprop="url" href="http://qiita.com/TORATAN"><img alt="TORATAN" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473705740.jpeg"></a></li><li class="js-hovercard" data-hovercard-target-name="PureViewMMAV"><a itemprop="url" href="http://qiita.com/PureViewMMAV"><img alt="PureViewMMAV" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/bdbf557f30c59b78b7cdd8c9238031e5_normal.jpeg"></a></li><li class="js-hovercard" data-hovercard-target-name="EN-0"><a itemprop="url" href="http://qiita.com/EN-0"><img alt="EN-0" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1419966.png"></a></li><li class="js-hovercard" data-hovercard-target-name="liseos_x140"><a itemprop="url" href="http://qiita.com/liseos_x140"><img alt="liseos_x140" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/default_profile_0_normal.png"></a></li><li><a href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054/likers"><span class="fa fa-ellipsis-h"></span></a></li></ul></div></div></div></div><div class="ArticleAsideHeader"><div class="container"><div class="u-flex u-space-between"><div class="u-flex u-flex-wrap"><div class="u-flex u-align-center s-pdv-5 u-flex-wrap"><div class="ArticleAsideHeader__author"><a href="http://qiita.com/supersaiakujin"><img class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473708120.jpeg" alt="1473708120"></a> <a class="u-link-unstyled" href="http://qiita.com/supersaiakujin">supersaiakujin</a> </div><div class="ArticleAsideHeader__date"><span>posted at <time datetime="2015-12-26T04:45:05+09:00" itemprop="datePublished">2015-12-26</time></span></div></div><div class="u-flex u-align-center s-pdv-5 mobile-hidden"></div><div class="u-flex u-align-center s-pdv-5 mobile-hidden"></div></div><div class="u-flex u-align-center s-flex-justiry-between s-pdv-5 u-shrink-0"><div class="ArticleAsideHeader__stock"><div class="js-stockbutton" data-position="top" data-props="{&quot;stock_status&quot;:false}"><div class="StockButton" data-reactroot=""><button><div class="StockButton__stock"><div class="fa-stack"><span class="fa fa-folder-open fa-stack-1x unstock"></span></div><!-- react-text: 6 -->&nbsp;<!-- /react-text --><span class="StockButton__label">Stock</span></div></button></div></div></div><div class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-ellipsis-h fa-lg"></span></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054.md"><span class="fa fa-fw fa-file-text-o"></span> Show article as Markdown</a></li><li><a data-target=".js-report-form" data-toggle="modal" href="#"><span class="fa fa-fw fa-flag"></span> Report article</a></li></ul></div></div></div></div></div><div class="container"><div style="position: relative;" class="row" id="article-body-wrapper"><div class="col-sm-9"><section class="markdownContent markdownContent-headingEnabled js-task-list-container clearfix position-relative" id="item-12451cd2b8315fe7d054" itemprop="articleBody"><div class="alert alert-warning"><i class="fa fa-clock-o"></i> More than 1 year has passed since last update.</div><p>毎回調べるの面倒なので、Pythonでファイル/ディレクトリ操作する方法をまとめておく。</p>
+
+<h2>
+<span id="パスが存在するかチェックする" class="fragment"></span><a href="#%E3%83%91%E3%82%B9%E3%81%8C%E5%AD%98%E5%9C%A8%E3%81%99%E3%82%8B%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B"><i class="fa fa-link"></i></a>パスが存在するかチェックする</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [1]: import os
+存在するファイル
+In [2]: os.path.exists("./test1/test1.txt")
+Out[2]: True
+存在しないファイル
+In [3]: os.path.exists("./test1/test1.doc")
+Out[3]: False
+存在するディレクトリ
+In [4]: os.path.exists("./test1")
+Out[4]: True
+存在しないディレクトリ
+In [5]: os.path.exists("./test2")
+Out[5]: False
+</pre></div>
+</div>
+
+<h2>
+<span id="ファイルかどうかかチェックする" class="fragment"></span><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B"><i class="fa fa-link"></i></a>ファイルかどうかかチェックする</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>ファイル
+In [6]: os.path.isfile("./test1/test1.txt")
+Out[6]: True
+ディレクトリ
+In [7]: os.path.isfile("./test1")
+Out[7]: False
+存在しないファイル
+In [8]: os.path.isfile("./test1/test1.doc")
+Out[8]: False
+</pre></div>
+</div>
+
+<h2>
+<span id="ディレクトリかどうかチェックする" class="fragment"></span><a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B"><i class="fa fa-link"></i></a>ディレクトリかどうかチェックする</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>ディレクトリ
+In [9]: os.path.isdir("./test1")
+Out[9]: True
+ファイル
+In [10]: os.path.isdir("./test1/test1.txt")
+Out[10]: False
+存在しないディレクトリ
+In [11]: os.path.isdir("./test2")
+Out[11]: False
+</pre></div>
+</div>
+
+<h3>
+<span id="ディレクトリ作成" class="fragment"></span><a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E4%BD%9C%E6%88%90"><i class="fa fa-link"></i></a>ディレクトリ作成</h3>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [12]: os.mkdir("./test2")
+
+In [13]: ls
+test1/  test2/
+</pre></div>
+</div>
+
+<h2>
+<span id="ファイルコピー" class="fragment"></span><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B3%E3%83%94%E3%83%BC"><i class="fa fa-link"></i></a>ファイルコピー</h2>
+
+<p>copyfile, copyはメタデータがコピーされないが、copy2はメタデータがコピーされる。copy2を使うとファイルの作成日とかもコピーされるようになるが、copyfile, copyはファイル作成日が新しくなる。</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [16]: import shutil
+
+In [17]: shutil.copyfile("./test1/test1.txt", "./test2.txt")
+
+In [18]: ls
+test1/  test2.txt
+In [19]: shutil.copy("./test1/test1.txt", "./test3.txt")
+
+In [20]: shutil.copy2("./test1/test1.txt", "./test4.txt")
+
+In [21]: ls
+test1/  test1.txt  test2.txt  test3.txt  test4.txt
+</pre></div>
+</div>
+
+<h2>
+<span id="ディレクトリごとコピー" class="fragment"></span><a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%94%E3%81%A8%E3%82%B3%E3%83%94%E3%83%BC"><i class="fa fa-link"></i></a>ディレクトリごとコピー</h2>
+
+<p>新しくフォルダを作成してコピーする場合</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [22]: shutil.copytree("./test1", "./test2")
+
+In [23]: ls
+test1/  test1.txt  test2/  test2.txt  test3.txt  test4.txt
+
+In [24]: ls test1
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [25]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+</pre></div>
+</div>
+
+<p>すでにあるフォルダにコピーしようとするとエラーがでる</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [27]: os.mkdir("./test2")
+
+In [28]: shutil.copytree("./test1", "./test2")
+
+OSError: [Errno 17] File exists: './test2'
+</pre></div>
+</div>
+
+<p>すでにあるディレクトリにコピーしたい場合</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [29]: from distutils.dir_util import copy_tree
+
+In [30]: copy_tree("./test1", "./test2")
+
+In [31]: ls test1
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [32]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+</pre></div>
+</div>
+
+<h2>
+<span id="ファイル削除" class="fragment"></span><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%89%8A%E9%99%A4"><i class="fa fa-link"></i></a>ファイル削除</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [33]: os.remove("./test1.txt")
+
+In [34]: ls
+test1/  test2/  test2.txt  test3.txt  test4.txt
+</pre></div>
+</div>
+
+<h2>
+<span id="ディレクトリ削除" class="fragment"></span><a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%89%8A%E9%99%A4"><i class="fa fa-link"></i></a>ディレクトリ削除</h2>
+
+<p>空のディレクトリを削除する場合<br>
+ディレクトリの中にファイル等が入っているとエラーが出る</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [14]: os.rmdir("./test2")
+
+In [15]: ls
+test1/
+</pre></div>
+</div>
+
+<p>フォルダごと中身を削除する場合<br>
+フォルダの中身が空でもよい。</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [35]: shutil.rmtree("./test2")
+
+In [36]: ls
+test1/  test2.txt  test3.txt  test4.txt
+</pre></div>
+</div>
+
+<h2>
+<span id="特定のファイルだけ削除する" class="fragment"></span><a href="#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A0%E3%81%91%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B"><i class="fa fa-link"></i></a>特定のファイルだけ削除する</h2>
+
+<p>globとremoveの合わせ技</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [43]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [44]: [os.remove(f) for f in glob.glob("./test2/*.log")]
+Out[44]: [None, None, None]
+
+In [45]: ls test2
+test1.txt   test2.txt   test3.txt   test4.txt
+test10.txt  test20.txt  test30.txt
+</pre></div>
+</div>
+
+<h2>
+<span id="ファイル移動" class="fragment"></span><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E7%A7%BB%E5%8B%95"><i class="fa fa-link"></i></a>ファイル移動</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [52]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [53]: shutil.move("./test2/test1.txt", ".")
+
+In [54]: ls
+test1/  test1.txt  test2/
+
+In [55]: ls test2
+test1.log   test2.log  test20.txt  test3.txt   test4.txt
+test10.txt  test2.txt  test3.log   test30.txt
+</pre></div>
+</div>
+
+<h2>
+<span id="ファイルディレクトリ名変更" class="fragment"></span><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E5%A4%89%E6%9B%B4"><i class="fa fa-link"></i></a>ファイル/ディレクトリ名変更</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>ファイル名の変更
+In [56]: os.rename("./test1.txt", "./test2.txt")
+
+In [57]: ls 
+test1/  test2/  test2.txt
+
+ディレクトリ名の変更
+In [58]: os.rename("./test2", "./test3")
+
+In [59]: ls
+test1/  test2.txt  test3/
+</pre></div>
+</div>
+
+<h2>
+<span id="拡張子取得" class="fragment"></span><a href="#%E6%8B%A1%E5%BC%B5%E5%AD%90%E5%8F%96%E5%BE%97"><i class="fa fa-link"></i></a>拡張子取得</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [60]: ftitle, fext = os.path.splitext('/path/to/test1.txt')
+
+In [62]: fext
+Out[62]: '.txt'
+</pre></div>
+</div>
+
+<h2>
+<span id="ファイルタイトル取得" class="fragment"></span><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E5%8F%96%E5%BE%97"><i class="fa fa-link"></i></a>ファイルタイトル取得</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [60]: ftitle, fext = os.path.splitext('/path/to/test1.txt')
+
+In [61]: ftitle
+Out[61]: '/path/to/test1'
+</pre></div>
+</div>
+
+<h2>
+<span id="フルパスからファイル名を取得" class="fragment"></span><a href="#%E3%83%95%E3%83%AB%E3%83%91%E3%82%B9%E3%81%8B%E3%82%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97"><i class="fa fa-link"></i></a>フルパスからファイル名を取得</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [65]: os.path.basename('/path/to/test1.txt')
+Out[65]: 'test1.txt'
+Linux上でwindowsのpathを扱うとうまくいかない。
+もちろんWindows上なら大丈夫
+In [66]: os.path.basename('\\path\\to\\test1.txt')
+Out[66]: '\\path\\to\\test1.txt'
+</pre></div>
+</div>
+
+<p>Linux上でWindowsのパスと扱いたい場合</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [67]: import ntpath
+
+In [68]: ntpath.basename('/path/to/test1.txt')
+Out[68]: 'test1.txt'
+もしWindowsのパスが来ても大丈夫
+In [69]: ntpath.basename('\\path\\to\\test1.txt')
+Out[69]: 'test1.txt'
+</pre></div>
+</div>
+
+<h2>
+<span id="ディレクトリ名とファイル名に分割" class="fragment"></span><a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E3%81%A8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AB%E5%88%86%E5%89%B2"><i class="fa fa-link"></i></a>ディレクトリ名とファイル名に分割</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [70]: os.path.split('/path/to/test1.txt')
+Out[70]: ('/path/to', 'test1.txt')
+</pre></div>
+</div>
+
+<p>Linux上でWindowsのパスと扱いたい場合</p>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [71]: import ntpath
+
+In [72]: ntpath.split('\\path\\to\\test1.txt')
+Out[72]: ('\\path\\to', 'test1.txt')
+
+In [73]: ntpath.split('/path/to/test1.txt')
+Out[73]: ('/path/to', 'test1.txt')
+</pre></div>
+</div>
+
+<h2>
+<span id="ディレクトリ名とファイル名を結合" class="fragment"></span><a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E3%81%A8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E7%B5%90%E5%90%88"><i class="fa fa-link"></i></a>ディレクトリ名とファイル名を結合</h2>
+
+<div class="code-frame" data-lang="lang">
+<div class="code-lang"><span class="bold">ipython</span></div>
+<div class="highlight"><pre><span></span>In [74]: os.path.join('/path/to','test1.txt')
+Out[74]: '/path/to/test1.txt'
+</pre></div>
+</div>
+<div class="hidden"><form class="js-task-list-update" action="/supersaiakujin/items/12451cd2b8315fe7d054" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="_method" value="patch" type="hidden"><input name="authenticity_token" value="mnrtpzcTl+JP+QL87iNM/Qt/l9zMHXjbXmNeVGZFogwdhzy2vwVx2+/3J1JWhiKJh5n9Xw2imGceYBltZGuDNQ==" type="hidden"><input name="updated_at_confirmation_in_unixtime" id="updated_at_confirmation_in_unixtime" value="1451072705" class="js-task-list-updated-at" type="hidden"><textarea name="raw_body" id="raw_body" class="js-task-list-field">毎回調べるの面倒なので、Pythonでファイル/ディレクトリ操作する方法をまとめておく。
+
+## パスが存在するかチェックする
+```lang:ipython
+In [1]: import os
+存在するファイル
+In [2]: os.path.exists("./test1/test1.txt")
+Out[2]: True
+存在しないファイル
+In [3]: os.path.exists("./test1/test1.doc")
+Out[3]: False
+存在するディレクトリ
+In [4]: os.path.exists("./test1")
+Out[4]: True
+存在しないディレクトリ
+In [5]: os.path.exists("./test2")
+Out[5]: False
+```
+## ファイルかどうかかチェックする
+```lang:ipython
+ファイル
+In [6]: os.path.isfile("./test1/test1.txt")
+Out[6]: True
+ディレクトリ
+In [7]: os.path.isfile("./test1")
+Out[7]: False
+存在しないファイル
+In [8]: os.path.isfile("./test1/test1.doc")
+Out[8]: False
+```
+## ディレクトリかどうかチェックする
+```lang:ipython
+ディレクトリ
+In [9]: os.path.isdir("./test1")
+Out[9]: True
+ファイル
+In [10]: os.path.isdir("./test1/test1.txt")
+Out[10]: False
+存在しないディレクトリ
+In [11]: os.path.isdir("./test2")
+Out[11]: False
+```
+### ディレクトリ作成
+```lang:ipython
+In [12]: os.mkdir("./test2")
+
+In [13]: ls
+test1/  test2/
+```
+## ファイルコピー
+copyfile, copyはメタデータがコピーされないが、copy2はメタデータがコピーされる。copy2を使うとファイルの作成日とかもコピーされるようになるが、copyfile, copyはファイル作成日が新しくなる。
+
+```lang:ipython
+In [16]: import shutil
+
+In [17]: shutil.copyfile("./test1/test1.txt", "./test2.txt")
+
+In [18]: ls
+test1/  test2.txt
+In [19]: shutil.copy("./test1/test1.txt", "./test3.txt")
+
+In [20]: shutil.copy2("./test1/test1.txt", "./test4.txt")
+
+In [21]: ls
+test1/  test1.txt  test2.txt  test3.txt  test4.txt
+```
+
+## ディレクトリごとコピー
+新しくフォルダを作成してコピーする場合
+
+```lang:ipython
+In [22]: shutil.copytree("./test1", "./test2")
+
+In [23]: ls
+test1/  test1.txt  test2/  test2.txt  test3.txt  test4.txt
+
+In [24]: ls test1
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [25]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+```
+すでにあるフォルダにコピーしようとするとエラーがでる
+
+```lang:ipython
+In [27]: os.mkdir("./test2")
+
+In [28]: shutil.copytree("./test1", "./test2")
+
+OSError: [Errno 17] File exists: './test2'
+```
+
+すでにあるディレクトリにコピーしたい場合
+
+```lang:ipython
+In [29]: from distutils.dir_util import copy_tree
+
+In [30]: copy_tree("./test1", "./test2")
+
+In [31]: ls test1
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [32]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+```
+## ファイル削除
+```lang:ipython
+In [33]: os.remove("./test1.txt")
+
+In [34]: ls
+test1/  test2/  test2.txt  test3.txt  test4.txt
+```
+
+## ディレクトリ削除
+空のディレクトリを削除する場合
+ディレクトリの中にファイル等が入っているとエラーが出る
+
+```lang:ipython
+In [14]: os.rmdir("./test2")
+
+In [15]: ls
+test1/
+```
+フォルダごと中身を削除する場合
+フォルダの中身が空でもよい。
+
+```lang:ipython
+In [35]: shutil.rmtree("./test2")
+
+In [36]: ls
+test1/  test2.txt  test3.txt  test4.txt
+```
+
+## 特定のファイルだけ削除する
+globとremoveの合わせ技
+
+```lang:ipython
+In [43]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [44]: [os.remove(f) for f in glob.glob("./test2/*.log")]
+Out[44]: [None, None, None]
+
+In [45]: ls test2
+test1.txt   test2.txt   test3.txt   test4.txt
+test10.txt  test20.txt  test30.txt
+```
+
+## ファイル移動
+
+```lang:ipython
+In [52]: ls test2
+test1.log  test10.txt  test2.txt   test3.log  test30.txt
+test1.txt  test2.log   test20.txt  test3.txt  test4.txt
+
+In [53]: shutil.move("./test2/test1.txt", ".")
+
+In [54]: ls
+test1/  test1.txt  test2/
+
+In [55]: ls test2
+test1.log   test2.log  test20.txt  test3.txt   test4.txt
+test10.txt  test2.txt  test3.log   test30.txt
+```
+
+## ファイル/ディレクトリ名変更
+
+```lang:ipython
+ファイル名の変更
+In [56]: os.rename("./test1.txt", "./test2.txt")
+
+In [57]: ls 
+test1/  test2/  test2.txt
+
+ディレクトリ名の変更
+In [58]: os.rename("./test2", "./test3")
+
+In [59]: ls
+test1/  test2.txt  test3/
+```
+## 拡張子取得
+```lang:ipython
+In [60]: ftitle, fext = os.path.splitext('/path/to/test1.txt')
+
+In [62]: fext
+Out[62]: '.txt'
+```
+
+## ファイルタイトル取得
+```lang:ipython
+In [60]: ftitle, fext = os.path.splitext('/path/to/test1.txt')
+
+In [61]: ftitle
+Out[61]: '/path/to/test1'
+```
+
+## フルパスからファイル名を取得
+```lang:ipython
+In [65]: os.path.basename('/path/to/test1.txt')
+Out[65]: 'test1.txt'
+Linux上でwindowsのpathを扱うとうまくいかない。
+もちろんWindows上なら大丈夫
+In [66]: os.path.basename('\\path\\to\\test1.txt')
+Out[66]: '\\path\\to\\test1.txt'
+```
+
+Linux上でWindowsのパスと扱いたい場合
+
+```lang:ipython
+In [67]: import ntpath
+
+In [68]: ntpath.basename('/path/to/test1.txt')
+Out[68]: 'test1.txt'
+もしWindowsのパスが来ても大丈夫
+In [69]: ntpath.basename('\\path\\to\\test1.txt')
+Out[69]: 'test1.txt'
+```
+
+## ディレクトリ名とファイル名に分割
+```lang:ipython
+In [70]: os.path.split('/path/to/test1.txt')
+Out[70]: ('/path/to', 'test1.txt')
+```
+
+Linux上でWindowsのパスと扱いたい場合
+
+```lang:ipython
+In [71]: import ntpath
+
+In [72]: ntpath.split('\\path\\to\\test1.txt')
+Out[72]: ('\\path\\to', 'test1.txt')
+
+In [73]: ntpath.split('/path/to/test1.txt')
+Out[73]: ('/path/to', 'test1.txt')
+```
+
+## ディレクトリ名とファイル名を結合
+```lang:ipython
+In [74]: os.path.join('/path/to','test1.txt')
+Out[74]: '/path/to/test1.txt'
+```
+
+</textarea><input name="commit" value="Save changes" data-disable-with="Save changes" type="submit"></form></div></section><div style="text-align: center;"><div style="display: inline-block; margin: 10px auto;"><div data-google-query-id="CODzi7yOv9UCFUlolgodLG4Mag" style="height: 280px; width: 336px;" id="dfp-slot-between-body-and-comments-for-mobile"><div style="border: 0pt none; display: inline-block; width: 336px; height: 280px;" id="google_ads_iframe_/383564218/qiita.com_items-show_under-article-mobile_0__container__"><iframe data-is-safeframe="true" marginheight="0" marginwidth="0" scrolling="no" name="" title="3rd party ad content" id="google_ads_iframe_/383564218/qiita.com_items-show_under-article-mobile_0" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/container.html" style="border: 0px none; vertical-align: bottom;" frameborder="0" height="280" width="336"></iframe></div></div></div></div></div><div class="col-sm-3"><div data-google-query-id="COHzi7yOv9UCFUlolgodLG4Mag" style="width: 300px; height: 250px; margin-bottom: 20px;" id="dfp-slot-sidebar-top"><div style="border: 0pt none; display: inline-block; width: 300px; height: 250px;" id="google_ads_iframe_/383564218/qiita.com_items-show_sidebar-top_0__container__"><iframe data-is-safeframe="true" marginheight="0" marginwidth="0" scrolling="no" name="" title="3rd party ad content" id="google_ads_iframe_/383564218/qiita.com_items-show_sidebar-top_0" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/container.html" style="border: 0px none; vertical-align: bottom;" frameborder="0" height="250" width="300"></iframe></div></div><div class="socialButtons"><div class="socialButtons_twitter"><iframe data-url="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/tweet_button.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 60px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe></div><div class="socialButtons_hatebu"><iframe style="width: 47px; height: 20px;" src="javascript:false" scrolling="no" title="Add to Hatena Bookmark" class="hatena-bookmark-button-frame" frameborder="0" height="20" width="47"></iframe><script async="async" charset="utf-8" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/bookmark_button.js" type="text/javascript"></script></div><div class="socialButtons_googlePlus"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe title="G+" data-gapiattached="true" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/fastbutton.html" name="I0_1501902406209" id="I0_1501902406209" vspace="0" tabindex="0" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div></div><div class="socialButtons_facebook"><div fb-iframe-plugin-query="action=like&amp;app_id=222621691108322&amp;container_width=0&amp;href=http%3A%2F%2Fqiita.com%2Fsupersaiakujin%2Fitems%2F12451cd2b8315fe7d054&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=false" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-action="like" data-href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054" data-layout="button_count" data-share="false" data-show-faces="false"><span style="vertical-align: bottom; width: 60px; height: 20px;"><iframe class="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/like.html" style="border: medium none; visibility: visible; width: 60px; height: 20px;" title="fb:like Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f177f869a0da9" frameborder="0" height="1000px" width="1000px"></iframe></span></div></div><div class="socialButtons_pocket"><div class="pocket-btn"><iframe id="pocket-button-0" allowtransparency="true" scrolling="NO" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/button.html" frameborder="0" height="22" width="135"></iframe></div></div></div><section class="itemsShowAuthorInfo" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><a href="http://qiita.com/supersaiakujin"><img alt="" class="itemsShowAuthorInfo_userIcon" itemprop="image" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473708120.jpeg"></a><div class="itemsShowAuthorInfo_profileStats"><strong class="itemsShowAuthorInfo_userName" itemprop="name"><a itemprop="url" href="http://qiita.com/supersaiakujin">supersaiakujin</a></strong><div class="itemsShowAuthorInfo_contribution"><span class="itemsShowAuthorInfo_count">1843</span><span class="itemsShowAuthorInfo_unit">Contribution</span></div><script type="application/json" id="js-react-on-rails-context">{}</script>
+<script type="application/json" class="js-react-on-rails-component" data-component-name="UserFollowButton" data-dom-id="UserFollowButton-react-component-84e5d7d2-c448-4001-8714-1967813ab26b">{"initial_followed_by":false,"position":"author-info","size":"btn-xs","url_name":"supersaiakujin"}</script>
+    <div id="UserFollowButton-react-component-84e5d7d2-c448-4001-8714-1967813ab26b"><span class="userFollowButton" data-reactroot=""><button class="btn btn-default btn-block userFollowButton_inner btn-xs"><i class="i fa fa-user-plus"></i><!-- react-text: 4 -->Follow<!-- /react-text --></button></span></div>
+    
+</div><section class="itemsShowAuthorPopularItems"><h5 class="itemsShowAuthorPopularItems_sectionTitle">Popular Posts</h5><ul class="itemsShowAuthorPopularItems_posts list-unstyled"><li itemscope="" itemtype="http://schema.org/Article"> <a itemprop="url" track="click" data-label="AuthorPopularItemsAtSidebar" href="http://qiita.com/supersaiakujin/items/935bbc9610d0f87607e8">[Survey]Deep Residual Learning for Image Recognition</a></li><li itemscope="" itemtype="http://schema.org/Article"> <a itemprop="url" track="click" data-label="AuthorPopularItemsAtSidebar" href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054">[Python]ファイル/ディレクトリ操作</a></li><li itemscope="" itemtype="http://schema.org/Article"> <a itemprop="url" track="click" data-label="AuthorPopularItemsAtSidebar" href="http://qiita.com/supersaiakujin/items/be4a78809e7278c065e6">[Python]Matplotlibでヒストグラムを描画する方法</a></li><li itemscope="" itemtype="http://schema.org/Article"> <a itemprop="url" track="click" data-label="AuthorPopularItemsAtSidebar" href="http://qiita.com/supersaiakujin/items/d63c73bb7b5aac43898a">[Python]Numpyの参照、抽出、結合</a></li><li itemscope="" itemtype="http://schema.org/Article"> <a itemprop="url" track="click" data-label="AuthorPopularItemsAtSidebar" href="http://qiita.com/supersaiakujin/items/fc400fc6fa58b3809619">[TF]Tensorflowの学習パラメータの保存と読み込み方法</a></li></ul></section></section><div class="scroll-chaser"><div data-google-query-id="COLzi7yOv9UCFUlolgodLG4Mag" style="width: 300px; height: 250px; margin-top: 10px; margin-bottom: 30px;" id="dfp-slot-sidebar-bottom"><div style="border: 0pt none;" id="google_ads_iframe_/383564218/qiita.com_items-show_sidebar-bottom_0__container__"><iframe srcdoc="" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/383564218/qiita.com_items-show_sidebar-bottom_0" title="3rd party ad content" id="google_ads_iframe_/383564218/qiita.com_items-show_sidebar-bottom_0" frameborder="0" height="250" width="300"></iframe></div></div></div><script type="application/json" class="js-react-on-rails-component" data-component-name="Toc" data-dom-id="Toc-react-component-e90ba979-86a7-4444-a431-6921186853f7">{"body":"\u003cul\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%91%E3%82%B9%E3%81%8C%E5%AD%98%E5%9C%A8%E3%81%99%E3%82%8B%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B\"\u003eパスが存在するかチェックする\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B\"\u003eファイルかどうかかチェックする\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B\"\u003eディレクトリかどうかチェックする\u003c/a\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E4%BD%9C%E6%88%90\"\u003eディレクトリ作成\u003c/a\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B3%E3%83%94%E3%83%BC\"\u003eファイルコピー\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%94%E3%81%A8%E3%82%B3%E3%83%94%E3%83%BC\"\u003eディレクトリごとコピー\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%89%8A%E9%99%A4\"\u003eファイル削除\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%89%8A%E9%99%A4\"\u003eディレクトリ削除\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A0%E3%81%91%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B\"\u003e特定のファイルだけ削除する\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E7%A7%BB%E5%8B%95\"\u003eファイル移動\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E5%A4%89%E6%9B%B4\"\u003eファイル/ディレクトリ名変更\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E6%8B%A1%E5%BC%B5%E5%AD%90%E5%8F%96%E5%BE%97\"\u003e拡張子取得\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E5%8F%96%E5%BE%97\"\u003eファイルタイトル取得\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%95%E3%83%AB%E3%83%91%E3%82%B9%E3%81%8B%E3%82%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97\"\u003eフルパスからファイル名を取得\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E3%81%A8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AB%E5%88%86%E5%89%B2\"\u003eディレクトリ名とファイル名に分割\u003c/a\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003ca href=\"#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E3%81%A8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E7%B5%90%E5%90%88\"\u003eディレクトリ名とファイル名を結合\u003c/a\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n","wrapper":"#article-body-wrapper"}</script>
+    <div id="Toc-react-component-e90ba979-86a7-4444-a431-6921186853f7"><div style="position: relative; top: 0px; height: 0px;"></div><div style="width: 165px; position: relative; top: 0px;" class="tocTree" data-reactroot=""><div style="max-height: 905px;" class="tocTree_contents nav"><ul>
+<li class="">
+<a href="#%E3%83%91%E3%82%B9%E3%81%8C%E5%AD%98%E5%9C%A8%E3%81%99%E3%82%8B%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">パスが存在するかチェックする</a>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">ファイルかどうかかチェックする</a>
+</li>
+<li class="">
+<a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B">ディレクトリかどうかチェックする</a>
+<ul>
+<li class="">
+<a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E4%BD%9C%E6%88%90">ディレクトリ作成</a>
+</li>
+</ul>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B3%E3%83%94%E3%83%BC">ファイルコピー</a>
+</li>
+<li class="">
+<a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%94%E3%81%A8%E3%82%B3%E3%83%94%E3%83%BC">ディレクトリごとコピー</a>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%89%8A%E9%99%A4">ファイル削除</a>
+</li>
+<li class="">
+<a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%89%8A%E9%99%A4">ディレクトリ削除</a>
+</li>
+<li class="">
+<a href="#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A0%E3%81%91%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B">特定のファイルだけ削除する</a>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E7%A7%BB%E5%8B%95">ファイル移動</a>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E5%A4%89%E6%9B%B4">ファイル/ディレクトリ名変更</a>
+</li>
+<li class="">
+<a href="#%E6%8B%A1%E5%BC%B5%E5%AD%90%E5%8F%96%E5%BE%97">拡張子取得</a>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E5%8F%96%E5%BE%97">ファイルタイトル取得</a>
+</li>
+<li class="">
+<a href="#%E3%83%95%E3%83%AB%E3%83%91%E3%82%B9%E3%81%8B%E3%82%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97">フルパスからファイル名を取得</a>
+</li>
+<li class="">
+<a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E3%81%A8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AB%E5%88%86%E5%89%B2">ディレクトリ名とファイル名に分割</a>
+</li>
+<li class="">
+<a href="#%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%90%8D%E3%81%A8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%82%92%E7%B5%90%E5%90%88">ディレクトリ名とファイル名を結合</a>
+</li>
+</ul>
+</div></div></div>
+    
+</div></div><div class="row"><div class="col-sm-9"><div class="ArticleFooter__menu"><div class="s-flex-align-center"><div class="js-likebutton" data-props="{&quot;like_status&quot;:false,&quot;like_count&quot;:105,&quot;show_count&quot;:true,&quot;uuid&quot;:&quot;12451cd2b8315fe7d054&quot;,&quot;likable_type&quot;:&quot;Article&quot;,&quot;position&quot;:&quot;article-footer&quot;}"><div class="LikeButton" data-reactroot=""><button class="p-button"><span class="fa fa-fw fa-thumbs-up"></span><span>Like</span></button><div class="LikeButton__balloon">105</div></div></div><div class="ArticleFooter__userList"><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="hiro_matsuno2"><a itemprop="url" href="http://qiita.com/hiro_matsuno2"><img alt="hiro_matsuno2" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473681543.jpeg"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="himo"><a itemprop="url" href="http://qiita.com/himo"><img alt="himo" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473692979.jpeg"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="kulolo283"><a itemprop="url" href="http://qiita.com/kulolo283"><img alt="kulolo283" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473755863.jpeg"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="Mako_John"><a itemprop="url" href="http://qiita.com/Mako_John"><img alt="Mako_John" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473685663.png"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="TacaT"><a itemprop="url" href="http://qiita.com/TacaT"><img alt="TacaT" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473701682.png"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="yadoyado128"><a itemprop="url" href="http://qiita.com/yadoyado128"><img alt="yadoyado128" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473705514.jpeg"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="Fortuna"><a itemprop="url" href="http://qiita.com/Fortuna"><img alt="Fortuna" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473708199.png"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="akiakane47"><a itemprop="url" href="http://qiita.com/akiakane47"><img alt="akiakane47" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473696952.png"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="ooohiroyukiooo"><a itemprop="url" href="http://qiita.com/ooohiroyukiooo"><img alt="ooohiroyukiooo" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473684449.jpeg"></a></div></div><div class="ArticleFooter__user"><div class="js-hovercard" data-hovercard-target-name="roku7"><a itemprop="url" href="http://qiita.com/roku7"><img alt="roku7" class="thumb thumb--xs" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473697560.jpeg"></a></div></div><div class="ArticleFooter__user"><a href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054/likers"><span class="fa fa-ellipsis-h"></span></a></div></div></div><div class="u-flex u-align-center"><div class="ArticleFooter__stock"><div class="js-stockbutton" data-position="footer_menu" data-props="{&quot;stock_status&quot;:false}"><div class="StockButton" data-reactroot=""><button><div class="StockButton__stock"><div class="fa-stack"><span class="fa fa-folder-open fa-stack-1x unstock"></span></div><!-- react-text: 6 -->&nbsp;<!-- /react-text --><span class="StockButton__label">Stock</span></div></button></div></div></div><div class="ArticleFooter__editRequest"><a data-original-title="You can propose improvements about the article to the author 💪" class="u-link-no-underline" data-toggle="tooltip" title="" href="http://qiita.com/drafts/12451cd2b8315fe7d054/edit"><span class="fa fa-send-o fa-lg"></span> <span>Edit request</span></a></div><div class="dropdown ArticleFooter__dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-ellipsis-h"></span></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054.md"><span class="fa fa-fw fa-file-text-o"></span> Show article as Markdown</a></li><li><a data-target=".js-report-form" data-toggle="modal" href="#"><i class="fa fa-fw fa-flag"></i> Report article</a></li></ul></div></div></div><ul class="references js-referencesView"><li class="references_header"><i class="fa fa-fw fa-link"></i> Linked from these articles</li><li class="references_reference js-reference"><span>Linked from </span><a href="http://qiita.com/shngt/items/94add7564fe89c9bb35b#_reference-aa04cffebfc0b978ebb0"><img alt="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1479473183.png" height="18" width="18">PythonでURLリストから画像ダウンロード</a><time class="references_datetime js-dateTimeView" datetime="2016-07-10T14:19:16+00:00">about 1 year ago</time></li><li class="references_reference js-reference"><span>Linked from </span><a href="http://qiita.com/7shi/items/3253d5766a4c65cb1a1f#_reference-fd1d4f98629749219cd9"><img alt="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/1473685823.png" height="18" width="18">GIMPで画像を一括でレベル補正（Python-Fu）</a><time class="references_datetime js-dateTimeView" datetime="2017-02-08T03:47:05+00:00">6 months ago</time></li></ul><div class="itemsShowBody_articleColumnFooter"><div class="socialButtons"><div class="socialButtons_twitter"><iframe data-url="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/tweet_button_002.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 60px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-1" frameborder="0"></iframe></div><div class="socialButtons_hatebu"><iframe style="width: 47px; height: 20px;" src="javascript:false" scrolling="no" title="Add to Hatena Bookmark" class="hatena-bookmark-button-frame" frameborder="0" height="20" width="47"></iframe><script async="async" charset="utf-8" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/bookmark_button.js" type="text/javascript"></script></div><div class="socialButtons_googlePlus"><div id="___plusone_1" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe title="G+" data-gapiattached="true" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/fastbutton_002.html" name="I1_1501902406216" id="I1_1501902406216" vspace="0" tabindex="0" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div></div><div class="socialButtons_facebook"><div fb-iframe-plugin-query="action=like&amp;app_id=222621691108322&amp;container_width=0&amp;href=http%3A%2F%2Fqiita.com%2Fsupersaiakujin%2Fitems%2F12451cd2b8315fe7d054&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=false" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-action="like" data-href="http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054" data-layout="button_count" data-share="false" data-show-faces="false"><span style="vertical-align: bottom; width: 60px; height: 20px;"><iframe class="" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/like_002.html" style="border: medium none; visibility: visible; width: 60px; height: 20px;" title="fb:like Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f3e6d0d0b0be9ec" frameborder="0" height="1000px" width="1000px"></iframe></span></div></div><div class="socialButtons_pocket"><div class="pocket-btn"><iframe id="pocket-button-1" allowtransparency="true" scrolling="NO" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/button_002.html" frameborder="0" height="22" width="135"></iframe></div></div></div></div><div class="itemsShowComment_wrapper" id="comments"><script type="application/json" class="js-react-on-rails-component" data-component-name="PublicCommentListContainer" data-dom-id="PublicCommentListContainer-react-component-f9e162cd-7a77-4569-8045-2137fa4d22b3">{"currentUser":null,"initialComments":[],"monthly_public_image_uploadable_size_limit":null,"total_uploaded_public_image_size_in_current_month":null,"item":{"id":356905,"uuid":"12451cd2b8315fe7d054","suspended":false,"secret":false},"owner":{"url_name":"supersaiakujin"},"is_team":false,"is_project":false,"logged_in":false,"polling":false,"mention_candidates":[{"id":100523,"url_name":"supersaiakujin","profile_image_url":"https://qiita-image-store.s3.amazonaws.com/0/100523/profile-images/1473708120"}]}</script>
+    <div id="PublicCommentListContainer-react-component-f9e162cd-7a77-4569-8045-2137fa4d22b3"><div class="commentList" data-reactroot=""><!-- react-empty: 2 --></div></div>
+    
+</div></div></div></div></article><div class="js-report-form modal fade reportForm"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button name="button" type="submit" class="close" data-dismiss="modal">×</button><h4 class="modal-title">Report article</h4></div><div class="modal-body"><form action="/reports" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="mnrtpzcTl+JP+QL87iNM/Qt/l9zMHXjbXmNeVGZFogwdhzy2vwVx2+/3J1JWhiKJh5n9Xw2imGceYBltZGuDNQ==" type="hidden"><input name="redirect_path" id="redirect_path" value="/supersaiakujin/items/12451cd2b8315fe7d054" type="hidden"><input name="item_uuid" id="item_uuid" value="12451cd2b8315fe7d054" type="hidden"><p>Help us understand the problem. What is going on with this item?</p><br><div class="form-group"><ul class="list-unstyled"><li><label><input name="report_type" id="report_type_spam" value="spam" required="required" type="radio"> It's spam </label></li><li><label><input name="report_type" id="report_type_harassment" value="harassment" required="required" type="radio"> It's abusive or harmful </label></li><li><label><input name="report_type" id="report_type_inappropriate_content" value="inappropriate_content" required="required" type="radio"> It contains inappropriate content </label></li></ul></div><div class="reportForm_submitButtonContainer"><button name="button" type="submit" class="btn btn-primary reportForm_submitButton"><i class="fa fa-send"></i> Submit</button></div></form></div></div></div></div><script id="js-item" type="application/json">{ "url": "http://qiita.com/supersaiakujin/items/12451cd2b8315fe7d054", "id": 356905, "uuid": "12451cd2b8315fe7d054" }</script><script class="js-user" type="application/json">{&quot;id&quot;:100523,&quot;url_name&quot;:&quot;supersaiakujin&quot;,&quot;profile_image_url&quot;:&quot;https://qiita-image-store.s3.amazonaws.com/0/100523/profile-images/1473708120&quot;}</script><script language="JavaScript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/qiita_bigmining.js" type="text/javascript"></script></div><footer class="footer"><div class="footer_inner"><div class="footer_container"><ul class="footer_links-left"><li class="footer_link"><a class="footer_copyright" href="http://increments.co.jp/">© 2011-2017 Increments Inc.</a></li><li class="footer_link"><a href="http://qiita.com/terms">Terms</a></li><li class="footer_link"><a href="http://qiita.com/privacy">Privacy</a></li><li class="footer_link"><a href="http://help.qiita.com/">Help</a></li><li class="footer_link"><a href="https://increments.zendesk.com/anonymous_requests/new">Contact</a></li></ul><ul class="footer_links-right"><li class="footer_link"><a href="http://qiita.com/about">About</a></li><li class="footer_link"><a href="http://qiita.com/users">Users</a></li><li class="footer_link"><a href="http://qiita.com/tags">Tags</a></li><li class="footer_link"><a href="http://blog.qiita.com/">Blog</a></li><li class="footer_link"><a href="http://qiita.com/api/v2/docs">API</a></li><li class="footer_link"><a href="https://teams.qiita.com/">Team</a></li><li class="footer_link"><a href="http://kobito.qiita.com/">Kobito</a></li><li class="footer_link"><a class="js-public-form-feedback-link" data-target=".js-feedback-form" data-toggle="modal" href=""><i class="fa fa-heart"></i> Feedback <i class="fa fa-caret-down"></i></a></li></ul></div></div></footer><div class="js-feedback-form modal fade feedbackForm"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button name="button" type="submit" class="close" data-dismiss="modal">×</button><h4 class="modal-title">Feedback</h4></div><div class="modal-body"><form class="js-feedback-form-form" action="/feedbacks" accept-charset="UTF-8" method="post"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="mnrtpzcTl+JP+QL87iNM/Qt/l9zMHXjbXmNeVGZFogwdhzy2vwVx2+/3J1JWhiKJh5n9Xw2imGceYBltZGuDNQ==" type="hidden"><input name="redirect_path" id="redirect_path" value="/supersaiakujin/items/12451cd2b8315fe7d054" type="hidden"><div class="form-group"><textarea name="feedback[message]" id="feedback_message" class="form-control js-feedback-form-text-area" placeholder="Please give us any feedback about Qiita." required="required" rows="5"></textarea></div><div class="feedbackForm_submitButtonContainer"><button name="button" type="submit" class="btn btn-primary feedbackForm_submitButton"><i class="fa fa-send"></i> Submit</button><p class="feedbackForm_note">We don't reply to any feedback.<br>If you need help with Qiita, please send a support request from <a href="https://increments.zendesk.com/anonymous_requests/new">here</a>.</p></div><div style="position:fixed;top:-99999px;opacity:0.0001;"><input name="feedback[name]" type="text"></div></form></div></div></div></div><script>// if (window.mixpanel instanceof Element) {
+//   window.mixpanel = [];
+// }
+// (function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+// for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);</script><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/public-ebd05c3f120b426c3c720010d013f252.js"></script><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="http://staticxx.facebook.com/connect/xd_arbiter/r/XBwzv5Yrm_1.js?version=42#channel=f3ea14cc8e7a458&amp;origin=http%3A%2F%2Fqiita.com" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/XBwzv5Yrm_1_002.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><script>
+  (function () {
+    var script = document.getElementsByTagName('script')[0];
+    var load = function (src, id) {
+      var el = document.createElement('script');
+      el.async = true;
+      el.src = src;
+      el.id = id;
+      script.parentNode.insertBefore(el, script);
+    };
+      // Optimizely
+      load('https://cdn.optimizely.com/js/52738645.js', 'optimizely-jssdk');
+      // Google Analytics
+      window._gaq = window._gaq || [];
+      window._gaq.push(['_setAccount', 'UA-24675221-1']);
+      window._gaq.push(['_setCustomVar', 1, 'logged_in', 'false', 2]);
+      window._gaq.push(['_trackPageview']);
+      var src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      load(src, 'google-analytics-jssdk');
+    // Google Analytics - Universal Analytics
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-24675221-12', {
+          
+        });
+        ga('set', 'dimension1', 'false');
+        ga('set', 'dimension3', 'false');
+      ga('require', 'displayfeatures');
+      ga('set', 'forceSSL', true);
+      ga('send', 'pageview');
+    // Google Tag Manager
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TBQWPN');
+  })();
+</script>
+<div class="ReactModalPortal"><div data-reactroot=""></div></div><script src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/gpt.js" id="" type="text/javascript"></script>
+<script id="" type="text/javascript">var googletag=googletag||{};googletag.cmd=googletag.cmd||[];
+(function(f,b){b.cmd.push(function(){for(var h=[],n=document.querySelectorAll(".TagList span"),p=[],q={"c++":"cpp","c#":"csharp"},l,m=0,r=n.length;m<r;m++)l=n[m].textContent.toLowerCase(),p.push(q[l]||l);b.pubads().setTargeting("article_tags",p);992<=window.innerWidth?function(){var d="dfp-slot-between-body-and-comments-for-pc",c=["-left","-right"],g=336,e=280;c.forEach(function(a){b.defineSlot("/383564218/qiita.com_items-show_under-article"+a,[g,e],d+a).addService(b.pubads())});h.push(function(){var a=
+f.querySelector("#article-body-wrapper .markdownContent");if(a){a=a.parentElement;var k=f.createElement("div");k.style.textAlign="center";c.forEach(function(a){var b=f.createElement("div");b.style.display="inline-block";b.style.margin="10px";var c=f.createElement("div");c.id=d+a;c.style.height=e+"px";c.style.width=g+"px";k.appendChild(b);b.appendChild(c)});a.appendChild(k);c.forEach(function(a){b.display(d+a)})}})}():function(){var d="dfp-slot-between-body-and-comments-for-mobile",c=336,g=280;b.defineSlot("/383564218/qiita.com_items-show_under-article-mobile",
+[c,g],d).addService(b.pubads());h.push(function(){var e=f.querySelector("#article-body-wrapper .markdownContent");if(e){e=e.parentElement;var a=f.createElement("div");a.style.textAlign="center";var k=f.createElement("div");k.style.display="inline-block";k.style.margin="10px auto";var h=f.createElement("div");h.id=d;h.style.height=g+"px";h.style.width=c+"px";a.appendChild(k);k.appendChild(h);e.appendChild(a);b.display(d)}})}();768<=window.innerWidth&&function(){var d="dfp-slot-sidebar-top",c=300,g=
+250;b.defineSlot("/383564218/qiita.com_items-show_sidebar-top",[c,g],d).addService(b.pubads());h.push(function(){var e=f.querySelector("#article-body-wrapper \x3e .col-sm-3");if(e){var a=f.createElement("div");a.id=d;a.style.width=c+"px";a.style.height=g+"px";a.style.marginBottom="20px";e.insertBefore(a,e.firstChild);b.display(d)}})}();(function(){var d="dfp-slot-sidebar-bottom",c=300,g=250;b.defineSlot("/383564218/qiita.com_items-show_sidebar-bottom",[c,g],d).addService(b.pubads());h.push(function(){var e=
+f.querySelector(".scroll-chaser");if(e){var a=f.createElement("div");a.id=d;a.style.width=c+"px";a.style.height=g+"px";a.style.marginTop="10px";a.style.marginBottom="30px";e.insertBefore(a,e.firstChild);b.display(d)}})})();b.pubads().enableSingleRequest();b.pubads().collapseEmptyDivs();b.enableServices();setTimeout(function(){h.forEach(function(b){b()})},1E3)})})(document,googletag);</script><iframe aria-hidden="true" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/postmessageRelay.html" id="oauth2relay1393519990" name="oauth2relay1393519990"></iframe><iframe title="Twitter analytics iframe" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe><img style="display: none;" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/dmp.bin" height="1" width="1" border="0"><img style="display: none;" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/pixel.png" height="1" width="1" border="0"><img style="display: none;" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct.gif" height="1" width="1" border="0"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-58Z82M');</script><div style="display: none; visibility: hidden;"><script type="text/javascript">(function(b,a,c){b=a.getElementsByTagName(c)[0];a=a.createElement(c);a.async=!0;a.src="//dmp.im-apps.net/js/6638/0001/itm.js";b.parentNode.insertBefore(a,b)})(window,document,"script");</script></div><div style="display: none; visibility: hidden;"><iframe src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/activityi_003.html" style="display:none" frameborder="0" height="1" width="1"></iframe></div><div style="display: none; visibility: hidden;"><iframe src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/activityi_004.html" style="display:none" frameborder="0" height="1" width="1"></iframe></div><div style="display: none; visibility: hidden;">
+<script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/oct.js"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nv2kc",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","809797712462041");fbq("track","PageView");</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,c,d,a){b.twq||(a=b.twq=function(){a.exe?a.exe.apply(a,arguments):a.queue.push(arguments)},a.version="1",a.queue=[],t=c.createElement(d),t.async=!0,t.src="//static.ads-twitter.com/uwt.js",s=c.getElementsByTagName(d)[0],s.parentNode.insertBefore(t,s))}(window,document,"script");twq("init","nve3t");twq("track","PageView");</script>
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","996402550503199");fbq("track","PageView");</script>
+<noscript></noscript>
+
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","954575148009345");fbq("track","PageView");</script>
+<noscript></noscript>
+
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","437265843064161");fbq("track","PageView");</script>
+<noscript></noscript>
+
+
+</div><div style="display: none; visibility: hidden;">
+<script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/oct.js"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nw0lq",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/oct.js"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nw1xy",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/oct.js"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nw9n2",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","262978464137256");fbq("track","PageView");</script>
+<noscript></noscript>
+
+
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","256605841418458");fbq("track","PageView");</script>
+<noscript></noscript>
+
+
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","386990638325508");fbq("track","PageView");</script>
+<noscript></noscript>
+
+
+</div><div style="display: none; visibility: hidden;">
+<script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/oct.js"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nxlif",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/oct.js"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nxlih",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><iframe src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/pixel.html" style="display: none;"></iframe><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_004.js"></script><script id="" type="text/javascript">!function(c,d,b,f){if(!d[c]){d[c]=function(){d[c].instances.push(this);this.init&&this.init()};d[c].instances=[];for(var a=0,e=["td_send","td_send_imid"];a<e.length;a++)d[c].prototype[e[a]]=function(a){return function(){this["tmp_"+a]=this["tmp_"+a]||[];this["tmp_"+a].push(Array.prototype.slice.call(arguments))}}(e[a]);a=b.getElementsByTagName(f)[0];b=b.createElement(f);b.async=!0;b.src="//cf.im-apps.net/sdk/tdim-0.11.2.js";a.parentNode.insertBefore(b,a)}}("TDIM",window,document,"script");var t=new TDIM;
+t.td_api_key="4633/44ab22321675f37f93c94f1c53265720999626e1";t.td_db="6638";t.im_api_token="omO0CDJd98sxiIkb8Mzm7Q";t.gtm_dl="dataLayer";t.td_send_imid("pageviews",{qiita_search_categories:google_tag_manager["GTM-5SNCW4"].macro('gtm5')});</script><script id="" type="text/javascript">(function(a){var b=a.createElement("iframe"),c="https:"==a.location.protocol?"https://":"http://";b.src=c+"cf.im-apps.net/imid/beacon.html";b.style.display="none";a.body.appendChild(b)})(document);</script><iframe style="display: none;" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/beacon.html"></iframe><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_006.js"></script><iframe style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_9602049920966"></iframe><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_006.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_002.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_006.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_007.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_006.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_005.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_006.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_003.js"></script><script type="text/javascript" src="[Python]%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB_%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%93%8D%E4%BD%9C%20-%20Qiita_files/adsct_006.js"></script></body></html>

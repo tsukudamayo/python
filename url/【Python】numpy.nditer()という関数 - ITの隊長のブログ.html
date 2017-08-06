@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html data-admin-domain="//blog.hatena.ne.jp" data-author="aipacommander" data-avail-langs="ja en" data-blog="aipacommander.hatenablog.jp" data-blog-host="aipacommander.hatenablog.jp" data-blog-is-public="1" data-blog-name="ITの隊長のブログ" data-blog-uri="http://www.aipacommander.com/" data-blog-uuid="12921228815722778288" data-blogs-uri-base="http://www.aipacommander.com" data-brand="pro" data-data-layer="{&quot;hatenablog&quot;:{&quot;pro&quot;:&quot;pro&quot;,&quot;permalink_entry&quot;:{&quot;hour&quot;:&quot;17&quot;,&quot;author_name&quot;:&quot;aipacommander&quot;,&quot;date&quot;:&quot;2017-05-14&quot;,&quot;categories&quot;:&quot;&quot;,&quot;title&quot;:&quot;\u3010Python\u3011numpy.nditer()\u3068\u3044\u3046\u95a2\u6570&quot;,&quot;uri&quot;:&quot;http://www.aipacommander.com/entry/2017/05/14/172220&quot;},&quot;router_type&quot;:&quot;blogs&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;blog&quot;:{&quot;force_pc_view&quot;:&quot;false&quot;,&quot;enable_ads&quot;:&quot;false&quot;,&quot;name&quot;:&quot;IT\u306e\u968a\u9577\u306e\u30d6\u30ed\u30b0&quot;,&quot;enable_keyword_link&quot;:&quot;true&quot;,&quot;owner_name&quot;:&quot;aipacommander&quot;,&quot;uri&quot;:&quot;http://www.aipacommander.com/&quot;},&quot;brand&quot;:&quot;pro&quot;,&quot;analytics&quot;:{&quot;property_id&quot;:&quot;UA-50430306-1&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;,&quot;brand_property_id&quot;:&quot;&quot;,&quot;separated_property_id&quot;:&quot;UA-29716941-21&quot;}}}" data-device="pc" data-dont-recommend-pro="false" data-globalheader-color="b" data-globalheader-type="pc" data-has-touch-view="1" data-page="entry" data-plus-available="1" data-pro="true" data-router-type="blogs" data-static-domain="https://cdn.blog.st-hatena.com" data-version="a4fd1b2d45708a7e7b7d1be6fa5cfb47" itemscope="" itemtype="http://schema.org/Article" data-initial-state="{}" lang="ja"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/cbgapi.loaded_1"></script><script async="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/cbgapi.loaded_0"></script><script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/notices.asc" async=""></script>
+  
+
+  
+
+
+
+  
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=7; IE=9; IE=10; IE=11">
+  <title>【Python】numpy.nditer()という関数 - ITの隊長のブログ</title>
+
+  
+  <link rel="canonical" href="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/172220_004.html">
+
+
+
+  
+  
+
+<meta itemprop="name" content="【Python】numpy.nditer()という関数 - ITの隊長のブログ">
+
+  <meta itemprop="image" content="https://cdn.mogile.archive.st-hatena.com/v1/image/aipacommander/316972541395271550.jpg">
+
+
+  <meta property="og:title" content="【Python】numpy.nditer()という関数 - ITの隊長のブログ">
+<meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.aipacommander.com/entry/2017/05/14/172220">
+
+  
+  
+  
+  <meta property="og:image" content="https://cdn.image.st-hatena.com/image/scale/b398c8c2a392de95edece7999bcd3593ec47f717/backend=imager;enlarge=0;height=1000;version=1;width=1200/https%3A%2F%2Fcdn.mogile.archive.st-hatena.com%2Fv1%2Fimage%2Faipacommander%2F316972541395271550.jpg">
+
+    <meta property="og:description" content="色々できそうだが、基本的な使い方だけメモ。 numpy.nditer — NumPy v1.12 Manual 何するの、これ？ と思ったけど、使ってみた。まずはコードから。 np_array = np.random.randn(2, 3) print(np_array) nditer = np.nditer(np_array, flags=['multi_index']) while not nditer.finished: print(nditer.multi_index) print(np_array[nditer.multi_index]) nditer.iternext() 結果 #…">
+<meta property="og:site_name" content="ITの隊長のブログ">
+
+  <meta property="article:published_time" content="1494750140">
+
+      <meta name="twitter:card" content="summary">  <meta name="twitter:title" content="【Python】numpy.nditer()という関数 - ITの隊長のブログ">    <meta name="twitter:description" content="色々できそうだが、基本的な使い方だけメモ。 numpy.nditer — NumPy v1.12 Manual 何するの、これ？ と思ったけど、使ってみた。まずはコードから。 np_array = np.random.randn(2, 3) print(np_array) nditer = np.nditer(np_a…">  <meta name="twitter:app:name:iphone" content="はてなブログアプリ">
+  <meta name="twitter:app:id:iphone" content="583299321">
+  <meta name="twitter:app:url:iphone" content="hatenablog:///open?uri=http%3A%2F%2Fwww.aipacommander.com%2Fentry%2F2017%2F05%2F14%2F172220">
+  
+    <meta name="google-site-verification" content="Qx8MTF2kyEu4Oz3Nc8IXNdqvuCtoP6A2_KmGHqzD1Vs">    <meta name="keywords" content="アイパー隊長,アイパー,PHPer,ペチパー,PlayFramework,PHP,Python,機械学習">    <meta name="description" content="色々できそうだが、基本的な使い方だけメモ。 numpy.nditer — NumPy v1.12 Manual 何するの、これ？ と思ったけど、使ってみた。まずはコードから。 np_array = np.random.randn(2, 3) print(np_array) nditer = np.nditer(np_a…">
+
+  
+<script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/recaptcha__en.js" async="" type="text/javascript"></script><script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/analytics.js" async="" type="text/javascript"></script><script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/ca-pub-5792805170527590.js"></script><script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/sdk.js" id="facebook-jssdk"></script><script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/gtm.js" async=""></script><script>
+(function() {
+  var html = document.documentElement;
+  if (!html) return;
+  var json = html.getAttribute('data-data-layer');
+  if (!json) return;
+  var value = JSON.parse(json);
+  if (!value) return;
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+  window.dataLayer.push(value);
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P4CXTW');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+  <link rel="shortcut icon" href="https://cdn.image.st-hatena.com/image/favicon/3754b9beb766e81564881bf1976b6362af76ebff/version=1/https%3A%2F%2Fcdn.mogile.archive.st-hatena.com%2Fv1%2Fimage%2Faipacommander%2F297797058583137327.jpg">
+<link rel="icon" sizes="192x192" href="https://cdn.image.st-hatena.com/image/square/238494f6c1babe3b73ac79542dbfe03583ebe42c/backend=imagemagick;height=192;version=1;width=192/https%3A%2F%2Fcdn.mogile.archive.st-hatena.com%2Fv1%2Fimage%2Faipacommander%2F297797058583137327.jpg">
+
+  
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.aipacommander.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="http://www.aipacommander.com/rss">
+<link rel="alternate" type="application/json+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fwww.aipacommander.com%2Fentry%2F2017%2F05%2F14%2F172220&amp;format=json" title="oEmbed Profile of 【Python】numpy.nditer()という関数">
+<link rel="alternate" type="text/xml+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fwww.aipacommander.com%2Fentry%2F2017%2F05%2F14%2F172220&amp;format=xml" title="oEmbed Profile of 【Python】numpy.nditer()という関数">
+  
+  <link rel="author" href="http://www.hatena.ne.jp/aipacommander/">
+
+
+  
+    <link rel="stylesheet" type="text/css" href="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/blog.css">
+
+    
+  <link rel="stylesheet" type="text/css" href="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/9186df817c63f0c912b45faf8922c095b942c097.css">
+  
+
+  
+
+  
+<script> </script>
+
+  
+<style>
+  div#google_afc_user,
+  div.google-afc-user-container,
+  div.google_afc_image,
+  div.google_afc_blocklink {
+      display: block !important;
+  }
+</style>
+
+
+  <script async="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5792805170527590",
+    enable_page_level_ads: true
+  });
+</script>
+<meta name="google-site-verification" content="b-94uscrQxXe3vDjATVoH1RqTOWMhxWknO9fIqyJrOU">
+<script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/button.js" async="" charset="utf-8" type="text/javascript"></script><script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/entries.json"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+
+  <body class="page-entry">
+    
+    <div id="header-container">
+     <div id="sp-suggest" style="display: none;"><a id="sp-suggest-link" href="#">スマートフォン用の表示で見る</a></div>
+    </div>
+
+    <div id="globalheader-container" data-brand="hatenablog">
+  <iframe id="globalheader" allowtransparency="true" frameborder="0" height="37"></iframe>
+</div>
+
+
+    <div id="container">
+      <div id="container-inner">
+        <header id="blog-title" data-brand="hatenablog">
+  <div id="blog-title-inner">
+    <div id="blog-title-content">
+      <h1 id="title"><a href="http://www.aipacommander.com/">ITの隊長のブログ</a></h1>
+      
+        <h2 id="blog-description">ITの隊長のブログです。Pythonを使って仕事しています。最近は機械学習をさわりはじめたお（^ω^ = ^ω^）</h2>
+      
+    </div>
+  </div>
+</header>
+
+        
+
+        
+        
+
+
+
+
+<div id="content" class="hfeed">
+  <div id="content-inner">
+    <div id="wrapper">
+      <div id="main">
+        <div id="main-inner">
+          
+
+
+          
+  
+  <!-- google_ad_section_start -->
+  <!-- rakuten_ad_target_begin -->
+  
+  
+  
+
+  
+
+  
+    
+      
+        <article class="entry hentry js-entry-article date-first autopagerize_page_element chars-2000 words-200 mode-markdown entry-odd" id="entry-10328749687246245424" data-keyword-campaign="" data-uuid="10328749687246245424" data-publication-type="entry">
+  <div class="entry-inner">
+    <header class="entry-header">
+    <div class="entry-date date first">
+    <a href="http://www.aipacommander.com/archive/2017/05/14" rel="nofollow">
+      <time pubdate="" datetime="2017-05-14T08:22:20Z" title="2017-05-14T08:22:20Z">
+        <span class="date-year">2017</span><span class="hyphen">-</span><span class="date-month">05</span><span class="hyphen">-</span><span class="date-day">14</span>
+      </time>
+    </a>
+  </div>
+  <h1 class="entry-title">
+  <a href="http://www.aipacommander.com/entry/2017/05/14/172220" class="entry-title-link bookmark">【Python】numpy.nditer()という関数</a>
+</h1>
+
+  
+  
+
+
+  
+  <div class="customized-header">
+    <div class="entry-header-html"><p>スポンサードリンク</p>
+<script async="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/adsbygoogle.js"></script>
+<!-- 11_隊長のブログ_up -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-5792805170527590" data-ad-slot="7961633552"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:468px;height:60px;" frameborder="0" height="60" width="468"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+  </div>
+
+
+  
+
+</header>
+
+    
+
+    <div class="entry-content">
+  
+    <p>色々できそうだが、基本的な使い方だけメモ。</p>
+
+<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.nditer.html">numpy.nditer — NumPy v1.12 Manual</a></p>
+
+<p>何するの、これ？ と思ったけど、使ってみた。まずはコードから。</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">np_array = np.random.randn(<span class="synConstant">2</span>, <span class="synConstant">3</span>)
+<span class="synIdentifier">print</span>(np_array)
+
+nditer = np.nditer(np_array, flags=[<span class="synConstant">'multi_index'</span>])
+<span class="synStatement">while</span> <span class="synStatement">not</span> nditer.finished:
+    <span class="synIdentifier">print</span>(nditer.multi_index)
+    <span class="synIdentifier">print</span>(np_array[nditer.multi_index])
+    nditer.iternext()
+</pre>
+
+
+<p>結果</p>
+
+<pre class="code" data-lang="" data-unlink=""># 最初のprint()
+[[-1.74892591 -0.59628881  0.05522772]
+ [ 1.31665726  1.22965398 -0.41140946]]
+
+# whileループ
+(0, 0)
+-1.7489259098
+(0, 1)
+-0.596288812217
+(0, 2)
+0.0552277235215
+(1, 0)
+1.31665726393
+(1, 1)
+1.229653983
+(1, 2)
+-0.411409464808</pre>
+
+
+<p>なるほどー。何が便利かわからん。。。と思ったけど、numpyの次元が増えた時、２〜重ループとかしなくてもいいのね。納得。</p>
+
+<p>5行1列（2次元）</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">np_array = np.random.randn(<span class="synConstant">5</span>, <span class="synConstant">1</span>)
+<span class="synIdentifier">print</span>(np_array)
+
+nditer = np.nditer(np_array, flags=[<span class="synConstant">'multi_index'</span>])
+<span class="synStatement">while</span> <span class="synStatement">not</span> nditer.finished:
+    <span class="synIdentifier">print</span>(nditer.multi_index)
+    <span class="synIdentifier">print</span>(np_array[nditer.multi_index])
+    nditer.iternext()
+</pre>
+
+
+
+
+<pre class="code" data-lang="" data-unlink="">[[-0.12610291]
+ [-1.69087957]
+ [ 0.03920609]
+ [ 0.19390889]
+ [ 0.05827795]]
+(0, 0)
+-0.126102914336
+(1, 0)
+-1.69087956683
+(2, 0)
+0.0392060881481
+(3, 0)
+0.193908885096
+(4, 0)
+0.0582779462146</pre>
+
+
+<p>画像っぽい値で。2行2列3の値（３次元）</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">np_array = np.random.randn(<span class="synConstant">2</span>, <span class="synConstant">2</span>, <span class="synConstant">3</span>)
+<span class="synIdentifier">print</span>(np_array)
+
+nditer = np.nditer(np_array, flags=[<span class="synConstant">'multi_index'</span>])
+<span class="synStatement">while</span> <span class="synStatement">not</span> nditer.finished:
+    <span class="synIdentifier">print</span>(nditer.multi_index)
+    <span class="synIdentifier">print</span>(np_array[nditer.multi_index])
+    nditer.iternext()
+</pre>
+
+
+
+
+<pre class="code" data-lang="" data-unlink="">[[[ 0.40570373  0.29383617  0.19770627]
+  [-0.35118724  0.64944819 -0.85610483]]
+
+ [[-0.99811347 -0.3842173  -0.40674939]
+  [-0.28392354  1.00559893 -0.36640248]]]
+(0, 0, 0)
+0.405703731115
+(0, 0, 1)
+0.293836169251
+(0, 0, 2)
+0.197706273648
+(0, 1, 0)
+-0.351187235594
+(0, 1, 1)
+0.649448185325
+(0, 1, 2)
+-0.856104830751
+(1, 0, 0)
+-0.998113470526
+(1, 0, 1)
+-0.384217298371
+(1, 0, 2)
+-0.406749392256
+(1, 1, 0)
+-0.283923537977
+(1, 1, 1)
+1.0055989324
+(1, 1, 2)
+-0.366402477684</pre>
+
+
+<p>すばらしい！！！</p>
+
+  
+</div>
+
+    
+  <footer class="entry-footer">
+    
+    <p class="entry-footer-section">
+  <span class="author vcard"><span class="fn" data-load-nickname="1" data-user-name="aipacommander"><span class="user-name-nickname">アイパー隊長</span> <span class="user-name-paren">(</span><span class="user-name-hatena-id">id:aipacommander</span><span class="user-name-paren">)</span></span></span>
+  <span class="entry-footer-time"><a href="http://www.aipacommander.com/entry/2017/05/14/172220"><time data-relative="" datetime="2017-05-14T08:22:20Z" title="2017-05-14T08:22:20Z" pubdate="" class="updated">83日前</time></a></span>
+</p>
+
+    
+  <div class="hatena-star-container">
+  <span class="hatena-star-comment-container"><img class="hatena-star-comment-button" style="cursor: pointer; margin: 0px; padding: 0px; border: medium none; vertical-align: middle; display: none;" title="Comments" alt="Comments" tabindex="0" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/comment.gif"></span><span class="hatena-star-star-container"><img class="hatena-star-add-button" style="cursor: pointer; margin: 0px 3px; padding: 0px; border: medium none; vertical-align: middle;" title="Add Star" alt="Add Star" tabindex="0" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/hatena-star-add-button.png"><a href="http://blog.hatena.ne.jp/yuyutata/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/profile_002.gif"><img title="" alt="yuyutata" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/star.gif"></span></a></span></div>
+  <div class="hatena-star-metadata" style="display: none">
+    <a class="hatena-star-permalink" href="http://www.aipacommander.com/entry/2017/05/14/172220">【Python】numpy.nditer()という関数</a>
+  </div>
+
+
+    
+<div class="social-buttons">
+  
+  
+    <div class="social-button-item">
+      <iframe style="width: 84px; height: 40px;" src="javascript:false" scrolling="no" title="この記事をはてなブックマークに追加" class="hatena-bookmark-button-frame" frameborder="0" height="40" width="84"></iframe>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div fb-iframe-plugin-query="app_id=719729204785177&amp;container_width=0&amp;href=http%3A%2F%2Fwww.aipacommander.com%2Fentry%2F2017%2F05%2F14%2F172220&amp;layout=box_count&amp;locale=ja_JP&amp;sdk=joey" fb-xfbml-state="rendered" class="fb-share-button fb_iframe_widget" data-layout="box_count" data-href="http://www.aipacommander.com/entry/2017/05/14/172220"><span style="vertical-align: bottom; width: 61px; height: 40px;"><iframe class="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/share_button.html" style="border: medium none; visibility: visible; width: 61px; height: 40px;" title="fb:share_button Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f3ef346be341c3e" frameborder="0" height="1000px" width="1000px"></iframe></span></div>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <iframe data-url="http://www.aipacommander.com/entry/2017/05/14/172220" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/tweet_button.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 66px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 24px;"><iframe title="G+" data-gapiattached="true" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/fastbutton.html" name="I0_1501979887403" id="I0_1501979887403" vspace="0" tabindex="0" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div>
+    </div>
+  
+  
+    <div class="social-button-item">
+      
+      <a href="http://www.tumblr.com/share" data-hatenablog-tumblr-share-button="" data-share-url="http://www.aipacommander.com/entry/2017/05/14/172220" data-share-title="【Python】numpy.nditer()という関数 - ITの隊長のブログ" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('https://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent; vertical-align: top;">Share on Tumblr</a>
+    </div>
+  
+  
+    <span>
+      <iframe src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/share.html" class="line-it-button" style="width: 37px; height: 61px; visibility: visible; position: static;" allowtransparency="true" scrolling="no" data-line-it-id="0" data-type="share-e" data-lang="ja" frameborder="0"></iframe>
+      <script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/loader.js" async="async" defer="defer"></script>
+    </span>
+  
+  
+    <div class="social-button-item">
+      <div class="pocket-btn"><iframe id="pocket-button-0" allowtransparency="true" scrolling="NO" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/button.html" frameborder="0" height="63" width="60"></iframe></div>
+    </div>
+  
+</div>
+
+    
+
+    <div class="customized-footer">
+      
+
+        
+
+        
+
+          <div class="entry-footer-modules" id="entry-footer-secondary-modules">      <div class="hatena-module hatena-module-related-entries">
+  <div class="hatena-module-title">
+    関連記事
+  </div>
+  <div class="hatena-module-body">
+    <ul class="related-entries hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.aipacommander.com/entry/2016/01/18/201437">
+  <img alt="【PHP】配列のindex番号を振り直す" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpcdn.html" class="urllist-image related-entries-image" title="【PHP】配列のindex番号を振り直す" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.aipacommander.com/archive/2016/01/18" rel="nofollow">
+    <time pubdate="" datetime="2016-01-18T11:14:37Z" title="2016-01-18T11:14:37Z">
+      2016-01-18
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2016/01/18/201437" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">【PHP】配列のindex番号を振り直す</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">array_values()でできる。ちなみに、sort()みたいな参照で渡さ…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.aipacommander.com/entry/2015/12/28/124125">
+  <img alt="【Swift】Optional型を理解したい" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpcdn.html" class="urllist-image related-entries-image" title="【Swift】Optional型を理解したい" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/12/28" rel="nofollow">
+    <time pubdate="" datetime="2015-12-28T03:41:25Z" title="2015-12-28T03:41:25Z">
+      2015-12-28
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/12/28/124125" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">【Swift】Optional型を理解したい</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">いまいちピンときていない。とりあえずログをメモ let first: […</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.aipacommander.com/entry/2015/12/21/092430">
+  <img alt="Swiftを勉強してみた。その１" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpcdn.html" class="urllist-image related-entries-image" title="Swiftを勉強してみた。その１" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/12/21" rel="nofollow">
+    <time pubdate="" datetime="2015-12-21T00:24:30Z" title="2015-12-21T00:24:30Z">
+      2015-12-21
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/12/21/092430" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">Swiftを勉強してみた。その１</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">やりたいことがある。それにはアプリを開発しなきゃいけないの…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.aipacommander.com/entry/2015/12/16/000005">
+  <img alt="機械学習・クラスタリングを理解するまで６日目" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpcdn.html" class="urllist-image related-entries-image" title="機械学習・クラスタリングを理解するまで６日目" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/12/16" rel="nofollow">
+    <time pubdate="" datetime="2015-12-15T15:00:05Z" title="2015-12-15T15:00:05Z">
+      2015-12-16
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/12/16/000005" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">機械学習・クラスタリングを理解するまで６日目</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">前回 aipacommander.hatenablog.jp とりあえずいい感じのプロッ…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/08/19" rel="nofollow">
+    <time pubdate="" datetime="2015-08-19T11:22:42Z" title="2015-08-19T11:22:42Z">
+      2015-08-19
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/08/19/202242" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">【Scala】指定分の数だけループするfor</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">Shellでいうseqコマンドみたいなやつでしょうかね。 for(i &lt;- 1…</div>
+      </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+  </div>
+        
+  <div class="entry-footer-html"><a href="http://it.blogmura.com/"><img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/it88_31.gif" target="_blank" alt="にほんブログ村 ＩＴ技術ブログへ" height="31" width="88" border="0"></a><br><a href="http://it.blogmura.com/" target="_blank">にほんブログ村</a>
+<br>
+<p>スポンサードリンク</p>
+<script async="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/adsbygoogle.js"></script>
+<!-- 12_隊長のブログ_down2 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-5792805170527590" data-ad-slot="1775499150"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+
+      
+    </div>
+    
+  <div class="comment-box">
+    
+    <ul class="comment">
+      <li class="read-more-comments" style="display: none;"><a>もっと読む</a></li>
+    </ul>
+    
+      <a class="leave-comment-title">コメントを書く</a>
+    
+  </div>
+
+  </footer>
+
+  </div>
+</article>
+
+      
+      
+    
+  
+
+  
+  <!-- rakuten_ad_target_end -->
+  <!-- google_ad_section_end -->
+  
+  
+  
+  <div class="pager pager-permalink permalink">
+    
+      
+      <span class="pager-prev">
+        <a href="http://www.aipacommander.com/entry/2017/05/14/224734" rel="prev">
+          <span class="pager-arrow">« </span>
+          うん。やっぱり適度な刺激は必要だと思い…
+        </a>
+      </span>
+    
+    
+      
+      <span class="pager-next">
+        <a href="http://www.aipacommander.com/entry/2017/05/12/193831" rel="next">
+          AttributeError: module '_Box2D' has no …
+          <span class="pager-arrow"> »</span>
+        </a>
+      </span>
+    
+  </div>
+
+
+  
+
+
+
+        </div>
+      </div>
+
+      <aside id="box1">
+  <div id="box1-inner">
+  </div>
+</aside>
+
+    </div><!-- #wrapper -->
+
+    
+<aside id="box2">
+  
+  <div id="box2-inner">
+    
+      
+
+<div class="hatena-module hatena-module-profile">
+  <div class="hatena-module-title">
+    プロフィール
+  </div>
+  <div class="hatena-module-body">
+    
+    <a href="http://www.aipacommander.com/about" class="profile-icon-link">
+      <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/profile.gif" alt="id:aipacommander" class="profile-icon">
+    </a>
+    
+
+    
+    <span class="id">
+      <a href="http://www.aipacommander.com/about" class="hatena-id-link"><span data-load-nickname="1" data-user-name="aipacommander"><span class="user-name-nickname">アイパー隊長</span> <span class="user-name-paren">(</span><span class="user-name-hatena-id">id:aipacommander</span><span class="user-name-paren">)</span></span></a>
+      
+  
+    
+    
+      <a href="http://blog.hatena.ne.jp/guide/pro" title="はてなブログPro"><i class="blog-sprite-pro"></i></a>
+    
+  
+
+
+    </span>
+    
+
+    
+
+    
+    <div class="profile-description">
+      <p>ITの隊長のブログです。全力で遊ぶために日々頑張っています。</p>
+
+    </div>
+    
+
+    
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box">
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button unsubscribing">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once="">
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div style="display: block;" class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">55</span>
+  </div>
+</div>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+    <div class="hatena-module-title">にほんブログ村</div>
+  <div class="hatena-module-body">
+    <a href="http://it.blogmura.com/"><img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/it88_31.gif" alt="にほんブログ村 ＩＴ技術ブログへ" height="31" width="88" border="0"></a><br><a href="http://it.blogmura.com/">にほんブログ村</a>
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+    <div class="hatena-module-title">スポンサードリンク</div>
+  <div class="hatena-module-body">
+    <script async="" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/adsbygoogle.js"></script>
+<!-- -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-5792805170527590" data-ad-slot="4778154753"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px;background-color:transparent"><ins id="aswift_3_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;width:160px;height:600px;" frameborder="0" height="600" width="160"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-entries-access-ranking" data-count="5" data-source="access" data-enable_customize_format="0" data-display_entry_category="0" data-display_entry_image="1" data-display_entry_image_size_width="100" data-display_entry_image_size_height="100" data-display_entry_body_length="0" data-display_entry_date="1" data-display_entry_title_length="20" data-restrict_entry_title_length="0" data-display_bookmark_count="1">
+  <div class="hatena-module-title">
+    
+      人気記事
+    
+  </div>
+  <div class="hatena-module-body">
+    
+  <ul class="entries-access-ranking hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-1">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.aipacommander.com/entry/2015/04/19/080000">
+  <img alt="イラストレーターでオブジェクトのサイズを確認する方法" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpfarm5_002.jpg" class="urllist-image entries-access-ranking-image" title="イラストレーターでオブジェクトのサイズを確認する方法" width="100">
+</a>
+            <div class="urllist-date-link entries-access-ranking-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/04/19" rel="nofollow">
+    <time pubdate="" datetime="2015-04-18T23:00:00Z" title="2015-04-18T23:00:00Z">
+      2015-04-19
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/04/19/080000" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">イラストレーターでオブジェクトのサイズを確認する方法</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.aipacommander.com/entry/2015/04/19/080000" class="bookmark-widget-counter">
+  <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/080000.gif" alt="はてなブックマーク - イラストレーターでオブジェクトのサイズを確認する方法">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-2">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.aipacommander.com/entry/2015/09/24/172303">
+  <img alt="【JavaScript】はてぶのAPIにAjaxしてエラー「XMLHttpRequest cannot load http://b.hatena.ne.jp/aipacommander/rss?5215206181. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.」" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpcdn.html" class="urllist-image entries-access-ranking-image" title="【JavaScript】はてぶのAPIにAjaxしてエラー「XMLHttpRequest cannot load http://b.hatena.ne.jp/aipacommander/rss?5215206181. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.」" width="100">
+</a>
+            <div class="urllist-date-link entries-access-ranking-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/09/24" rel="nofollow">
+    <time pubdate="" datetime="2015-09-24T08:23:03Z" title="2015-09-24T08:23:03Z">
+      2015-09-24
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/09/24/172303" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">【JavaScript】
+はてぶのAPIにAjaxしてエラー「XMLHttpRequest cannot load 
+http://b.hatena.ne.jp/aipacommander/rss?5215206181. No 
+'Access-Control-Allow-Origin' header is present on the requested 
+resource. Origin 'null' is therefore not allowed access.」</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.aipacommander.com/entry/2015/09/24/172303" class="bookmark-widget-counter">
+  <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/172303.gif" alt="はてなブックマーク - 【JavaScript】はてぶのAPIにAjaxしてエラー「XMLHttpRequest cannot load http://b.hatena.ne.jp/aipacommander/rss?5215206181. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.」">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-3">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <div class="urllist-date-link entries-access-ranking-date-link">
+  <a href="http://www.aipacommander.com/archive/2014/06/03" rel="nofollow">
+    <time pubdate="" datetime="2014-06-03T00:52:19Z" title="2014-06-03T00:52:19Z">
+      2014-06-03
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2014/06/03/095219" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">Office2013のExcelがクソ落ちる</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.aipacommander.com/entry/2014/06/03/095219" class="bookmark-widget-counter">
+  <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/095219.gif" alt="はてなブックマーク - Office2013のExcelがクソ落ちる">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-4">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.aipacommander.com/entry/2015/03/21/191818">
+  <img alt="JavaScriptでJsonのリストをループしようとしてうまくいかなかったのでメモ" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpfarm5.jpg" class="urllist-image entries-access-ranking-image" title="JavaScriptでJsonのリストをループしようとしてうまくいかなかったのでメモ" width="100">
+</a>
+            <div class="urllist-date-link entries-access-ranking-date-link">
+  <a href="http://www.aipacommander.com/archive/2015/03/21" rel="nofollow">
+    <time pubdate="" datetime="2015-03-21T10:18:18Z" title="2015-03-21T10:18:18Z">
+      2015-03-21
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2015/03/21/191818" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">JavaScriptでJsonのリストをループしようとしてうまくいかなかったのでメモ</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.aipacommander.com/entry/2015/03/21/191818" class="bookmark-widget-counter">
+  <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/191818.gif" alt="はてなブックマーク - JavaScriptでJsonのリストをループしようとしてうまくいかなかったのでメモ">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-5">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <div class="urllist-date-link entries-access-ranking-date-link">
+  <a href="http://www.aipacommander.com/archive/2014/05/26" rel="nofollow">
+    <time pubdate="" datetime="2014-05-26T06:22:47Z" title="2014-05-26T06:22:47Z">
+      2014-05-26
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.aipacommander.com/entry/2014/05/26/152247" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">Mysqlで「Access denied for user ‘root’@’localhost’ (using password: NO)」</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.aipacommander.com/entry/2014/05/26/152247" class="bookmark-widget-counter">
+  <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/152247.gif" alt="はてなブックマーク - Mysqlで「Access denied for user ‘root’@’localhost’ (using password: NO)」">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+</ul>
+</div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-recent-entries ">
+  <div class="hatena-module-title">
+    <a href="http://www.aipacommander.com/archive">
+      最新記事
+    </a>
+  </div>
+  <div class="hatena-module-body">
+    <ul class="recent-entries hatena-urllist ">
+  
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://www.aipacommander.com/entry/2017/08/01/081823" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">aws s3へupload, downloadのコマンド</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://www.aipacommander.com/entry/2017/07/23/152953" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">最近のことをつらつらと</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://www.aipacommander.com/entry/2017/06/06/120254" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【Python】Tensorflowでresizeした画像をmatplotlibで表示したい</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://www.aipacommander.com/entry/2017/05/23/191915" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【Python】kerasで保存したweightsをh5pyを使って取得する</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+          
+          <a href="http://www.aipacommander.com/entry/2017/05/22/191351" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【Python】Cython試してみた</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-search-box">
+  <div class="hatena-module-title">
+    検索
+  </div>
+  <div class="hatena-module-body">
+    <form class="search-form" role="search" action="http://www.aipacommander.com/search" method="get">
+      <input name="q" class="search-module-input" placeholder="記事を検索" required="" type="text">
+      <input value="検索" class="search-module-button" type="submit">
+    </form>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-links">
+  <div class="hatena-module-title">
+    リンク
+  </div>
+  <div class="hatena-module-body">
+    <ul class="hatena-urllist">
+      
+        <li>
+          <a href="http://aipacooking.hatenablog.jp/">アイパー隊長のCooking life</a>
+        </li>
+      
+        <li>
+          <a href="http://aipamovie.hatenablog.jp/">あいぱー隊長の映画批評</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-links">
+  <div class="hatena-module-title">
+    俺のメモ
+  </div>
+  <div class="hatena-module-body">
+    <ul class="hatena-urllist">
+      
+        <li>
+          <a href="http://aipacommander.hatenablog.jp/entry/2015/04/04/124412">俺が死ぬまでにやりことが集まってくるブログ【随時更新】</a>
+        </li>
+      
+        <li>
+          <a href="http://aipacommander.hatenablog.jp/entry/2015/04/26/230536">初心にかえるためのメモ（隊長用）</a>
+        </li>
+      
+        <li>
+          <a href="http://aipacommander.hatenablog.jp/entry/library">図書館</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+    
+      
+
+<div class="hatena-module hatena-module-archive" data-archive-type="default" data-archive-url="http://www.aipacommander.com/archive">
+  <div class="hatena-module-title">
+    <a href="http://www.aipacommander.com/archive">月別アーカイブ</a>
+  </div>
+  <div class="hatena-module-body">
+  
+
+  
+    
+    
+      <ul class="hatena-urllist">
+        
+          <li class="archive-module-year" data-year="2017">
+            <div class="archive-module-button">
+              <span class="archive-module-hide-button">▼</span>
+              <span class="archive-module-show-button">▶</span>
+            </div>
+            <a href="http://www.aipacommander.com/archive/2017" class="archive-module-year-title">
+              2017 (36)
+            </a>
+            <ul class="archive-module-months">
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/8" class="archive-module-month-title">
+                    2017 / 8 (1)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/7" class="archive-module-month-title">
+                    2017 / 7 (1)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/6" class="archive-module-month-title">
+                    2017 / 6 (1)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/5" class="archive-module-month-title">
+                    2017 / 5 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/4" class="archive-module-month-title">
+                    2017 / 4 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/3" class="archive-module-month-title">
+                    2017 / 3 (3)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/2" class="archive-module-month-title">
+                    2017 / 2 (7)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2017/1" class="archive-module-month-title">
+                    2017 / 1 (5)
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          <li class="archive-module-year archive-module-year-hidden" data-year="2016">
+            <div class="archive-module-button">
+              <span class="archive-module-hide-button">▼</span>
+              <span class="archive-module-show-button">▶</span>
+            </div>
+            <a href="http://www.aipacommander.com/archive/2016" class="archive-module-year-title">
+              2016 (188)
+            </a>
+            <ul class="archive-module-months">
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/12" class="archive-module-month-title">
+                    2016 / 12 (11)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/11" class="archive-module-month-title">
+                    2016 / 11 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/10" class="archive-module-month-title">
+                    2016 / 10 (18)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/9" class="archive-module-month-title">
+                    2016 / 9 (36)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/8" class="archive-module-month-title">
+                    2016 / 8 (5)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/7" class="archive-module-month-title">
+                    2016 / 7 (8)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/6" class="archive-module-month-title">
+                    2016 / 6 (14)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/5" class="archive-module-month-title">
+                    2016 / 5 (6)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/4" class="archive-module-month-title">
+                    2016 / 4 (15)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/3" class="archive-module-month-title">
+                    2016 / 3 (3)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/2" class="archive-module-month-title">
+                    2016 / 2 (13)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2016/1" class="archive-module-month-title">
+                    2016 / 1 (50)
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          <li class="archive-module-year archive-module-year-hidden" data-year="2015">
+            <div class="archive-module-button">
+              <span class="archive-module-hide-button">▼</span>
+              <span class="archive-module-show-button">▶</span>
+            </div>
+            <a href="http://www.aipacommander.com/archive/2015" class="archive-module-year-title">
+              2015 (339)
+            </a>
+            <ul class="archive-module-months">
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/12" class="archive-module-month-title">
+                    2015 / 12 (46)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/11" class="archive-module-month-title">
+                    2015 / 11 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/10" class="archive-module-month-title">
+                    2015 / 10 (16)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/9" class="archive-module-month-title">
+                    2015 / 9 (32)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/8" class="archive-module-month-title">
+                    2015 / 8 (33)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/7" class="archive-module-month-title">
+                    2015 / 7 (41)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/6" class="archive-module-month-title">
+                    2015 / 6 (13)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/5" class="archive-module-month-title">
+                    2015 / 5 (35)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/4" class="archive-module-month-title">
+                    2015 / 4 (62)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/3" class="archive-module-month-title">
+                    2015 / 3 (31)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/2" class="archive-module-month-title">
+                    2015 / 2 (8)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2015/1" class="archive-module-month-title">
+                    2015 / 1 (13)
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          <li class="archive-module-year archive-module-year-hidden" data-year="2014">
+            <div class="archive-module-button">
+              <span class="archive-module-hide-button">▼</span>
+              <span class="archive-module-show-button">▶</span>
+            </div>
+            <a href="http://www.aipacommander.com/archive/2014" class="archive-module-year-title">
+              2014 (126)
+            </a>
+            <ul class="archive-module-months">
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/12" class="archive-module-month-title">
+                    2014 / 12 (18)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/11" class="archive-module-month-title">
+                    2014 / 11 (23)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/10" class="archive-module-month-title">
+                    2014 / 10 (33)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/9" class="archive-module-month-title">
+                    2014 / 9 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/8" class="archive-module-month-title">
+                    2014 / 8 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/7" class="archive-module-month-title">
+                    2014 / 7 (1)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/6" class="archive-module-month-title">
+                    2014 / 6 (9)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/5" class="archive-module-month-title">
+                    2014 / 5 (20)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.aipacommander.com/archive/2014/4" class="archive-module-month-title">
+                    2014 / 4 (4)
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+      </ul>
+    
+  
+
+
+</div>
+</div>
+
+    
+      
+
+<div class="hatena-module hatena-module-category">
+  <div class="hatena-module-title">
+    カテゴリー
+  </div>
+  <div class="hatena-module-body">
+    <ul class="hatena-urllist">
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/PHP">
+            PHP (142)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CakePHP">
+            CakePHP (95)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%81%9D%E3%81%AE%E4%BB%96">
+            その他 (95)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/JavaScript">
+            JavaScript (63)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Play%20Framework">
+            Play Framework (45)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/MySQL">
+            MySQL (40)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Python">
+            Python (40)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Java">
+            Java (39)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88%E6%97%A5%E8%A8%98">
+            ダイエット日記 (31)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/jQuery">
+            jQuery (28)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/WordPress">
+            WordPress (26)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Scala">
+            Scala (20)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Mac%20OS%20X">
+            Mac OS X (20)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Apache">
+            Apache (18)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CakePHP3.x">
+            CakePHP3.x (17)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CentOS">
+            CentOS (16)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/R">
+            R (16)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Swift">
+            Swift (16)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%81%BD%E3%81%88%E3%82%80">
+            ぽえむ (15)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Amazon%20Web%20Service">
+            Amazon Web Service (15)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/linux">
+            linux (14)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CakePHP2.x">
+            CakePHP2.x (13)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Angular2">
+            Angular2 (13)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/html">
+            html (12)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E8%8B%B1%E8%AA%9E%E5%AD%A6%E7%BF%92">
+            英語学習 (12)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CentOS7">
+            CentOS7 (12)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/SQL">
+            SQL (11)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Python3">
+            Python3 (11)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/PHPUnit">
+            PHPUnit (10)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E6%9B%B8%E8%A9%95">
+            書評 (9)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/AngularJS">
+            AngularJS (9)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Docker">
+            Docker (8)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/git">
+            git (8)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">
+            機械学習 (8)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E8%A7%A3%E6%9E%90">
+            アクセス解析 (8)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CSS">
+            CSS (8)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Web%E3%82%B5%E3%82%A4%E3%83%88%E9%96%8B%E7%99%BA">
+            Webサイト開発 (7)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/ShellScript">
+            ShellScript (7)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Jenkins">
+            Jenkins (7)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Django">
+            Django (7)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Objective-C">
+            Objective-C (7)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Design">
+            Design (5)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/AngularJS1.5.x">
+            AngularJS1.5.x (5)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Python2">
+            Python2 (5)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Mecab">
+            Mecab (5)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/AngularJS1.4.x">
+            AngularJS1.4.x (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/jQuery%20UI">
+            jQuery UI (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Selenium">
+            Selenium (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CentOS6.6">
+            CentOS6.6 (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Visual%20Basic">
+            Visual Basic (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CSS3">
+            CSS3 (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Bitbucket">
+            Bitbucket (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/NetBeans">
+            NetBeans (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Perl">
+            Perl (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Bootstrap">
+            Bootstrap (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Vagrant">
+            Vagrant (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">
+            セキュリティ (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Gulp.js">
+            Gulp.js (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Shell">
+            Shell (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/composer">
+            composer (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Ruby">
+            Ruby (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%82%AB%E3%82%B4%E3%83%A4VPS%E3%82%B5%E3%83%BC%E3%83%90">
+            カゴヤVPSサーバ (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/wsgi">
+            wsgi (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%AD%E3%82%B0">
+            はてなブログ (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Python3.5">
+            Python3.5 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Route53">
+            Route53 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/ssh">
+            ssh (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/selinux">
+            selinux (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/scrapy">
+            scrapy (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/scikit-learn">
+            scikit-learn (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/S3">
+            S3 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/MySQL5.7">
+            MySQL5.7 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/iPhone%E3%82%A2%E3%83%97%E3%83%AA">
+            iPhoneアプリ (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/CentOS6.2">
+            CentOS6.2 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/GMO%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89VPS">
+            GMOクラウドVPS (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/illustrator">
+            illustrator (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Excel">
+            Excel (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Google%20Webmaster%20Tools">
+            Google Webmaster Tools (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/eclipse">
+            eclipse (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/emmet">
+            emmet (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/GMO%20iCLUSTA">
+            GMO iCLUSTA (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/GitLab">
+            GitLab (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Anaconda">
+            Anaconda (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/OpenCV">
+            OpenCV (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/SublimeText3">
+            SublimeText3 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Android">
+            Android (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Nginx">
+            Nginx (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Angular">
+            Angular (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/VBA">
+            VBA (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/wkhtmltopdf">
+            wkhtmltopdf (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/fabric">
+            fabric (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Node.js">
+            Node.js (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Web%20Browser">
+            Web Browser (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Github">
+            Github (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/vmware">
+            vmware (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Xcode">
+            Xcode (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/word2vec">
+            word2vec (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Ansible">
+            Ansible (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0">
+            クラスタリング (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Bower">
+            Bower (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/C">
+            C (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/C%23">
+            C# (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Doxygen">
+            Doxygen (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/XSS">
+            XSS (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/xdebug">
+            xdebug (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Vaddy">
+            Vaddy (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/User%20story">
+            User story (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Ubuntu">
+            Ubuntu (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Sass">
+            Sass (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/iPhone">
+            iPhone (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/iPython">
+            iPython (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/iptables">
+            iptables (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Qitta">
+            Qitta (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Jade">
+            Jade (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/JUnit">
+            JUnit (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Photoshop">
+            Photoshop (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/postfix">
+            postfix (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/phpMyAdmin">
+            phpMyAdmin (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Haml">
+            Haml (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/grunt">
+            grunt (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Google%20Drive">
+            Google Drive (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/TypeScript">
+            TypeScript (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Tomat">
+            Tomat (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Test%20Code">
+            Test Code (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Google%20Analytics">
+            Google Analytics (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/sudo">
+            sudo (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/sqlite">
+            sqlite (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Golang">
+            Golang (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/SourceTree">
+            SourceTree (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Google%20Developer%20Tool">
+            Google Developer Tool (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/SFTP">
+            SFTP (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://www.aipacommander.com/archive/category/Pelican">
+            Pelican (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+    <div class="hatena-module-title">PHP the right way.</div>
+  <div class="hatena-module-body">
+    <a href="http://www.phptherightway.com/">
+    <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/rect-180x150.png" alt="PHP: The Right Way">
+</a>
+  </div>
+</div>
+
+    
+    
+  </div>
+</aside>
+
+
+  </div>
+</div>
+
+
+
+
+
+        
+
+        
+
+        
+
+      </div>
+    </div>
+    
+<footer id="footer" data-brand="hatenablog">
+  <div id="footer-inner">
+    <address>
+      <a href="http://www.aipacommander.com/">
+        <img src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/httpscdn.jpg" alt="ITの隊長のブログ" height="16" width="16">
+        <span class="footer-address-name">ITの隊長のブログ</span>
+      </a>
+    </address>
+    <p class="services">
+      Powered by <a href="http://hatenablog.com/">Hatena Blog</a>
+      |
+        <a href="http://www.hatena.ne.jp/faq/report/blog?target_label=aipacommander&amp;target_url=http%3A%2F%2Fblog.hatena.ne.jp%2Fgo%3Fblog%3Dhttp%253A%252F%252Fwww.aipacommander.com%252Fentry%252F2017%252F05%252F14%252F172220&amp;location=http%3A%2F%2Fblog.hatena.ne.jp%2Fgo%3Fblog%3Dhttp%253A%252F%252Fwww.aipacommander.com%252Fentry%252F2017%252F05%252F14%252F172220" class="report-abuse-link test-report-abuse-link" target="_blank">ブログを報告する</a>
+    </p>
+  </div>
+</footer>
+
+
+    
+  <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script><script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/btn.js" id="pocket-btn-js"></script>
+
+
+    
+  <script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/HatenaStar.js"></script>
+
+
+    
+  <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="http://staticxx.facebook.com/connect/xd_arbiter/r/XBwzv5Yrm_1.js?version=42#channel=ff01819ef1f346&amp;origin=http%3A%2F%2Fwww.aipacommander.com" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/XBwzv5Yrm_1_002.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+  
+    js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=719729204785177&version=v2.7";
+  
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    
+
+  <script id="hatena-counter-script" type="text/javascript"><!--
+      hatena_counter_name = "aipacommander";
+      hatena_counter_id = "101";
+      hatena_counter_ref = document.referrer+"";
+      hatena_counter_screen = screen.width + "x" + screen.height+","+screen.colorDepth;
+  //--></script>
+  <script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/counter.js"></script><script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/101"></script><ins data-adsbygoogle-status="done" style="display: none; width: auto; height: auto;" class="adsbygoogle"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:0px;height:0px;" frameborder="0" height="0" width="0"></iframe></ins></ins></ins><span class="hatena-counter"></span>
+  <noscript><img src="http://counter.hatena.ne.jp/aipacommander/101" border="0" alt="counter"></noscript>
+
+
+    
+
+<div style="display: none;" class="quote-box">
+  <div style="display: block;" class="tooltip-quote tooltip-quote-star">
+    <i class="blogicon-star" title="引用スターをつける"></i>
+  </div>
+  <div style="display: block;" class="tooltip-quote tooltip-quote-stock">
+    <i class="blogicon-quote" title="引用をストック"></i>
+  </div>
+  <div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet">
+    <a class="js-tweet-quote" target="_blank" data-track-name="quote-tweet" data-track-once=""><i class="blogicon-twitter" title="引用してツイートする"></i></a>
+  </div>
+</div>
+
+<div class="message-box" id="quote-star-message-box" style="display: none; position: absolute;">
+  スターをつけました
+</div>
+
+<div class="quote-stock-panel" id="quote-stock-message-box" style="position: absolute; z-index: 3000">
+  <div class="message-box" id="quote-stock-succeeded-message" style="display: none">
+    <p>引用をストックしました</p>
+    <button class="btn btn-primary" id="quote-stock-show-editor-button" data-track-name="curation-quote-edit-button">ストック一覧を見る</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="message-box" id="quote-login-required-message" style="display: none">
+    <p>引用するにはまずログインしてください</p>
+    <button class="btn btn-primary" id="quote-login-button">ログイン</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="quote-stock-failed-message" style="display: none">
+    <p>引用をストックできませんでした。再度お試しください</p>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="unstockable-quote-message-box" style="display: none; position: absolute; z-index: 3000;">
+    <p>限定公開記事のため引用できません。</p>
+  </div>
+</div>
+
+<script type="x-underscore-template" id="js-requote-button-template">
+  <div class="requote-button js-requote-button">
+    <button class="requote-button-btn tipsy-top" title="引用する"><i class="blogicon-quote"></i></button>
+  </div>
+</script>
+
+
+
+    
+    <div id="hidden-subscribe-button" style="display: none;">
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box">
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button unsubscribing">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once="">
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div style="display: block;" class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">55</span>
+  </div>
+</div>
+
+    </div>
+
+    
+  <script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/widgets.js"></script>
+
+<script gapi_processed="true" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/platform.js" async="" defer="defer">
+  { lang: 'ja', "parsetags": "explicit" }
+</script>
+<script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+
+  <script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/react-with-addons.js"></script>
+  <script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/react-dom.js"></script>
+
+
+<script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/jquery_002.js"></script>
+<script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/jquery-ui.js"></script>
+<script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/jquery.js"></script>
+<script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/jquery_003.js"></script>
+
+
+
+
+<script id="hatenablog-js" data-env="production" type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/hatenablog.js" crossorigin="anonymous"></script><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; display: none;"></div>
+<script type="text/javascript" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/texts-ja.js"></script>
+
+
+  <script type="text/javascript">Hatena.Diary.GlobalHeader.init()</script>
+
+
+<script src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/api.js" async="" defer="defer"></script>
+
+
+
+
+    
+
+
+
+
+
+  
+
+
+<div style="display: none;" id="cboxOverlay"></div><div style="display: none;" tabindex="-1" role="dialog" class="" id="colorbox"><div id="cboxWrapper"><div><div style="float: left;" id="cboxTopLeft"></div><div style="float: left;" id="cboxTopCenter"></div><div style="float: left;" id="cboxTopRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxMiddleLeft"></div><div style="float: left;" id="cboxContent"><div style="float: left;" id="cboxTitle"></div><div style="float: left;" id="cboxCurrent"></div><button id="cboxPrevious" type="button"></button><button id="cboxNext" type="button"></button><button id="cboxSlideshow" type="button"></button><div style="float: left;" id="cboxLoadingOverlay"></div><div style="float: left;" id="cboxLoadingGraphic"></div></div><div style="float: left;" id="cboxMiddleRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxBottomLeft"></div><div style="float: left;" id="cboxBottomCenter"></div><div style="float: left;" id="cboxBottomRight"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><div style="top: -9999px; z-index: -9999;"></div><iframe aria-hidden="true" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="%E3%80%90Python%E3%80%91numpy.nditer%28%29%E3%81%A8%E3%81%84%E3%81%86%E9%96%A2%E6%95%B0%20-%20IT%E3%81%AE%E9%9A%8A%E9%95%B7%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0_files/postmessageRelay.html" id="oauth2relay382573034" name="oauth2relay382573034"></iframe><div style="color: rgb(0, 0, 0); position: absolute; display: none; z-index: 10002; left: 0px; top: 0px; background-color: rgb(255, 255, 255); border: 0px none; padding: 0px; text-align: center;"><div style="text-align: left; margin: 0px; padding: 0px;"></div></div></body></html>

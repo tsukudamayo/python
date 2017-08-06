@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="wf-roboto-n3-active wf-roboto-n7-active wf-active" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>Google Tangram</title>
+	<script src="index_data/webfont.js"></script>
+	<link href="index_data/css.css" rel="stylesheet"><script>
+		WebFont.load({
+			google: {
+				families: ["Roboto:300,700"]
+			}
+		});
+	</script>
+
+	<style type="text/css">
+		html {
+ 			-webkit-font-smoothing: antialiased;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		@media
+		only screen and (-webkit-min-device-pixel-ratio: 1.25),
+		only screen and ( min-device-pixel-ratio: 1.25),
+		only screen and ( min-resolution: 200dpi),
+		only screen and ( min-resolution: 1.25dppx)
+		{
+		   -webkit-font-smoothing: subpixel-antialiased;
+		}
+
+		div {
+			margin: 0;
+			padding: 0;
+			position: absolute;
+		}
+
+		#mainHolder {
+			border: 1px solid #000000;
+			width: 160px;
+			height: 600px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			background: #ffffff;
+			cursor: pointer;
+			overflow: hidden;
+		    -webkit-touch-callout: none;
+		    -webkit-user-select: none;
+		    -khtml-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		}
+
+		#endBG {
+			width: 160px;
+			height: 600px;
+			background: #d94236;
+			opacity: 0;
+		}
+
+		.copyTextStart {
+			left: 16px;
+			opacity: 1;
+			color: #777777;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 300;
+			font-size: 19px;
+			width: 300px;
+		}
+
+		.copyTextEnd {
+			opacity: 0;
+			left: 16px;
+			color: #ffffff;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 300;
+			font-size: 19px;
+			width: 300px;
+		}
+
+		.copyTextCTA {
+			opacity: 0;
+			color: #5383d3;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 700;
+			font-size: 14px;
+  			text-align: center;
+			position: relative;
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#buttonLabelHolder {
+			left: 16px;
+		    top: 320px;
+		    width: 126px;
+			height: 41px;
+    		display: table;
+		}
+
+		#copyA0, #copyB0, #copyC0 {
+			top: 56px;
+		}
+
+		#copyA1, #copyB1, #copyC1 {
+			top: 84px;
+		}
+
+		#copyA2, #copyB2, #copyC2 {
+			top: 112px;
+		}
+
+		#copyA3, #copyB3, #copyC3 {
+			top: 140px;
+		}
+
+		#copyA4, #copyB4, #copyC4 {
+			top: 168px;
+		}
+
+		#copyA5, #copyB5, #copyC5 {
+			top: 196px;
+		}
+
+		#copyA6, #copyB6, #copyC6 {
+			top: 224px;
+		}
+
+		#copyA0, #copyA1, #copyA2, #copyA3, #copyA4, #copyA5, #copyA6, #copyB0, #copyB1, #copyB2, #copyB3, #copyB4, #copyB5, #copyB6 {
+			opacity: 0;
+		}
+
+        #clickLayer {
+            width: 160px;
+            height: 600px;
+        }
+        
+        /* replay icon image embedded as base64 text URI */
+        #buttonReplay {
+            left: -4px;
+            top: -4px;
+            width: 31px;
+            height: 31px;
+            background-repeat: no-repeat;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAOVBMVEUAAAD///////////////////////////////////////////////////////////////////////8KOjVvAAAAEnRSTlMAp/oar5bk3cA8BOjBgIJgPTvtUe5tAAAAXElEQVQI12WOWw7AIAgEF1GrrfbB/Q/bDWmjifNDBgIsSJUcslSgU/ZkoUkLlk6jJovKotGM+liE010lqNu1EeAomDGZZJn67qD+l8H2/DcrvlRFClPtwMh8Y+UFVFgCqqTBXkEAAAAASUVORK5CYII=);
+            background-position: center center;
+            opacity: 0;
+            display: none;
+		    -ms-transform-origin: 15.5px 15.5px;
+		    -webkit-transform-origin: 15.5px 15.5px;
+		    transform-origin: 15.5px 15.5px;
+        }        
+        
+	</style>
+<link href="index_data/loadsprites_bar_chart.css" type="text/css" rel="stylesheet"></head>
+
+<body>
+
+	<div id="mainHolder">
+		<div id="dummyDiv"></div>
+
+        <!-- Attach all icon animation sprites here -->
+		<div id="iconHolder"><div style="transform: matrix(1, 0, 0, 1, 0, -19);" id="arrowCont"><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 101, 345);" class="sprite arrow0" id="arrow0"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 120, 345);" class="sprite arrow1" id="arrow1"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 110, 363);" class="sprite arrow2" id="arrow2"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 120, 363);" class="sprite arrow3" id="arrow3"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 110, 363);" class="sprite arrow4" id="arrow4"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 110, 392);" class="sprite arrow5" id="arrow5"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 110, 402);" class="sprite arrow6" id="arrow6"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 110, 411);" class="sprite arrow7" id="arrow7"></div></div><div id="whiteSquare"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 26, 370);" class="sprite obj0" id="obj0"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 26, 370);" class="sprite obj1" id="obj1"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 36, 370);" class="sprite obj2" id="obj2"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 26, 380);" class="sprite obj3" id="obj3"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 67, 340);" class="sprite square0" id="square0"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 67, 340);" class="sprite square1" id="square1"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 67, 340);" class="sprite square2" id="square2"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 77, 370);" class="sprite square3" id="square3"></div><div style="opacity: 1; transform: matrix(1, 0, 0, 1, 67, 380);" class="sprite square4" id="square4"></div></div>
+
+        <!-- Copy Text Batch 1 -->
+        <div style="font-size: 20px; opacity: 0;" id="copyA0" class="copyTextStart">より多くの</div>
+        <div style="font-size: 20px; opacity: 0;" id="copyA1" class="copyTextStart">ユーザーに</div>
+        <div style="font-size: 20px; opacity: 0;" id="copyA2" class="copyTextStart">広告を表示</div>
+        <div style="font-size: 20px; opacity: 0;" id="copyA3" class="copyTextStart">するなら。</div>
+        <div style="font-size: 20px; opacity: 0;" id="copyA4" class="copyTextStart"></div>
+        <div style="font-size: 20px; opacity: 0;" id="copyA5" class="copyTextStart"></div>
+        <div style="font-size: 20px; opacity: 0;" id="copyA6" class="copyTextStart"></div>
+
+        <!-- Copy Text Batch 2 -->
+        <div style="font-size: 20px; opacity: 1;" id="copyB0" class="copyTextStart">AdWords で</div>
+        <div style="font-size: 20px; opacity: 1;" id="copyB1" class="copyTextStart">国内外に</div>
+        <div style="font-size: 20px; opacity: 1;" id="copyB2" class="copyTextStart">広告を</div>
+        <div style="font-size: 20px; opacity: 1;" id="copyB3" class="copyTextStart">表示しよう。</div>
+        <div style="font-size: 20px; opacity: 1;" id="copyB4" class="copyTextStart"></div>
+        <div style="font-size: 20px; opacity: 1;" id="copyB5" class="copyTextStart"></div>
+        <div style="font-size: 20px; opacity: 1;" id="copyB6" class="copyTextStart"></div>
+        
+		<div id="googleLogoColored" class="logoColored" style="opacity: 1;"><img src="index_data/logo_colored.svg"></div>
+
+		<!-- tangram flocking shapes go here -->
+		<div style="transform: matrix(1, 0, 0, 1, 3, 3);" id="shapeHolder"><div style="transform: matrix(1, 0, 0, 1, -20, -20);" class="sprite parallelogram" id="shape0"></div><div style="transform: matrix(1, 0, 0, 1, -20, -20);" class="sprite triangle3" id="shape1"></div><div style="transform: matrix(-1, 0, 0, -1, 140, 60);" class="sprite triangle1" id="shape2"></div><div style="transform: matrix(1, 0, 0, 1, 20, 20);" class="sprite triangle2" id="shape3"></div><div style="transform: matrix(1, 0, 0, 1, 60, 20);" class="sprite diamond" id="shape4"></div><div style="transform: matrix(1, 0, 0, 1, -20, 60);" class="sprite triangle1" id="shape5"></div><div style="transform: matrix(0, -1, 1, 0, -20, 140);" class="sprite parallelogram" id="shape6"></div><div style="transform: matrix(0, 1, -1, 0, 140, 60);" class="sprite triangle3" id="shape7"></div><div style="transform: matrix(0, 1, -1, 0, 60, 140);" class="sprite triangle2" id="shape8"></div><div style="transform: matrix(1, 0, 0, 1, 20, 140);" class="sprite diamond" id="shape9"></div><div style="transform: matrix(-1, 0, 0, -1, 20, 260);" class="sprite triangle1" id="shape10"></div><div style="transform: matrix(1, 0, 0, 1, 20, 180);" class="sprite parallelogram" id="shape11"></div><div style="transform: matrix(1, 0, 0, 1, 60, 180);" class="sprite diamond" id="shape12"></div><div style="transform: matrix(0, -1, 1, 0, -20, 380);" class="sprite triangle3" id="shape13"></div><div style="transform: matrix(1, 0, 0, 1, 60, 220);" class="sprite triangle2" id="shape14"></div><div style="transform: matrix(-1, 0, 0, -1, 140, 300);" class="sprite triangle1" id="shape15"></div><div style="transform: matrix(1, 0, 0, 1, 20, 300);" class="sprite diamond" id="shape16"></div><div style="transform: matrix(0, 1, -1, 0, 140, 300);" class="sprite triangle1" id="shape17"></div><div style="transform: matrix(0, -1, 1, 0, 60, 380);" class="sprite triangle2" id="shape18"></div><div style="transform: matrix(-1, 0, 0, -1, 20, 420);" class="sprite triangle1" id="shape19"></div><div style="transform: matrix(1, 0, 0, 1, 20, 340);" class="sprite parallelogram" id="shape20"></div><div style="transform: matrix(0, 1, -1, 0, 140, 380);" class="sprite triangle2" id="shape21"></div><div style="transform: matrix(1, 0, 0, 1, -20, 380);" class="sprite triangle2" id="shape22"></div><div style="transform: matrix(0, 1, -1, 0, 140, 380);" class="sprite triangle3" id="shape23"></div><div style="transform: matrix(1, 0, 0, 1, -20, 460);" class="sprite triangle1" id="shape24"></div><div style="transform: matrix(0, 1, -1, 0, 60, 460);" class="sprite triangle1" id="shape25"></div><div style="transform: matrix(1, 0, 0, 1, 20, 460);" class="sprite diamond" id="shape26"></div><div style="transform: matrix(0, 1, -1, 0, 20, 500);" class="sprite triangle3" id="shape27"></div><div style="transform: matrix(1, 0, 0, 1, 20, 500);" class="sprite triangle1" id="shape28"></div><div style="transform: matrix(0, -1, 1, 0, 20, 580);" class="sprite triangle2" id="shape29"></div><div style="transform: matrix(1, 0, 0, 1, 100, 500);" class="sprite parallelogram" id="shape30"></div><div style="transform: matrix(1, 0, 0, 1, 360, 136.206);" class="sprite triangle1" id="shape31"></div><div style="transform: matrix(1, 0, 0, 1, -200, 501.455);" class="sprite triangle1" id="shape32"></div><div style="transform: matrix(1, 0, 0, 1, 360, 337.432);" class="sprite triangle1" id="shape33"></div><div style="transform: matrix(1, 0, 0, 1, 360, 452.344);" class="sprite triangle1" id="shape34"></div><div style="transform: matrix(1, 0, 0, 1, 141.137, 800);" class="sprite triangle1" id="shape35"></div><div style="transform: matrix(1, 0, 0, 1, 360, 166.276);" class="sprite triangle1" id="shape36"></div><div style="transform: matrix(1, 0, 0, 1, 12.151, -200);" class="sprite triangle1" id="shape37"></div><div style="transform: matrix(1, 0, 0, 1, 21.3649, -200);" class="sprite triangle1" id="shape38"></div><div style="transform: matrix(1, 0, 0, 1, 39.6802, -200);" class="sprite triangle1" id="shape39"></div><div style="transform: matrix(1, 0, 0, 1, 44.479, -200);" class="sprite triangle1" id="shape40"></div><div style="transform: matrix(1, 0, 0, 1, 360, 207.211);" class="sprite triangle1" id="shape41"></div><div style="transform: matrix(1, 0, 0, 1, 153.564, 800);" class="sprite triangle1" id="shape42"></div><div style="transform: matrix(1, 0, 0, 1, -200, 39.4894);" class="sprite triangle1" id="shape43"></div><div style="transform: matrix(1, 0, 0, 1, 24.7683, 800);" class="sprite triangle1" id="shape44"></div><div style="transform: matrix(1, 0, 0, 1, 360, 80.2719);" class="sprite triangle1" id="shape45"></div><div style="transform: matrix(1, 0, 0, 1, 144.503, -200);" class="sprite triangle1" id="shape46"></div><div style="transform: matrix(1, 0, 0, 1, -200, 53.0772);" class="sprite triangle1" id="shape47"></div></div>
+
+		<!-- solid background -->
+		<div style="background-color: rgb(0, 157, 85); opacity: 1;" id="endBG"></div>
+
+        <!-- Copy Text Batch 3 -->
+		<div style="font-size: 20px; opacity: 1;" id="copyC0" class="copyTextEnd"></div>
+		<div style="font-size: 20px; opacity: 1;" id="copyC1" class="copyTextEnd"></div>
+		<div style="font-size: 20px; opacity: 1;" id="copyC2" class="copyTextEnd"></div>
+		<div style="font-size: 20px; opacity: 1;" id="copyC3" class="copyTextEnd">2,500円で</div>
+		<div style="font-size: 20px; opacity: 1;" id="copyC4" class="copyTextEnd">10,000円分の</div>
+		<div style="font-size: 20px; opacity: 1;" id="copyC5" class="copyTextEnd">広告を</div>
+		<div style="font-size: 20px; opacity: 1;" id="copyC6" class="copyTextEnd">掲載しよう。</div>
+
+        <!-- CTA Button -->
+		<div style="opacity: 0; top: 306px; left: 1px;" id="ctaParallelogram" class="sprite ctaPara"></div>
+		<div style="opacity: 0; top: 306px; left: 1px;" id="ctaTriangleLeft" class="sprite ctaTriLeft"></div>
+		<div style="opacity: 0; top: 306px; left: 87px;" id="ctaTriangleRight" class="sprite ctaTriRight"></div>
+		<div style="opacity: 1;" id="ctaRectangle" class="sprite ctaRect"></div>
+		<div id="buttonLabelHolder">
+			<div style="font-size: 16px; opacity: 1;" id="buttonLabel" class="copyTextCTA">今すぐ始める</div>
+		</div>
+
+		<div id="googleLogoWhite" class="logoWhite" style="opacity: 1;"><img src="index_data/logo_white.svg"></div>
+
+        <div id="clickLayer"></div>
+        <div style="display: block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);" id="buttonReplay"></div>
+	</div>
+
+	<!-- GSAP -->
+	<script src="index_data/TweenMax.js"></script>
+	<!-- Studio Enabler -->
+	<script src="index_data/Enabler_01_152.js"></script>
+<!--
+ * Dynamic Content Enable code for Profile: 1050764
+ *
+ * The following code initializes the following dynamic variables for
+ * development testing and live serving of Fields associated to the above profile
+-->
+
+<!-- DynamicContent Start: HTML5 invocation code. -->
+<script type="text/javascript">
+
+// Dynamic Content variables and sample values
+    Enabler.setProfileId(1102375);
+    var devDynamicContent = {};
+
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP= [{}];
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0]._id = 0;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0]._id = 0;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Unique_ID = [1];
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Ad_Group_Dimension = 1;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Ad_Group_Name = "AW - US RH and GA - no AW sign up flow";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Message = "price_nocommitment";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Creative_Target = "r1";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Reporting_Label = "160x600_20622665592_us_price_nocommitment_ggt";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].text_1 = "Want To Grow|Your Business|Online?";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].text_2 = "Get Your|Business|Found Easily|With AdWords!";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].text_3 = "Start Today|And Get|\u0E3F1500|Ad Credit.";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].CTA_Text = "Start Today";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].fontsize = "20|20|20|16";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].BG_Color = "#009d55";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].CSS_Name = "loadsprites_bar_chart.css";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].JS_Name = "icon_bar_chart.js";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Start_Time_Text_2 = 2.0;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Start_Time_Icon_Animation = 0.0;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Start_Time_Wipe = 5.0;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Exit_URL = {};
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Exit_URL.Url = "https://www.google.com/adwords/?channel=gdn-ef&sourceid=awo&subid=";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Sub_ID = "us-en-gdn-aw-r-tgm15";
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Active = true;
+    devDynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0].Default = false;
+    Enabler.setDevDynamicContent(devDynamicContent);
+
+</script>
+
+<!--
+ * You may access the variables in the following manner
+ * AFTER the Studio Enabler is initialized.
+ * var _id = dynamicContent.APAC_GDN_Q4_Tangram_Datasheet_JP_160x600_JP[0]._id;
+ * Note: be sure to use "dynamicContent", not "devDynamicContent"
+ * Note: be sure to use ExitOverride to create your exit URL dynamically; follow the instructions on our Help center: https://support.google.com/richmedia/answer/2664807
+-->
+	<script src="index_data/main.js"></script>
+
+
+<script src="index_data/icon_bar_chart.js" type="text/javascript"></script></body></html>
