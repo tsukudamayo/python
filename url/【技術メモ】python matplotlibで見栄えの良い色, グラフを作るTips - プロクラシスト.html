@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html data-admin-domain="//blog.hatena.ne.jp" data-author="imslotter" data-avail-langs="ja en" data-blog="saleslog.hatenadiary.jp" data-blog-host="saleslog.hatenadiary.jp" data-blog-is-public="1" data-blog-name="プロクラシスト" data-blog-uri="http://www.procrasist.com/" data-blog-uuid="10328749687186447261" data-blogs-uri-base="http://www.procrasist.com" data-brand="pro" data-data-layer="{&quot;hatenablog&quot;:{&quot;pro&quot;:&quot;pro&quot;,&quot;permalink_entry&quot;:{&quot;hour&quot;:&quot;20&quot;,&quot;author_name&quot;:&quot;imslotter&quot;,&quot;date&quot;:&quot;2017-04-24&quot;,&quot;categories&quot;:&quot;\u6280\u8853\u30e1\u30e2\t\u6280\u8853\u30e1\u30e2-python&quot;,&quot;title&quot;:&quot;\u3010\u6280\u8853\u30e1\u30e2\u3011python matplotlib\u3067\u898b\u6804\u3048\u306e\u826f\u3044\u8272, \u30b0\u30e9\u30d5\u3092\u4f5c\u308bTips&quot;,&quot;uri&quot;:&quot;http://www.procrasist.com/entry/matplotlib-visual-tips&quot;},&quot;router_type&quot;:&quot;blogs&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;blog&quot;:{&quot;force_pc_view&quot;:&quot;true&quot;,&quot;entry_show_footer_related_entries&quot;:&quot;true&quot;,&quot;enable_ads&quot;:&quot;false&quot;,&quot;name&quot;:&quot;\u30d7\u30ed\u30af\u30e9\u30b7\u30b9\u30c8&quot;,&quot;enable_keyword_link&quot;:&quot;true&quot;,&quot;owner_name&quot;:&quot;imslotter&quot;,&quot;uri&quot;:&quot;http://www.procrasist.com/&quot;},&quot;brand&quot;:&quot;pro&quot;,&quot;analytics&quot;:{&quot;property_id&quot;:&quot;UA-86908474-1&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;,&quot;brand_property_id&quot;:&quot;&quot;,&quot;separated_property_id&quot;:&quot;UA-29716941-22&quot;},&quot;brand_tracking_category&quot;:&quot;pro&quot;}}" data-device="pc" data-dont-recommend-pro="false" data-globalheader-color="b" data-globalheader-type="pc" data-has-touch-view="1" data-hide-header="1" data-no-suggest-touch-view="1" data-page="entry" data-plus-available="1" data-pro="true" data-router-type="blogs" data-static-domain="https://cdn.blog.st-hatena.com" data-version="a63ca9f033dcc3d3191c9745fba8a52e" itemscope="" itemtype="http://schema.org/Article" data-initial-state="{}" lang="ja"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/notices.asc" async=""></script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  
+
+
+
+  
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=7; IE=9; IE=10; IE=11">
+  <title>【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips - プロクラシスト</title>
+
+  
+  <link rel="canonical" href="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/matplotlib-visual-tips_004.html">
+
+
+
+  
+  
+
+<meta itemprop="name" content="【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips - プロクラシスト">
+
+  <meta itemprop="image" content="https://cdn-ak.f.st-hatena.com/images/fotolife/i/imslotter/20170424/20170424093556.png">
+
+
+  <meta property="og:title" content="【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips - プロクラシスト">
+<meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.procrasist.com/entry/matplotlib-visual-tips">
+
+  <meta property="og:image" content="https://cdn-ak.f.st-hatena.com/images/fotolife/i/imslotter/20170424/20170424093556.png">
+
+    <meta property="og:description" content="matplotlibでも割と綺麗な図を作ることができる。 図示の時に色々と使うテクニックを列挙。 どうぞ皆さんもお使いください 基本の体裁 関数で調整 plt()内の基本オプションで調整 透過度をあげる 漫画風にする 棒グラフに柄を載せる グラデーション用の色を作る グラデーションの作り方 色の参考にcmリスト 王道カラフル系 単色濃淡(っぽい) 温度系 季節の色たち グラデーションにならない系 その他 基本の体裁 まずこのグラフ import numpy as np import matplotlib.pyplot.plt x = np.arange(-np.pi,np.pi,np.pi/5…">
+<meta property="og:site_name" content="プロクラシスト">
+
+  <meta property="article:published_time" content="1493031600">
+
+    <meta property="article:tag" content="技術メモ">
+    <meta property="article:tag" content="技術メモ-python">
+      <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://cdn-ak.f.st-hatena.com/images/fotolife/i/imslotter/20170424/20170424093556.png">
+  <meta name="twitter:title" content="【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips - プロクラシスト">    <meta name="twitter:description" content="matplotlibでも割と綺麗な図を作ることができる。 図示の時に色々と使うテクニックを列挙。 どうぞ皆さんもお使いください 基本の体裁 関数で調整 plt()内の基本オプションで調整 透過度をあげる 漫画風にする 棒グラフに柄を載せる グラデーション用の色を作る グラデーションの作り方 色の参考にcmリスト 王道カ…">  <meta name="twitter:app:name:iphone" content="はてなブログアプリ">
+  <meta name="twitter:app:id:iphone" content="583299321">
+  <meta name="twitter:app:url:iphone" content="hatenablog:///open?uri=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips">  <meta name="twitter:site" content="@hokekiyoo">
+  
+    <meta name="google-site-verification" content="3UDkBafow8_sg5GlME8TIk8cwhHjarzhqwGRIERjhRc">    <meta name="keywords" content="人工知能,ディープラーニング, 強化学習,書評,日記,雑学, 旅, カメラ,雑記">    <meta name="description" content="matplotlibでも割と綺麗な図を作ることができる。 図示の時に色々と使うテクニックを列挙。 どうぞ皆さんもお使いください 基本の体裁 関数で調整 plt()内の基本オプションで調整 透過度をあげる 漫画風にする 棒グラフに柄を載せる グラデーション用の色を作る グラデーションの作り方 色の参考にcmリスト 王道カ…">
+
+  
+<script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/recaptcha__en.js" async="" type="text/javascript"></script><script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/ca-pub-7807841450564484.js"></script><script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/analytics.js" async="" type="text/javascript"></script><script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/gtm.js" async=""></script><script>
+(function() {
+  var html = document.documentElement;
+  if (!html) return;
+  var json = html.getAttribute('data-data-layer');
+  if (!json) return;
+  var value = JSON.parse(json);
+  if (!value) return;
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+  window.dataLayer.push(value);
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P4CXTW');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+  <link rel="shortcut icon" href="https://cdn.image.st-hatena.com/image/favicon/a03d4a455f760725b2eda3fcd3e7347ae29a2fcc/version=1/https%3A%2F%2Fcdn.mogile.archive.st-hatena.com%2Fv1%2Fimage%2Fimslotter%2F316967417475170007.png">
+<link rel="icon" sizes="192x192" href="https://cdn.image.st-hatena.com/image/square/92aacfe3c7419f51a9876f8179d0c57381b17bf3/backend=imagemagick;height=192;version=1;width=192/https%3A%2F%2Fcdn.mogile.archive.st-hatena.com%2Fv1%2Fimage%2Fimslotter%2F316967417475170007.png">
+
+  
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.procrasist.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="http://www.procrasist.com/rss">
+<link rel="alternate" type="application/json+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips&amp;format=json" title="oEmbed Profile of 【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips">
+<link rel="alternate" type="text/xml+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips&amp;format=xml" title="oEmbed Profile of 【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips">
+  
+  <link rel="author" href="http://www.hatena.ne.jp/imslotter/">
+
+
+  
+    <link rel="stylesheet" type="text/css" href="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/blog.css">
+
+    
+  <link rel="stylesheet" type="text/css" href="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/4403f6e8108361afd256cf7c3f870a52e93ee0bb.css">
+  
+
+  
+
+  
+<script> </script>
+
+  
+<style>
+  div#google_afc_user,
+  div.google-afc-user-container,
+  div.google_afc_image,
+  div.google_afc_blocklink {
+      display: block !important;
+  }
+</style>
+
+
+  <meta name="pocket-site-verification" content="acb50b4d7b3d2d6600d74b52e8bbf0">
+<link rel="stylesheet" href="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/font-awesome.css">
+<script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/jquery.js"></script>
+<link href="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/css.css" rel="stylesheet">
+<script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/jquery.html" defer="defer"></script>
+
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/entries.json"></script></head>
+
+  <body class="page-entry enable-top-editarea enable-bottom-editarea category-技術メモ category-技術メモ-python globalheader-off">
+    
+    <div id="header-container">
+     <div id="sp-suggest" style="display: none;"><a id="sp-suggest-link" href="#">スマートフォン用の表示で見る</a></div>
+    </div>
+
+    <div id="globalheader-container" data-brand="hatenablog" style="display: none;">
+  <iframe id="globalheader" allowtransparency="true" frameborder="0" height="37"></iframe>
+</div>
+
+
+    <div id="container">
+      <div id="container-inner">
+        <header class="particles" id="blog-title" data-brand="hatenablog">
+  <div id="blog-title-inner">
+    <div id="blog-title-content">
+      <h1 id="title"><a href="http://www.procrasist.com/">プロクラシスト</a></h1>
+      
+        <h1 id="tmptitle"><a href="http://www.procrasist.com/">PROCRASIST</a></h1><h2 id="blog-description">今日の寄り道 明日の近道</h2>
+      
+    </div>
+  </div>
+</header>
+
+        
+  <div id="top-editarea">
+    <script>
+$(function () {
+  $('#tmptitle').insertBefore('#blog-description');
+});
+</script>
+<div id="titlebar">
+  <label class="tg-right toggle" for="open">
+  </label>
+</div>
+<input id="open" type="checkbox">
+<div id="menu">
+  <div id="menu-title">
+    <h2><a href="http://www.procrasist.com/">PROCRASIST</a></h2>
+    <p>procrasist.com</p>
+  </div>
+  <h2 class="menu-header">Profile</h2>
+  <div id="menu-profile">
+    <div id="profile-left">
+      <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170624134121.png">
+    </div>
+    <div id="profile-right">
+      <h2>ほけきよ</h2>
+    </div>
+    <p>趣味は旅・写真・自転車な、俗世にまみれた技術者
+      かたちあるもの、ないもの問わず、良いものは良い。というスタンスで記事を書いていきます。</p>
+      <div class="follow-btn">
+        <div class="follow-htn flwbtn-menu"><a href="http://blog.hatena.ne.jp/imslotter/www.procrasist.com/subscribe"><span class="htn"><i class="blogicon-hatenablog  follow-icon-menu"></i></span><span class="flwtxt"></span></a></div>
+        <div class="follow-twt flwbtn-menu"><a href="https://twitter.com/hokekiyoo"><i class="fa fa-twitter" aria-hidden="true"></i><span class="flwtxt"></span></a></div>
+        <div class="follow-fdy flwbtn-menu"><a href="https://feedly.com/i/welcome/feed/http://www.procrasist.com/feed"><i class="fa fa-feed" aria-hidden="true"></i><span class="flwtxt"></span></a></div>
+      </div>
+    </div>
+    <h2 class="menu-header">Search</h2>
+    <div id="menu-search">
+      <form class="search-form unedited" role="search" action="http://design-test.hatenadiary.com/search" method="get">
+        <input name="q" class="search-module-input" placeholder="記事を検索" required="" style="background-repeat: repeat; background-image: none; background-position: 0% 0%;" type="text">
+        <input value="検索" class=" search-module-button" type="submit"><i class="fa fa-search menu-searchbtn" aria-hidden="true"></i>
+      </form>
+      
+    </div>
+    <h2 class="menu-header">Categories</h2>
+    <ul>
+    <li><a href="http://www.procrasist.com/archive/category/%E7%90%86%E7%B3%BB%E3%83%8D%E3%82%BF%E3%82%92%E5%85%A8%E5%8A%9B%E3%81%A7">理系ネタを全力で</a></li>
+      <li><a href="http://www.procrasist.com/archive/category/%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2">技術メモ</a></li>
+      <li><a href="http://www.procrasist.com/archive/category/%E3%83%96%E3%83%AD%E3%82%B0%E9%81%8B%E5%96%B6">ブログ運営</a></li>
+      <li><a href="http://www.procrasist.com/archive/category/%E7%94%9F%E6%B4%BB">生活</a></li>
+      <li><a href="http://www.procrasist.com/archive/category/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%83%BB%E7%B4%B9%E4%BB%8B">レビュー・紹介</a></li>
+      <li><a href="http://www.procrasist.com/archive/category/%E6%97%85%E3%81%A8%E5%86%99%E7%9C%9F">旅と写真</a></li>
+      
+    </ul>
+    <br><br><br>
+  </div>
+ 
+  
+  <script type="text/javascript">
+  $(function(){
+    $("#blog-title").addClass('particles');
+    $('.particles').particleground({
+    });
+  });
+  </script>
+  
+  
+  <div id="sns-follow">
+    <div class="sns-hatena sns-btn"><a href="http://blog.hatena.ne.jp/imslotter/www.procrasist.com/subscribe"><i class="sns-htn blogicon-hatenablog"></i></a></div>
+        <div class="sns-twitter sns-btn">
+      <i class="sns-icon fa fa-info" aria-hidden="true"></i></div>
+    <div class="sns-info sns-btn"><a href="https://twitter.com/hokekiyoo"><i class="sns-icon fa fa-twitter" aria-hidden="true"></i></a></div>
+      <div class="sns-push7 sns-btn"><i class="sns-icon fa fa-bolt" aria-hidden="true"></i></div>
+      <div class="sns-feedly sns-btn"><a href="https://feedly.com/i/welcome/feed/http://www.procrasist.com/feed"><i class="sns-icon fa fa-rss" aria-hidden="true"></i></a></div>
+    </div>
+    
+    <nav id="gnav">
+      <div class="gnav-inner" id="menu-scroll">
+        <div class="menu"><a href="http://www.procrasist.com/"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></div>
+        <div class="menu"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> ABOUT</a></div>
+        <div class="menu"><a href="http://www.procrasist.com/archive/category/%E7%90%86%E7%B3%BB%E3%83%8D%E3%82%BF%E3%82%92%E5%85%A8%E5%8A%9B%E3%81%A7"><i class="fa fa-flask" aria-hidden="true"></i> Science</a></div>
+        <div class="menu"><a href="http://www.procrasist.com/archive/category/%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2"><i class="fa fa-wrench" aria-hidden="true"></i> Technology</a></div>
+        <div class="menu"><a href="http://www.procrasist.com/archive/category/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%83%BB%E7%B4%B9%E4%BB%8B"><i class="fa fa-bolt" aria-hidden="true"></i> Review</a></div>
+        <div class="menu"><a href="http://www.procrasist.com/archive/category/%E3%83%96%E3%83%AD%E3%82%B0%E9%81%8B%E5%96%B6"><i class="fa fa-pencil" aria-hidden="true"></i> BLOG</a></div>
+        <div class="menu" id="target"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> CONTACT</a></div>
+      </div>
+    </nav>
+
+<div class="header-info bg"><a href="http://www.procrasist.com/entry/2017/01/07/154441"><b>&gt;&gt; DeepLearning系ライブラリ「Keras」の使い方まとめ</b></a></div>
+
+
+  </div>
+
+
+        
+        
+
+
+
+
+<div id="content" class="hfeed">
+  <div id="content-inner">
+    <div id="wrapper">
+      <div id="main">
+        <div id="main-inner">
+          
+
+
+          
+  
+  <!-- google_ad_section_start -->
+  <!-- rakuten_ad_target_begin -->
+  
+  
+  
+
+  
+
+  
+    
+      
+        <article class="entry hentry js-entry-article date-first autopagerize_page_element chars-3600 words-400 mode-markdown entry-odd" id="entry-10328749687238797546" data-keyword-campaign="" data-uuid="10328749687238797546" data-publication-type="entry">
+  <div class="entry-inner">
+    <header class="entry-header">
+    <div class="entry-date date first">
+    <a href="http://www.procrasist.com/archive/2017/04/24" rel="nofollow">
+      <time pubdate="" datetime="2017-04-24T11:00:00Z" title="2017-04-24T11:00:00Z">
+        <span class="date-year">2017</span><span class="hyphen">-</span><span class="date-month">04</span><span class="hyphen">-</span><span class="date-day">24</span>
+      </time>
+    </a>
+  </div>
+  <h1 class="entry-title">
+  <a href="http://www.procrasist.com/entry/matplotlib-visual-tips" class="entry-title-link bookmark">【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips</a>
+</h1>
+
+  
+  
+
+  <div class="entry-categories categories">
+    
+    <a href="http://www.procrasist.com/archive/category/%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2" class="entry-category-link category-技術メモ">技術メモ</a>
+    
+    <a href="http://www.procrasist.com/archive/category/%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2-python" class="entry-category-link category-技術メモ-python">技術メモ-python</a>
+    
+  </div>
+
+
+  
+  <div class="customized-header">
+    <div class="entry-header-html"><!---スポンサーリンク-->
+<br><center>
+<span style="font-size:60%">
+スポンサーリンク</span><br>
+
+<script async="" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/adsbygoogle.js"></script>
+<!-- procrasist-before_article-responsive -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-7807841450564484" data-ad-slot="4453477852" data-ad-format="auto"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:861px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:861px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:861px;height:90px;" frameborder="0" height="90" width="861"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+
+<script>
+$(function () {
+  $('.shr-footer').insertAfter('.entry-content');
+});
+</script>
+
+<div class="shrbtn">
+<a href="http://b.hatena.ne.jp/entry/http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shgp">
+        <span class="htvcenter" style="line-height: 1.6;">
+  <i class="blogicon-bookmark" style="font-size:22px"></i>
+  </span>
+  <span class="htb-cnt share-text"><i class="fa fa-spinner fa-spin"></i></span>
+</a>
+<!--twitter-->
+<a href="http://twitter.com/intent/tweet?text=%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shtw">
+  <i class="fa fa-twitter"></i>
+    <span class="twt-cnt share-text"><i class="fa fa-spinner fa-spin"></i></span>
+</a>
+<!--facebook-->
+<a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shfb">
+  <i class="fa fa-facebook"></i>
+    <span class="fb-cnt share-text"><i class="fa fa-spinner fa-spin"></i></span>
+</a>
+<a href="http://getpocket.com/edit?url=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shrp7">
+    <i class="fa fa-get-pocket"></i>
+</a>
+<!--feedly-->
+<a href="https://feedly.com/i/welcome/feed/http://www.procrasist.com/feed" target="_blank" class="share_btn shfdly">
+  <i class="fa fa-rss"></i>
+</a>
+</div>  
+
+
+<script>
+	 $(function(){
+		 $(".openBtn").click(function(){
+			 $($(this).next(".textArea")).animate(
+				 {height: "toggle", opacity: "toggle"},
+				 "nomal"
+			 );
+		 });
+	 });
+</script>
+
+
+
+</div>
+  </div>
+
+
+  
+
+</header>
+
+    
+
+    <div class="entry-content">
+  
+    <p>matplotlibでも割と綺麗な図を作ることができる。
+図示の時に色々と使うテクニックを列挙。</p>
+
+<p>どうぞ皆さんもお使いください</p>
+
+<ul class="table-of-contents">
+    <li><a href="#%E5%9F%BA%E6%9C%AC%E3%81%AE%E4%BD%93%E8%A3%81">基本の体裁</a><ul>
+            <li><a href="#%E9%96%A2%E6%95%B0%E3%81%A7%E8%AA%BF%E6%95%B4">関数で調整</a></li>
+            <li><a href="#plt%E5%86%85%E3%81%AE%E5%9F%BA%E6%9C%AC%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E8%AA%BF%E6%95%B4">plt()内の基本オプションで調整</a></li>
+        </ul>
+    </li>
+    <li><a href="#%E9%80%8F%E9%81%8E%E5%BA%A6%E3%82%92%E3%81%82%E3%81%92%E3%82%8B">透過度をあげる</a></li>
+    <li><a href="#%E6%BC%AB%E7%94%BB%E9%A2%A8%E3%81%AB%E3%81%99%E3%82%8B">漫画風にする</a></li>
+    <li><a href="#%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AB%E6%9F%84%E3%82%92%E8%BC%89%E3%81%9B%E3%82%8B">棒グラフに柄を載せる</a></li>
+    <li><a href="#%E3%82%B0%E3%83%A9%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%A8%E3%81%AE%E8%89%B2%E3%82%92%E4%BD%9C%E3%82%8B">グラデーション用の色を作る</a><ul>
+            <li><a href="#%E3%82%B0%E3%83%A9%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9">グラデーションの作り方</a></li>
+            <li><a href="#%E8%89%B2%E3%81%AE%E5%8F%82%E8%80%83%E3%81%ABcm%E3%83%AA%E3%82%B9%E3%83%88">色の参考にcmリスト</a><ul>
+                    <li><a href="#%E7%8E%8B%E9%81%93%E3%82%AB%E3%83%A9%E3%83%95%E3%83%AB%E7%B3%BB">王道カラフル系</a></li>
+                    <li><a href="#%E5%8D%98%E8%89%B2%E6%BF%83%E6%B7%A1%E3%81%A3%E3%81%BD%E3%81%84">単色濃淡(っぽい)</a></li>
+                    <li><a href="#%E6%B8%A9%E5%BA%A6%E7%B3%BB">温度系</a></li>
+                    <li><a href="#%E5%AD%A3%E7%AF%80%E3%81%AE%E8%89%B2%E3%81%9F%E3%81%A1">季節の色たち</a></li>
+                    <li><a href="#%E3%82%B0%E3%83%A9%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84%E7%B3%BB">グラデーションにならない系</a></li>
+                    <li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96">その他</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h2 id="基本の体裁">基本の体裁</h2>
+
+<p>まずこのグラフ</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink=""><span class="synPreProc">import</span> numpy <span class="synStatement">as</span> np
+<span class="synPreProc">import</span> matplotlib.pyplot.plt
+x = np.arange(-np.pi,np.pi,np.pi/<span class="synConstant">50</span>)
+plt.axvspan(-<span class="synConstant">0.5</span>*np.pi,<span class="synConstant">0.5</span>*np.pi,color=<span class="synConstant">"red"</span>)
+plt.plot(x,np.sin(x))
+plt.show()
+</pre>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423210018.png" alt="f:id:imslotter:20170423210018p:plain" title="f:id:imslotter:20170423210018p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<p>どぎついし、端が切れているし、イマイチ。この辺の体裁を整えていく</p>
+
+<h3 id="関数で調整">関数で調整</h3>
+
+<table>
+<thead>
+<tr>
+<th>変えたい</th>
+<th>関数</th>
+<th>選択肢</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x,yの範囲</td>
+<td><code>plt.xlim(a,b)</code> <br><code>plt.ylim(a,b)</code></td>
+<td>範囲を実数値で</td>
+</tr>
+<tr>
+<td>タイトル</td>
+<td><code>plt.title("hoge")</code></td>
+<td>タイトルをstr型で</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><code>plt.legend(loc=2)</code></p>
+
+<p>などとするとタイトルやラベルが表示される。<code>loc</code>オプションはラベルの場所を決める。グラフの第一から<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C2%E8%BB%CD%BE%DD%B8%C2">第四象限</a>と場所が対応。<code>loc="lower right"</code>などという書き方も可能</p>
+
+<h3 id="plt内の基本オプションで調整"><code>plt()</code>内の基本オプションで調整</h3>
+
+<table>
+<thead>
+<tr>
+<th>変えたい</th>
+<th>オプション</th>
+<th>選択肢</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>色(デフォルト)</td>
+<td><code>color="red"</code>など</td>
+<td>red, green, blue, cyan, magenta, yellow, black</td>
+</tr>
+<tr>
+<td>色(自分で)</td>
+<td><code>color="#010101"</code>など</td>
+<td><a href="https://www.materialui.co/">Materialui</a> : 最近はやりのマテリアルデザイン<br>などのカラーコード載っている。<br>クリックして<code>ctrl+C</code>でコピーする。<br>色選びの参考に。</td>
+</tr>
+<tr>
+<td>太さ</td>
+<td><code>lw</code></td>
+<td>整数値(大きいほど太い)</td>
+</tr>
+<tr>
+<td>マーカー</td>
+<td><code>marker</code></td>
+<td>“o"や"x"などだけではなく、<br>様々なマーカーが用意されている。<br><a href="http://ailaby.com/plot_marker/">このサイト</a>が詳しい</td>
+</tr>
+<tr>
+<td>マーカーサイズ</td>
+<td><code>markersize</code></td>
+<td>整数値(大きいほど大きい)</td>
+</tr>
+<tr>
+<td>ラベル</td>
+<td><code>label</code></td>
+<td>グラフを表すラベル。<code>$$</code>で囲むと数式もOK</td>
+</tr>
+<tr>
+<td>透過度</td>
+<td><code>alpha</code></td>
+<td>0≦alpha≦1, 大きいほど透明度が高い</td>
+</tr>
+</tbody>
+</table>
+
+
+<pre class="code lang-python" data-lang="python" data-unlink="">x = np.arange(-np.pi,np.pi,np.pi/<span class="synConstant">50</span>)
+plt.axvspan(-<span class="synConstant">0.5</span>*np.pi,<span class="synConstant">0.5</span>*np.pi,alpha=<span class="synConstant">1.0</span>,color=<span class="synConstant">"#ffcdd2"</span>,label=<span class="synConstant">"$(-\pi/2, \pi/2)$"</span>)
+plt.plot(x,np.sin(x),lw=<span class="synConstant">3</span>,color=<span class="synConstant">"#03A9F4"</span>, label=<span class="synConstant">"$y = \sin{x}$"</span>)
+plt.xlim(-np.pi,np.pi)
+plt.ylim(-<span class="synConstant">1</span>,<span class="synConstant">1</span>)
+plt.title(<span class="synConstant">"modification"</span>)
+plt.legend(loc=<span class="synConstant">"lower right"</span>)
+plt.savefig(<span class="synConstant">"graph_modifcation.png"</span>)
+</pre>
+
+
+<p>こんな感じになる</p>
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423210039.png" alt="f:id:imslotter:20170423210039p:plain" title="f:id:imslotter:20170423210039p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<h2 id="透過度をあげる">透過度をあげる</h2>
+
+<p>線が重なったり、点が密集した時は、先述の<code>alpha</code>オプションを使って透明度をあげてやると分布もわかりやすく見やすい図になる。
+例えば、x,yに<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C0%B5%B5%AC%CA%AC%C9%DB">正規分布</a>で乱数を発生させたものを散布図でプロットする</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">x = np.random.normal(<span class="synConstant">0</span>,<span class="synConstant">1</span>,<span class="synConstant">1000</span>)
+y = np.random.normal(<span class="synConstant">0</span>,<span class="synConstant">1</span>,<span class="synConstant">1000</span>)
+plt.figure(figsize=(<span class="synConstant">10</span>,<span class="synConstant">5</span>))
+plt.subplot(<span class="synConstant">121</span>)
+plt.scatter(x, y,marker=<span class="synConstant">"o"</span>)
+plt.subplot(<span class="synConstant">122</span>)
+plt.scatter(x, y, marker=<span class="synConstant">"o"</span>,alpha=<span class="synConstant">0.2</span>)
+plt.show()
+</pre>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213934.png" alt="f:id:imslotter:20170423213934p:plain" title="f:id:imslotter:20170423213934p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<p>左のほうが綺麗で見やすい(はず)</p>
+
+<div class="insentense-adsense">
+<center>
+<script async="" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/adsbygoogle.js"></script>
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-7807841450564484" data-ad-slot="7615643458" data-ad-format="auto"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:861px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:861px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;width:861px;height:90px;" frameborder="0" height="90" width="861"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<p><span style="font-size:60%">スポンサーリンク</span></p>
+</center>
+</div><h2 id="漫画風にする">漫画風にする</h2>
+
+<pre class="code lang-python" data-lang="python" data-unlink=""><span class="synPreProc">import</span> matplotlib.pyplot <span class="synStatement">as</span> plt
+plt.xkcd()
+</pre>
+
+
+<p>とすればOK
+詳しくはこちら</p>
+
+<div class="emphasize-link">
+
+<iframe src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/python-xkcd.html" title="【xkcd】pythonコードにたった一行で漫画のようなグラフを作る！ - プロクラシスト" class="embed-card embed-blogcard" scrolling="no" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" frameborder="0"></iframe><cite class="hatena-citation"><a href="http://www.procrasist.com/entry/python-xkcd">www.procrasist.com</a></cite>
+
+</div>
+
+
+<h2 id="棒グラフに柄を載せる">棒グラフに柄を載せる</h2>
+
+<p>これもちょっとしたテクニック。
+棒グラフを書く<code>plt.bar()</code>のオプション<code>hatch</code>を使う</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink="">t = <span class="synIdentifier">range</span>(<span class="synConstant">10</span>)
+y1 = [x <span class="synStatement">for</span> x <span class="synStatement">in</span>  <span class="synIdentifier">range</span>(<span class="synIdentifier">len</span>(t))]
+y2 = [<span class="synConstant">1.0</span>*x**<span class="synConstant">2</span>/<span class="synConstant">9</span> <span class="synStatement">for</span> x <span class="synStatement">in</span>  <span class="synIdentifier">range</span>(<span class="synIdentifier">len</span>(t))]
+w = <span class="synConstant">0.4</span> <span class="synComment"># 棒の幅</span>
+tick_interval = <span class="synConstant">2</span> <span class="synComment">#目盛りの間隔</span>
+left1 = [x-w/<span class="synConstant">2</span> <span class="synStatement">for</span> x <span class="synStatement">in</span> <span class="synIdentifier">range</span>(<span class="synIdentifier">len</span>(t))]
+left2 = [x+w/<span class="synConstant">2</span> <span class="synStatement">for</span> x <span class="synStatement">in</span> <span class="synIdentifier">range</span>(<span class="synIdentifier">len</span>(t))] <span class="synComment"># 棒の幅分ずらす</span>
+labels = [year <span class="synStatement">for</span> i,year <span class="synStatement">in</span> <span class="synIdentifier">enumerate</span>(t) <span class="synStatement">if</span> i%tick_interval == <span class="synConstant">0</span>] <span class="synComment">#目盛りの設定</span>
+
+plt.figure(figsize=(<span class="synConstant">16</span>,<span class="synConstant">8</span>))
+plt.subplot(<span class="synConstant">121</span>)
+plt.bar(left1, y1 , align=<span class="synConstant">'center'</span>,width=w)
+plt.bar(left2, y2, align=<span class="synConstant">'center'</span>,width=w)
+plt.xticks(<span class="synIdentifier">range</span>(<span class="synConstant">0</span>,<span class="synIdentifier">len</span>(t),tick_interval),labels)
+plt.legend(loc=<span class="synConstant">2</span>)
+plt.subplot(<span class="synConstant">221</span>)
+plt.bar(left1, y1 , align=<span class="synConstant">'center'</span>,width=w)
+plt.bar(left2, y2, align=<span class="synConstant">'center'</span>,width=w)
+plt.subplot(<span class="synConstant">222</span>)
+plt.bar(left1, y1 , align=<span class="synConstant">'center'</span>,width=w,color=<span class="synConstant">"#404040"</span>)
+plt.bar(left2, y2, align=<span class="synConstant">'center'</span>,width=w,color=<span class="synConstant">"#808080"</span>,hatch=<span class="synConstant">"/"</span>)
+plt.subplot(<span class="synConstant">223</span>)
+<span class="synComment"># 数を増やすと密になる</span>
+<span class="synComment"># "//"以外にも色々な模様が用意されている</span>
+plt.bar(left1, y1 , align=<span class="synConstant">'center'</span>,width=w,color=<span class="synConstant">"#808080"</span>,hatch=<span class="synConstant">"////"</span>)
+plt.bar(left2, y2, align=<span class="synConstant">'center'</span>,width=w,color=<span class="synConstant">"#909090"</span>,hatch=<span class="synConstant">"xx"</span>)
+plt.subplot(<span class="synConstant">224</span>)
+plt.bar(left1, y1 , align=<span class="synConstant">'center'</span>,width=w,color=<span class="synConstant">"#808080"</span>,hatch = <span class="synConstant">"--"</span>)
+plt.bar(left2, y2, align=<span class="synConstant">'center'</span>,width=w,color=<span class="synConstant">"#909090"</span>,hatch=<span class="synConstant">"oo"</span>)
+plt.xticks(<span class="synIdentifier">range</span>(<span class="synConstant">0</span>,<span class="synIdentifier">len</span>(t),tick_interval),labels)
+plt.legend(loc=<span class="synConstant">2</span>)
+</pre>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213847.png" alt="f:id:imslotter:20170423213847p:plain" title="f:id:imslotter:20170423213847p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<h2 id="グラデーション用の色を作る">グラデーション用の色を作る</h2>
+
+<h3 id="グラデーションの作り方">グラデーションの作り方</h3>
+
+<ul>
+<li>いちいち変えるの面倒だけどパラメータが多い</li>
+<li>グラデーション的に変えたい</li>
+</ul>
+
+
+<p>そういう時は<code>import matplotlib.cm as cm</code>を使う</p>
+
+<pre class="code lang-python" data-lang="python" data-unlink=""><span class="synPreProc">import</span> matplotlib.pyplot <span class="synStatement">as</span> plt
+<span class="synPreProc">import</span> matplotlib.cm <span class="synStatement">as</span> cm
+<span class="synPreProc">import</span> numpy <span class="synStatement">as</span> np
+x =np.linspace(<span class="synConstant">0</span>,<span class="synConstant">2</span>*np.pi,<span class="synConstant">100</span>)
+<span class="synStatement">for</span> i <span class="synStatement">in</span> <span class="synIdentifier">range</span>(<span class="synConstant">30</span>):   
+    plt.plot(x,i*np.sin(x),color=cm.hsv(i/<span class="synConstant">30.0</span>))
+plt.xlim(<span class="synConstant">0</span>,<span class="synConstant">2</span>*np.pi)
+plt.show()
+</pre>
+
+
+<h3 id="色の参考にcmリスト">色の参考にcmリスト</h3>
+
+<ul>
+<li>さっきの<code>cm.hoge</code>の所を色々変えてみたものを図示</li>
+<li>[0,1]のグラデーションになっていて，一番平らなのが0,盛り上がっているのが1</li>
+</ul>
+
+
+<p>可視化の参考にどうぞ</p>
+
+<h4 id="王道カラフル系">王道カラフル系</h4>
+
+<ul>
+<li><a class="keyword" href="http://d.hatena.ne.jp/keyword/hsv">hsv</a></li>
+<li>jet</li>
+<li>spectral
+<span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213408.png" alt="f:id:imslotter:20170423213408p:plain" title="f:id:imslotter:20170423213408p:plain" class="hatena-fotolife" itemprop="image"></span></li>
+</ul>
+
+
+<h4 id="単色濃淡っぽい">単色濃淡(っぽい)</h4>
+
+<ul>
+<li>bone</li>
+<li>gray</li>
+<li>pink</li>
+<li>copper</li>
+</ul>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213526.png" alt="f:id:imslotter:20170423213526p:plain" title="f:id:imslotter:20170423213526p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<h4 id="温度系">温度系</h4>
+
+<ul>
+<li>cool</li>
+<li>hot</li>
+</ul>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213543.png" alt="f:id:imslotter:20170423213543p:plain" title="f:id:imslotter:20170423213543p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<h4 id="季節の色たち">季節の色たち</h4>
+
+<ul>
+<li>spring</li>
+<li>summer</li>
+<li>autumn</li>
+<li>winter</li>
+</ul>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213600.png" alt="f:id:imslotter:20170423213600p:plain" title="f:id:imslotter:20170423213600p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<h4 id="グラデーションにならない系">グラデーションにならない系</h4>
+
+<ul>
+<li>flag</li>
+<li>prism</li>
+</ul>
+
+
+<p><span itemscope="" itemtype="http://schema.org/Photograph"><img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/20170423213616.png" alt="f:id:imslotter:20170423213616p:plain" title="f:id:imslotter:20170423213616p:plain" class="hatena-fotolife" itemprop="image"></span></p>
+
+<h4 id="その他">その他</h4>
+
+<p><a href="http://matplotlib.org/examples/color/colormaps_reference.html">公式HP</a></p>
+
+  
+</div>
+
+    
+  <footer class="entry-footer">
+    
+    <p class="entry-footer-section">
+  <span class="author vcard"><span class="fn" data-load-nickname="1" data-user-name="imslotter">imslotter</span></span>
+  <span class="entry-footer-time"><a href="http://www.procrasist.com/entry/matplotlib-visual-tips"><time data-relative="" datetime="2017-04-24T11:00:00Z" title="2017-04-24T11:00:00Z" pubdate="" class="updated">131日前</time></a></span>
+</p>
+
+    
+  <div class="hatena-star-container">
+  <span class="hatena-star-comment-container"><img class="hatena-star-comment-button" style="cursor: pointer; margin: 0px; padding: 0px; border: medium none; vertical-align: middle; display: none;" title="Comments" alt="Comments" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/comment.gif"></span><span class="hatena-star-star-container"><img class="hatena-star-add-button" style="cursor: pointer; margin: 0px 3px; padding: 0px; border: medium none; vertical-align: middle;" title="Add Star" alt="Add Star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/hatena-star-add-button.png"><a href="http://blog.hatena.ne.jp/halynsmak/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_008.gif"><img title="" alt="halynsmak" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/taguchikun/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile.gif"><img title="" alt="taguchikun" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/taguchikun/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile.gif"><img title="" alt="taguchikun" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/costakun/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_003.gif"><img title="" alt="costakun" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/costakun/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_003.gif"><img title="" alt="costakun" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/n2a5o2c0/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_006.gif"><img title="" alt="n2a5o2c0" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/quanon/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_004.gif"><img title="" alt="quanon" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/hism0114/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_005.gif"><img title="" alt="hism0114" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/hism0114/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_005.gif"><img title="" alt="hism0114" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/s10209jp/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_009.gif"><img title="" alt="s10209jp" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/lbblue/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_002.gif"><img title="" alt="lbblue" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/lbblue/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_002.gif"><img title="" alt="lbblue" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a><a href="http://blog.hatena.ne.jp/lbblue/"><span class="hatena-big-star-star-container"><img style="padding: 0px; border: medium none;" class="hatena-star-user" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_002.gif"><img title="" alt="lbblue" style="padding: 0px; border: medium none;" class="hatena-star-star" tabindex="0" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/star.gif"></span></a></span></div>
+  <div class="hatena-star-metadata" style="display: none">
+    <a class="hatena-star-permalink" href="http://www.procrasist.com/entry/matplotlib-visual-tips">【技術メモ】python matplotlibで見栄えの良い色, グラフを作るTips</a>
+  </div>
+
+
+    
+<div class="social-buttons">
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+    
+
+    <div class="customized-footer">
+      
+
+        
+
+        
+
+          <div class="entry-footer-modules" id="entry-footer-secondary-modules">      
+<div class="hatena-module hatena-module-related-entries">
+  <div class="hatena-module-title">
+    関連記事
+  </div>
+  <div class="hatena-module-body">
+    <ul class="related-entries hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.procrasist.com/entry/python-blog-optimization">
+  <img alt="【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_006.jpg" class="urllist-image related-entries-image" title="【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.procrasist.com/archive/2017/07/08" rel="nofollow">
+    <time pubdate="" datetime="2017-07-08T01:01:00Z" title="2017-07-08T01:01:00Z">
+      2017-07-08
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.procrasist.com/entry/python-blog-optimization" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">こんにちは、ほけきよです。 ここ数回に分けて書いた『面倒がす…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.procrasist.com/entry/link-network">
+  <img alt="SEO対策！自分のブログの内部リンクを自動で可視化する" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3.png" class="urllist-image related-entries-image" title="SEO対策！自分のブログの内部リンクを自動で可視化する" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.procrasist.com/archive/2017/07/04" rel="nofollow">
+    <time pubdate="" datetime="2017-07-04T11:16:06Z" title="2017-07-04T11:16:06Z">
+      2017-07-04
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.procrasist.com/entry/link-network" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">SEO対策！自分のブログの内部リンクを自動で可視化する</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">こんにちは！ほけきよです。 今日は自動化第三弾！！ SEO対策っ…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.procrasist.com/entry/einsum">
+  <img alt="【einsum】アインシュタインの縮約記法のように使えるnumpyの関数。性能と使い方を解説。" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_005.png" class="urllist-image related-entries-image" title="【einsum】アインシュタインの縮約記法のように使えるnumpyの関数。性能と使い方を解説。" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.procrasist.com/archive/2017/05/08" rel="nofollow">
+    <time pubdate="" datetime="2017-05-08T12:06:00Z" title="2017-05-08T12:06:00Z">
+      2017-05-08
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.procrasist.com/entry/einsum" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">【einsum】アインシュタインの縮約記法のように使えるnumpyの関数。性能と使い方を解説。</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">こんにちは、ほけきよです。 大学で物理*1を嗜んだ方ならわかる…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.procrasist.com/entry/savings-data-analysis">
+  <img alt="貯金の平均820万なのに何で中央値が20万なの？話題の貯蓄額データを科学者が本気で分析する" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_004.png" class="urllist-image related-entries-image" title="貯金の平均820万なのに何で中央値が20万なの？話題の貯蓄額データを科学者が本気で分析する" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.procrasist.com/archive/2017/04/18" rel="nofollow">
+    <time pubdate="" datetime="2017-04-18T11:02:00Z" title="2017-04-18T11:02:00Z">
+      2017-04-18
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.procrasist.com/entry/savings-data-analysis" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">貯金の平均820万なのに何で中央値が20万なの？話題の貯蓄額データを科学者が本気で分析する</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">こんにちは、ほけきよです！！ こんなニュースが話題になりまし…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://www.procrasist.com/entry/bookmark-visualize">
+  <img alt="はてブ情報をpythonで可視化できるようにしたよ！" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_008.png" class="urllist-image related-entries-image" title="はてブ情報をpythonで可視化できるようにしたよ！" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://www.procrasist.com/archive/2017/04/09" rel="nofollow">
+    <time pubdate="" datetime="2017-04-09T10:00:00Z" title="2017-04-09T10:00:00Z">
+      2017-04-09
+    </time>
+  </a>
+</div>
+
+          <a href="http://www.procrasist.com/entry/bookmark-visualize" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">はてブ情報をpythonで可視化できるようにしたよ！</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">こんにちは！ほけきよです！ はてなブログをしている皆さんなら…</div>
+      </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+  </div>
+        
+  <div class="entry-footer-html"><!--本文の中にぶち込む広告-->
+<script>
+/*
+* AdSense Filter v1.0.0
+* Date: 2014-12-10
+* Copyright (c) 2014 http://hapilaki.hateblo.jp/
+* Released under the MIT license:
+* http://opensource.org/licenses/mit-license.php
+*/
+noAdsTag="広告不要"; //広告を設置しないタグを指定
+var pageTag=document.getElementById("body");
+function adsFilter(){
+if(pageTag.getAttribute("class").indexOf("category-"+noAdsTag)!=-1){
+document.write('<!--');
+}
+}
+adsFilter();
+</script>
+ 
+<script>
+var adsenseCode = (function () {/*
+<center>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></scrip>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7807841450564484"
+     data-ad-slot="7615643458"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</scrip>
+<p><span style="font-size:60%">スポンサーリンク</span></p>
+</center>
+*/}).toString().match(/\/\*([^]*)\*\//)[1].replace(/scrip>/g, 'script>');
+addEventListener("DOMContentLoaded", function() {
+var $target = $('.entry-content h2,h3');
+$target.eq(Math.floor($target.size() / 2)).before($('.insentense-adsense'));
+$('.insentense-adsense').html(adsenseCode);
+}, false);
+</script>
+
+<!-- in-article-responsive -->
+
+
+<!--スポンサーリンク-->
+<center>
+<span style="font-size:80%">スポンサーリンク</span><br>
+
+<script async="" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/adsbygoogle.js"></script>
+<!-- procrasist-after_article-336×280 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-7807841450564484" data-ad-slot="4355746251"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:336px;height:280px;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+
+<div class="shrbtn shr-footer">
+    
+    <!--googleplus-->
+
+<a href="http://b.hatena.ne.jp/entry/http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shgp">
+    
+        <span class="htvcenter" style="line-height: 1.6;">
+  <i class="blogicon-bookmark" style="font-size:22px"></i>
+  
+  </span>
+  <span class="htb-cnt share-text"><i class="fa fa-spinner fa-spin"></i></span>
+</a>
+<!--twitter-->
+<a href="http://twitter.com/intent/tweet?text=%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shtw">
+  <i class="fa fa-twitter"></i>
+    <span class="twt-cnt share-text"><i class="fa fa-spinner fa-spin"></i></span>
+</a>
+<!--facebook-->
+<a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shfb">
+  <i class="fa fa-facebook"></i>
+    <span class="fb-cnt share-text"><i class="fa fa-spinner fa-spin"></i></span>
+</a>
+<a href="http://getpocket.com/edit?url=http%3A%2F%2Fwww.procrasist.com%2Fentry%2Fmatplotlib-visual-tips" class="share_btn shrp7">
+    <i class="fa fa-get-pocket"></i>
+</a>
+<!--feedly-->
+<a href="https://feedly.com/i/welcome/feed/http://www.procrasist.com/feed" target="_blank" class="share_btn shfdly">
+  <i class="fa fa-rss"></i>
+</a>
+
+</div>  
+
+
+<div class="hatena-module hatena-module-html shr-footer">
+    <br><br>
+    <div class="hatena-module-title">PROCRASIST をフォローする</div>
+  <div class="hatena-module-body">
+    
+<div class="follow-btn">
+
+<div class="follow-htn flwbtn"><a href="http://blog.hatena.ne.jp/imslotter/www.procrasist.com/subscribe"><span class="htn"><i class="blogicon-hatenablog  follow-icon"></i></span><span class="flwtxt"> Hatena</span></a></div>
+<div class="follow-twt flwbtn"><a href="https://twitter.com/hokekiyoo"><i class="fa fa-twitter" aria-hidden="true"></i><span class="flwtxt"> Twitter</span></a></div>
+<div class="follow-fdy flwbtn"><a href="https://feedly.com/i/welcome/feed/http://www.procrasist.com/feed"><i class="fa fa-feed" aria-hidden="true"></i><span class="flwtxt"> Feedly</span></a></div>
+</div>
+  </div>
+</div>
+
+
+<script>
+//クリックすると表示される目次
+$(function(){
+    var $Contents = $(".table-of-contents")
+    $($Contents).before('<div class="shwbtn">目次をみる</div>');
+    $(".shwbtn").click(function(){
+        var $this = $(this);
+        if($Contents.css('display') == 'none'){
+            $Contents.slideDown(400),
+            $this.text("目次を隠す");
+        }else{
+            $Contents.slideUp(400),
+            $this.text("目次をみる")
+        };
+    });
+});
+</script>
+
+
+
+<script>
+/* ### FaceBookシェア数取得 ### */
+function get_cntfb(url, selcter) {
+  jQuery.ajax({
+    url:'https://graph.facebook.com/',
+    dataType:'jsonp',
+    data:{id:url},
+    success:function(res){
+      jQuery( selcter ).text( res.share.share_count || 0 );
+    },
+    error:function(){
+      jQuery( selcter ).text('0');
+    }
+  });
+}
+/* ### はてブシェア数取得 ### */
+function get_cnthtb(url, selcter) {
+  jQuery.ajax({
+    url:'http://api.b.st-hatena.com/entry.count?callback=?',
+    dataType:'jsonp',
+    data:{url:url},
+    success:function(res){
+      jQuery( selcter ).text( res || 0 );
+    },
+    error:function(){
+      jQuery( selcter ).text('0');
+    }
+  });
+}
+
+function get_cnttwt(url, selcter) {
+  jQuery.ajax({
+  url:'https://jsoon.digitiminimi.com/twitter/count.json',
+  dataType:'jsonp',
+  data:{
+    url:url
+  },
+  success:function(res){
+    jQuery( selcter ).text( res.count || 0 );
+  },
+  error:function(){
+    jQuery( selcter ).text('0');
+  }
+  });
+}
+
+jQuery(function(){
+  get_cntfb('http://www.procrasist.com/entry/matplotlib-visual-tips', '.fb-cnt');
+  get_cnthtb('http://www.procrasist.com/entry/matplotlib-visual-tips', '.htb-cnt');
+   get_cnttwt('http://www.procrasist.com/entry/matplotlib-visual-tips', '.twt-cnt');
+});
+
+
+</script>
+
+</div>
+
+
+      
+    </div>
+    
+  <div class="comment-box">
+    
+    <ul class="comment">
+      <li class="read-more-comments" style="display: none;"><a>もっと読む</a></li>
+    </ul>
+    
+      <a style="display: none;" class="leave-comment-title">コメントを書く</a>
+    
+  </div>
+
+  </footer>
+
+  </div>
+</article>
+
+      
+      
+    
+  
+
+  
+  <!-- rakuten_ad_target_end -->
+  <!-- google_ad_section_end -->
+  
+  
+  
+  <div class="pager pager-permalink permalink">
+    
+      
+      <span class="pager-prev">
+        <a href="http://www.procrasist.com/entry/hitachi-nemophila" rel="prev">
+          <span class="pager-arrow">« </span>
+          美しすぎる青の絨毯、ひたち海浜公園の『…
+        </a>
+      </span>
+    
+    
+      
+      <span class="pager-next">
+        <a href="http://www.procrasist.com/entry/hatebu-life" rel="next">
+          はてブの理不尽にむせび泣きながら色々な…
+          <span class="pager-arrow"> »</span>
+        </a>
+      </span>
+    
+  </div>
+
+
+  
+
+
+
+        </div>
+      </div>
+
+      <aside id="box1">
+  <div id="box1-inner">
+  </div>
+</aside>
+
+    </div><!-- #wrapper -->
+
+    
+<aside id="box2">
+  
+  <div id="box2-inner">
+    
+      
+
+<div class="hatena-module hatena-module-profile">
+  <div class="hatena-module-title">
+    プロフィール
+  </div>
+  <div class="hatena-module-body">
+    
+    <a href="http://www.procrasist.com/about" class="profile-icon-link">
+      <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/profile_007.gif" alt="id:imslotter" class="profile-icon">
+    </a>
+    
+
+    
+    <span class="id">
+      <a href="http://www.procrasist.com/about" class="hatena-id-link"><span data-load-nickname="1" data-user-name="imslotter">id:imslotter</span></a>
+      
+  
+    
+    
+      <a href="http://blog.hatena.ne.jp/guide/pro" title="はてなブログPro"><i class="blog-sprite-pro"></i></a>
+    
+  
+
+
+    </span>
+    
+
+    
+
+    
+    <div class="profile-description">
+      <p>Procrastination(回り道)<br>
+をしたあなたが、来てよかったなと<br>
+知恵や活力を得て帰っていく。<br>
+そんなブログを目指します。</p><p>お仕事のご依頼や質問はコチラへどうぞ</p><p>imslotter1👶gmail.com<br>
+※👶を@に変えてクダサイ</p>
+
+    </div>
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+  <div class="hatena-module-body">
+    
+<div class="follow-btn">
+
+<div class="follow-htn flwbtn"><a href="http://blog.hatena.ne.jp/imslotter/www.procrasist.com/subscribe"><span class="htn"><i class="blogicon-hatenablog  follow-icon"></i></span><span class="flwtxt"> Hatena</span></a></div>
+<div class="follow-twt flwbtn"><a href="https://twitter.com/hokekiyoo"><i class="fa fa-twitter" aria-hidden="true"></i><span class="flwtxt"> Twitter</span></a></div>
+<div class="follow-fdy flwbtn"><a href="https://feedly.com/i/welcome/feed/http://www.procrasist.com/feed"><i class="fa fa-feed" aria-hidden="true"></i><span class="flwtxt"> Feedly</span></a></div>
+</div>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-search-box">
+  <div class="hatena-module-title">
+    検索
+  </div>
+  <div class="hatena-module-body">
+    <form class="search-form" role="search" action="http://www.procrasist.com/search" method="get">
+  <input name="q" class="search-module-input" placeholder="記事を検索" required="" type="text">
+  <input value="検索" class="search-module-button" type="submit">
+</form>
+
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+  <div class="hatena-module-body">
+    <div class="hatena-module-title2">
+<span class="tab active">新着順</span>
+<span class="tab">はてブ順</span>
+<span class="tab">注目順</span>
+</div>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-recent-entries ">
+  <div class="hatena-module-title">
+    <a href="http://www.procrasist.com/archive">
+      最新記事
+    </a>
+  </div>
+  <div class="hatena-module-body">
+    <ul class="recent-entries hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+                      <a class="urllist-image-link recent-entries-image-link" href="http://www.procrasist.com/entry/science-literacy">
+  <img alt="数字に騙されるな！リテラシーを身につけるための事例5選" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3.jpg" class="urllist-image recent-entries-image" title="数字に騙されるな！リテラシーを身につけるための事例5選" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/science-literacy" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">数字に騙されるな！リテラシーを身につけるための事例5選</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+                      <a class="urllist-image-link recent-entries-image-link" href="http://www.procrasist.com/entry/notube">
+  <img alt="【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_002.png" class="urllist-image recent-entries-image" title="【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/notube" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+                      <a class="urllist-image-link recent-entries-image-link" href="http://www.procrasist.com/entry/homerun-2017">
+  <img alt="【ホームラン連発！】甲子園第99回大会のホームラン記録をまとめたよ" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_005.jpg" class="urllist-image recent-entries-image" title="【ホームラン連発！】甲子園第99回大会のホームラン記録をまとめたよ" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/homerun-2017" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【ホームラン連発！】甲子園第99回大会のホームラン記録をまとめたよ</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+                      <a class="urllist-image-link recent-entries-image-link" href="http://www.procrasist.com/entry/every-opinion-worse">
+  <img alt="【図解】なぜみんなの意見を取り入れた資料はダメになるのか" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_003.png" class="urllist-image recent-entries-image" title="【図解】なぜみんなの意見を取り入れた資料はダメになるのか" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/every-opinion-worse" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【図解】なぜみんなの意見を取り入れた資料はダメになるのか</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item recent-entries-item">
+      <div class="urllist-item-inner recent-entries-item-inner">
+        
+                      <a class="urllist-image-link recent-entries-image-link" href="http://www.procrasist.com/entry/kibana-elasticsearch-python">
+  <img alt="【導入編】elasticsearch-kibana-pythonでオシャレな可視化" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3.JPG" class="urllist-image recent-entries-image" title="【導入編】elasticsearch-kibana-pythonでオシャレな可視化" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/kibana-elasticsearch-python" class="urllist-title-link recent-entries-title-link  urllist-title recent-entries-title">【導入編】elasticsearch-kibana-pythonでオシャレな可視化</a>
+
+
+          
+          
+
+                </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-entries-access-ranking" data-count="5" data-source="total_bookmark" data-enable_customize_format="0" data-display_entry_category="0" data-display_entry_image="1" data-display_entry_image_size_width="70" data-display_entry_image_size_height="70" data-display_entry_body_length="0" data-display_entry_date="0" data-display_entry_title_length="20" data-restrict_entry_title_length="0" data-display_bookmark_count="1">
+  <div class="hatena-module-title">
+    
+      <a href="http://b.hatena.ne.jp/entrylist?url=http%3A%2F%2Fwww.procrasist.com%2F&amp;sort=count">はてブ順</a>
+    
+  </div>
+  <div class="hatena-module-body">
+    
+  <ul class="entries-access-ranking hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-1">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/physics-math-web">
+  <img alt="大学の数学/物理を無料で学べるおすすめサイト・サービス6選" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_002.jpg" class="urllist-image entries-access-ranking-image" title="大学の数学/物理を無料で学べるおすすめサイト・サービス6選" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/physics-math-web" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">大学の数学/物理を無料で学べるおすすめサイト・サービス6選</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/physics-math-web" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/physics-math-web.gif" alt="はてなブックマーク - 大学の数学/物理を無料で学べるおすすめサイト・サービス6選">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-2">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/python-blog-optimization">
+  <img alt="【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_003.jpg" class="urllist-image entries-access-ranking-image" title="【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/python-blog-optimization" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/python-blog-optimization" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/python-blog-optimization.gif" alt="はてなブックマーク - 【コードで一発】ブログ最適化/SEO対策で面倒なことは全てPythonにやらせよう">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-3">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/2017/01/07/154441">
+  <img alt="DeepLearning系ライブラリ、Kerasがあまりにも便利だったので使い方メモ" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_002.png" class="urllist-image entries-access-ranking-image" title="DeepLearning系ライブラリ、Kerasがあまりにも便利だったので使い方メモ" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/2017/01/07/154441" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">DeepLearning系ライブラリ、Kerasがあまりにも便利だったので使い方メモ</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/2017/01/07/154441" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/154441.gif" alt="はてなブックマーク - DeepLearning系ライブラリ、Kerasがあまりにも便利だったので使い方メモ">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-4">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/vivaldi-intro">
+  <img alt="ニュータイプのブラウザ『VIVALDI』が便利すぎ。Chromeから乗り換えも辞さない！" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak.png" class="urllist-image entries-access-ranking-image" title="ニュータイプのブラウザ『VIVALDI』が便利すぎ。Chromeから乗り換えも辞さない！" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/vivaldi-intro" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">ニュータイプのブラウザ『VIVALDI』が便利すぎ。Chromeから乗り換えも辞さない！</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/vivaldi-intro" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/vivaldi-intro.gif" alt="はてなブックマーク - ニュータイプのブラウザ『VIVALDI』が便利すぎ。Chromeから乗り換えも辞さない！">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-5">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/blog-analyzer">
+  <img alt="ブログは一年続くの？読者数は？2万件のはてなブログで分析する" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_004.jpg" class="urllist-image entries-access-ranking-image" title="ブログは一年続くの？読者数は？2万件のはてなブログで分析する" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/blog-analyzer" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">ブログは一年続くの？読者数は？2万件のはてなブログで分析する</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/blog-analyzer" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/blog-analyzer.gif" alt="はてなブックマーク - ブログは一年続くの？読者数は？2万件のはてなブログで分析する">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+</ul>
+</div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-entries-access-ranking" data-count="5" data-source="access" data-enable_customize_format="0" data-display_entry_category="0" data-display_entry_image="1" data-display_entry_image_size_width="70" data-display_entry_image_size_height="70" data-display_entry_body_length="0" data-display_entry_date="0" data-display_entry_title_length="20" data-restrict_entry_title_length="0" data-display_bookmark_count="1">
+  <div class="hatena-module-title">
+    
+      アクセス順
+    
+  </div>
+  <div class="hatena-module-body">
+    
+  <ul class="entries-access-ranking hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-1">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/kazakhstan">
+  <img alt="今年はカザフスタンが熱い！日本人だからこそ行くべき『超近未来都市』" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_003.png" class="urllist-image entries-access-ranking-image" title="今年はカザフスタンが熱い！日本人だからこそ行くべき『超近未来都市』" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/kazakhstan" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">今年はカザフスタンが熱い！日本人だからこそ行くべき『超近未来都市』</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/kazakhstan" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/kazakhstan.gif" alt="はてなブックマーク - 今年はカザフスタンが熱い！日本人だからこそ行くべき『超近未来都市』">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-2">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/diamond-youtubers">
+  <img alt="金を超える『ダイヤモンドの再生ボタン』を持つ世界のトップyoutuberたち" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak.jpg" class="urllist-image entries-access-ranking-image" title="金を超える『ダイヤモンドの再生ボタン』を持つ世界のトップyoutuberたち" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/diamond-youtubers" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">金を超える『ダイヤモンドの再生ボタン』を持つ世界のトップyoutuberたち</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/diamond-youtubers" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/diamond-youtubers.gif" alt="はてなブックマーク - 金を超える『ダイヤモンドの再生ボタン』を持つ世界のトップyoutuberたち">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-3">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/notube">
+  <img alt="【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpslh3_002.png" class="urllist-image entries-access-ranking-image" title="【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/notube" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/notube" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/notube.gif" alt="はてなブックマーク - 【NoTube】YouTubeとTwitter廃人を矯正するchrome拡張を作ったよ">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-4">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/macbook-cover">
+  <img alt="【比較】MacBook用保護ケースは『LENTION』がおすすめ！" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_006.png" class="urllist-image entries-access-ranking-image" title="【比較】MacBook用保護ケースは『LENTION』がおすすめ！" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/macbook-cover" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">【比較】MacBook用保護ケースは『LENTION』がおすすめ！</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/macbook-cover" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/macbook-cover.gif" alt="はてなブックマーク - 【比較】MacBook用保護ケースは『LENTION』がおすすめ！">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+    
+    <li class="urllist-item entries-access-ranking-item rank-5">
+      <div class="urllist-item-inner entries-access-ranking-item-inner">
+        
+                      <a class="urllist-image-link entries-access-ranking-image-link" href="http://www.procrasist.com/entry/gumpatsu-headache">
+  <img alt="【解説！群発頭痛】飲酒後に眼の奥が痛くなるアレ、原因は頭痛かも。" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/httpscdn-ak_007.png" class="urllist-image entries-access-ranking-image" title="【解説！群発頭痛】飲酒後に眼の奥が痛くなるアレ、原因は頭痛かも。" width="70">
+</a>
+
+          <a href="http://www.procrasist.com/entry/gumpatsu-headache" class="urllist-title-link entries-access-ranking-title-link  urllist-title entries-access-ranking-title">【解説！群発頭痛】飲酒後に眼の奥が痛くなるアレ、原因は頭痛かも。</a>
+
+
+                      <a href="http://b.hatena.ne.jp/entry/http://www.procrasist.com/entry/gumpatsu-headache" class="bookmark-widget-counter">
+  <img src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/gumpatsu-headache.gif" alt="はてなブックマーク - 【解説！群発頭痛】飲酒後に眼の奥が痛くなるアレ、原因は頭痛かも。">
+</a>
+
+          
+
+                </div>
+    </li>
+  
+</ul>
+</div>
+</div>
+
+    
+      
+
+<div class="hatena-module hatena-module-archive" data-archive-type="default" data-archive-url="http://www.procrasist.com/archive">
+  <div class="hatena-module-title">
+    <a href="http://www.procrasist.com/archive">月別</a>
+  </div>
+  <div class="hatena-module-body">
+  
+
+  
+    
+    
+      <ul class="hatena-urllist">
+        
+          <li class="archive-module-year" data-year="2017">
+            <div class="archive-module-button">
+              <span class="archive-module-hide-button">▼</span>
+              <span class="archive-module-show-button">▶</span>
+            </div>
+            <a href="http://www.procrasist.com/archive/2017" class="archive-module-year-title">
+              2017 (136)
+            </a>
+            <ul class="archive-module-months">
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/8" class="archive-module-month-title">
+                    2017 / 8 (11)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/7" class="archive-module-month-title">
+                    2017 / 7 (14)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/6" class="archive-module-month-title">
+                    2017 / 6 (17)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/5" class="archive-module-month-title">
+                    2017 / 5 (18)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/4" class="archive-module-month-title">
+                    2017 / 4 (20)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/3" class="archive-module-month-title">
+                    2017 / 3 (18)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/2" class="archive-module-month-title">
+                    2017 / 2 (16)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2017/1" class="archive-module-month-title">
+                    2017 / 1 (22)
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          <li class="archive-module-year archive-module-year-hidden" data-year="2016">
+            <div class="archive-module-button">
+              <span class="archive-module-hide-button">▼</span>
+              <span class="archive-module-show-button">▶</span>
+            </div>
+            <a href="http://www.procrasist.com/archive/2016" class="archive-module-year-title">
+              2016 (70)
+            </a>
+            <ul class="archive-module-months">
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2016/12" class="archive-module-month-title">
+                    2016 / 12 (17)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2016/11" class="archive-module-month-title">
+                    2016 / 11 (20)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2016/10" class="archive-module-month-title">
+                    2016 / 10 (28)
+                  </a>
+                </li>
+              
+                <li class="archive-module-month">
+                  <a href="http://www.procrasist.com/archive/2016/9" class="archive-module-month-title">
+                    2016 / 9 (5)
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+      </ul>
+    
+  
+
+
+</div>
+</div>
+
+    
+      
+<div class="hatena-module hatena-module-html">
+    <div class="hatena-module-title">スポンサーリンク</div>
+  <div class="hatena-module-body">
+    <script async="" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/adsbygoogle.js"></script>
+<!-- -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-7807841450564484" data-ad-slot="3615873058" data-ad-format="auto"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:861px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:861px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:861px;height:90px;" frameborder="0" height="90" width="861"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+</div>
+
+    
+    
+  </div>
+</aside>
+
+
+  </div>
+</div>
+
+
+
+
+
+        
+
+        
+
+        
+  <div id="bottom-editarea">
+    <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-title"><a>PROCRASIST</a></div>
+        <p>Copyright © 2017 PROCRASIST All Rights Reserved.</p>
+    </div>
+</div>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+$(function() {
+$(window).bind("load", function(){
+  if(!(document.URL.match("/archive"))) {
+    $(".entry-thumb-link").each(function() {
+        var thumb_link = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', thumb_link.href, true);
+        xhr.onload = function(e) {
+            if (e.target.status <= 200) {
+                var d_ = e.target.response;
+                var eye_catch = $('meta[property="og:image"]', d_)[0].content;
+                thumb_link.style.backgroundImage = 'url(' + eye_catch + ')';
+            }
+        };
+        xhr.responseType = 'document';
+        xhr.send(null);
+    });
+  }
+});
+});
+});
+</script>
+
+<!--サイドバータブメニュー-->
+<script>
+$(function(){
+    $(".hatena-module-recent-entries,.hatena-module-entries-access-ranking").addClass("module");
+    $(".hatena-module-title2").parents(".hatena-module-html").css("margin-bottom",0);
+    var Module = $(".module");
+    Module.hide();
+    Module.first().show();
+    Module.find(".hatena-module-title").hide();
+    
+    $(".tab").click(function(){
+        var index = $(this).index();
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
+        $(Module).hide();
+        $(Module).eq(index).show();
+    });
+});
+</script>
+
+  </div>
+
+
+      </div>
+    </div>
+    
+
+    
+
+    
+  <script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/HatenaStar.js"></script>
+
+
+    
+
+    
+
+  <script id="hatena-counter-script" type="text/javascript"><!--
+      hatena_counter_name = "imslotter";
+      hatena_counter_id = "101";
+      hatena_counter_ref = document.referrer+"";
+      hatena_counter_screen = screen.width + "x" + screen.height+","+screen.colorDepth;
+  //--></script>
+  <script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/counter.html"></script>
+  <noscript><img src="http://counter.hatena.ne.jp/imslotter/101" border="0" alt="counter"></noscript>
+
+
+    
+
+<div class="quote-box">
+  <div style="display: block;" class="tooltip-quote tooltip-quote-star">
+    <i class="blogicon-star" title="引用スターをつける"></i>
+  </div>
+  <div style="display: block;" class="tooltip-quote tooltip-quote-stock">
+    <i class="blogicon-quote" title="引用をストック"></i>
+  </div>
+  <div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet">
+    <a class="js-tweet-quote" target="_blank" data-track-name="quote-tweet" data-track-once=""><i class="blogicon-twitter" title="引用してツイートする"></i></a>
+  </div>
+</div>
+
+<div class="message-box" id="quote-star-message-box" style="display: none; position: absolute;">
+  スターをつけました
+</div>
+
+<div class="quote-stock-panel" id="quote-stock-message-box" style="position: absolute; z-index: 3000">
+  <div class="message-box" id="quote-stock-succeeded-message" style="display: none">
+    <p>引用をストックしました</p>
+    <button class="btn btn-primary" id="quote-stock-show-editor-button" data-track-name="curation-quote-edit-button">ストック一覧を見る</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="message-box" id="quote-login-required-message" style="display: none">
+    <p>引用するにはまずログインしてください</p>
+    <button class="btn btn-primary" id="quote-login-button">ログイン</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="quote-stock-failed-message" style="display: none">
+    <p>引用をストックできませんでした。再度お試しください</p>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="unstockable-quote-message-box" style="display: none; position: absolute; z-index: 3000;">
+    <p>限定公開記事のため引用できません。</p>
+  </div>
+</div>
+
+<script type="x-underscore-template" id="js-requote-button-template">
+  <div class="requote-button js-requote-button">
+    <button class="requote-button-btn tipsy-top" title="引用する"><i class="blogicon-quote"></i></button>
+  </div>
+</script>
+
+
+
+    
+    <div id="hidden-subscribe-button" style="display: none;">
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box">
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button unsubscribing">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once="">
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div style="display: block;" class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">460</span>
+  </div>
+</div>
+
+    </div>
+
+    
+  <script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/widgets.js"></script>
+
+<script gapi_processed="true" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/platform.js" async="" defer="defer">
+  { lang: 'ja', "parsetags": "explicit" }
+</script>
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+
+  <script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/react-with-addons.js"></script>
+  <script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/react-dom.js"></script>
+
+
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/jquery_004.js"></script>
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/jquery-ui.js"></script>
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/jquery_002.js"></script>
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/jquery_003.js"></script>
+
+
+
+
+<script id="hatenablog-js" data-env="production" type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/hatenablog.js" crossorigin="anonymous"></script><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; display: none;"></div>
+<script type="text/javascript" src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/texts-ja.js"></script>
+
+
+  <script type="text/javascript">Hatena.Diary.GlobalHeader.init()</script>
+
+
+<script src="%E3%80%90%E6%8A%80%E8%A1%93%E3%83%A1%E3%83%A2%E3%80%91python%20matplotlib%E3%81%A7%E8%A6%8B%E6%A0%84%E3%81%88%E3%81%AE%E8%89%AF%E3%81%84%E8%89%B2,%20%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E4%BD%9C%E3%82%8BTips%20-%20%E3%83%97%E3%83%AD%E3%82%AF%E3%83%A9%E3%82%B7%E3%82%B9%E3%83%88_files/api.js" async="" defer="defer"></script>
+
+
+
+
+    
+
+
+
+
+
+  
+
+
+<iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe><div style="display: none;" id="cboxOverlay"></div><div style="display: none;" tabindex="-1" role="dialog" class="" id="colorbox"><div id="cboxWrapper"><div><div style="float: left;" id="cboxTopLeft"></div><div style="float: left;" id="cboxTopCenter"></div><div style="float: left;" id="cboxTopRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxMiddleLeft"></div><div style="float: left;" id="cboxContent"><div style="float: left;" id="cboxTitle"></div><div style="float: left;" id="cboxCurrent"></div><button id="cboxPrevious" type="button"></button><button id="cboxNext" type="button"></button><button id="cboxSlideshow" type="button"></button><div style="float: left;" id="cboxLoadingOverlay"></div><div style="float: left;" id="cboxLoadingGraphic"></div></div><div style="float: left;" id="cboxMiddleRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxBottomLeft"></div><div style="float: left;" id="cboxBottomCenter"></div><div style="float: left;" id="cboxBottomRight"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><div style="top: -9999px; z-index: -9999;"></div><iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe><iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe><iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe></body></html>

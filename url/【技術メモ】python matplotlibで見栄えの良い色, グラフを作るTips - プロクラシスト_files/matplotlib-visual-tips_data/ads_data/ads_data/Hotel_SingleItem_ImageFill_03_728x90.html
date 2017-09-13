@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="Hotel_SingleItem_ImageFill_03_728x90_data/common_styles.css">
+    <link rel="stylesheet" href="Hotel_SingleItem_ImageFill_03_728x90_data/Hotel_SingleItem_ImageFill_03_common.css">
+    <style>
+      .layout,
+      .background {
+        height: 90px;
+        width: 728px;
+      }
+
+      .color-bg {
+        float: left;
+        height: 89px;
+        margin-left: 110px;
+        position: relative;
+        width: 292px;
+      }
+
+      .info-holder {
+        height: 100%;
+        opacity: 0;
+        padding: 0 5px;
+        width: 100%;
+      }
+
+      .info-holder > div {
+        height: 29px;
+      }
+
+      .no-image .info-holder {
+        width: 100%;
+      }
+
+      .price-aligner {
+        text-align: center;
+      }
+
+      .price-holder {
+        display: inline-block;
+        font-size: 0;
+        vertical-align: middle;
+      }
+
+      .price-holder > div {
+        display: inline-block;
+        max-width: 115px;
+        vertical-align: top;
+      }
+
+      .info-holder > div.sub-title {
+        height: 26px;
+      }
+
+      .price-holder > .product-price {
+        max-height: 30px;
+        max-width: 170px;
+      }
+
+      .product-price-prefix {
+        margin-right: 3px;
+        max-height: 30px;
+      }
+
+      .sub-title {
+        padding: 0 7px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .actions {
+        position: relative;
+        vertical-align: middle;
+      }
+
+      .actions,
+      .logo-holder {
+        margin-top: 10px;
+        opacity: 0;
+      }
+
+      .product-image {
+        height: 100%;
+      }
+
+      .product-name {
+        text-align: center;
+      }
+
+      .button {
+        display: inline-block;
+        max-width: 120px;
+        vertical-align: middle;
+      }
+
+      .footer {
+        float: left;
+        height: 100%;
+        margin-left: 5px;
+        padding: 15px 0;
+        position: relative;
+        width: 310px;
+      }
+
+      .footer .column {
+        width: 50%;
+      }
+
+      .footer.no-logo .column,
+      .footer.no-cta .column {
+        width: 100%;
+      }
+
+      .footer.has-disclaimer {
+        padding-bottom: 14px;
+      }
+
+      .disclaimer {
+        bottom: 1px;
+        height: 14px;
+        padding: 1px 2px;
+        position: absolute;
+        text-align: right;
+        width: 310px;
+      }
+
+      .imageFinalTransition {
+        top: -15px;
+      }
+
+      .info-final-transition {
+        opacity: 1;
+      }
+
+      .bottom-final-transition {
+        margin-top: 0;
+        opacity: 1;
+      }
+
+      .info-holder.no-name,
+      .info-holder.no-headline {
+        padding-top: 15px;
+      }
+
+      .info-holder.no-headline.no-price,
+      .info-holder.no-headline.no-name {
+        padding: 5px;
+      }
+
+      .info-holder.no-name.no-price .sub-title,
+      .info-holder.no-headline.no-price .product-name,
+      .info-holder.no-name.no-headline .price-aligner {
+        height: 100%;
+      }
+
+      .info-holder .product-name {
+        height: 30px;
+      }
+
+      .info-holder.no-price {
+        padding: 14px 0;
+      }
+
+      .info-holder .sub-title span,
+      .info-holder .product-name span,
+      .info-holder.no-headline.no-price span,
+      .info-holder.no-name.no-price span,
+      .info-holder.no-name.no-headline .price-holder {
+        vertical-align: middle;
+      }
+
+      .logo {
+        overflow: visible !important;
+      }
+
+      .colored-corner {
+        border-width: 5px;
+        right: 100%;
+      }
+
+      .color-bg .colored-corner.top {
+        border-left-color: transparent;
+        border-top-color: transparent;
+        top: 0;
+      }
+
+      .color-bg .colored-corner.bottom {
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        bottom: -4px;
+      }
+
+      .product-image-container {
+        height: 90px;
+        padding: 8px 0;
+        width: 110px;
+      }
+
+      .product-image-exit {
+        display: block;
+        height: 75px;
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 111px;
+      }
+
+      .no-cta.no-logo .product-image-container {
+        width: 350px;
+      }
+
+      .no-cta.no-logo .color-bg {
+        margin-left: 350px;
+      }
+
+      .no-cta.no-logo .disclaimer {
+        width: 76px;
+        text-align: center;
+      }
+
+      .no-cta.no-logo .footer {
+        width: 76px;
+      }
+
+      .no-logo .product-image-container {
+        width: 250px;
+      }
+
+      .no-logo .color-bg {
+        margin-left: 250px;
+      }
+
+      .no-logo .disclaimer {
+        text-align: center;
+        width: 176px;
+      }
+
+      .no-logo .footer {
+        width: 176px;
+      }
+    </style>
+  <style type="text/css">@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+
+ng\:form {
+  display: block;
+}
+
+.ng-animate-shim {
+  visibility:hidden;
+}
+
+.ng-anchor {
+  position:absolute;
+}
+</style><script src="Hotel_SingleItem_ImageFill_03_728x90_data/T8Ys39_ecZUP0z5o0qwgiftCx6c5Z_CDv350QIo51NY.js" type="text/javascript"></script><style>
+      .layout,
+      .borderAbove {
+        border: 1px solid #cbcbcb;
+      }
+
+      .color-bg {
+        background-color: #e6e6e6;
+        border-bottom: 3px solid rgb(138,138,138);
+      }
+
+      .colored-corner {
+        border-color: rgb(92,92,92);
+      }
+
+      .background,
+      .product-image {
+        background: #ffffff;
+      }
+
+      .sub-title {
+        color: #4d4d4d;
+        font-size: 16px;
+      }
+
+      
+      .button {
+        background-color: #ff0000;
+        border-bottom: 3px solid rgb(153,0,0);
+        color: #ffffff;
+      }
+
+      .button.noShad {
+        border-bottom: 1px solid #ff0000;
+      }
+
+      .button span {
+        text-shadow: 0 1px 0 rgba(153,0,0,0.9);
+      }
+      
+
+      
+      .product-content:hover {
+        -moz-box-shadow: 0 0 2px #666666;
+        -webkit-box-shadow: 0 0 2px #666666;
+        box-shadow: 0 0 2px #666666;
+      }
+
+      .product-name {
+        color: #4d4d4d;
+        font-size: 18px;
+      }
+
+      .product-price {
+        color: #0073ed;
+      }
+
+      .product-price-prefix {
+        color: #0073ed;
+      }
+
+      .product-details {
+        background-color: #0073ed;
+      }
+
+      .disclaimer {
+        color: #555555;
+      }
+      
+    </style></head>
+  <body class="ng-scope" ng-controller="layout.controller">
+    <div class="ng-binding" dynamic-style="" style="display:none"></div>
+    <!-- ngRepeat: product in products | limitTo: 1 --><div id="ad-container" class="layout square" ng-class="{'no-cta':isEmpty(headline.cta), 'no-logo':!checkUrl(design.logoImageUrl)}" field-reference="Product_0_url" ng-mouseover="stopAnimation=true" ng-repeat="product in products | limitTo: 1">
+      <div class="background  square"></div>
+      <div class="content" ng-class="{'no-image':!checkUrl(product.imageUrl)}">
+        <div class="color-bg" data-interaction="urlchange" data-product-index="0">
+          <div class="info-holder transition-ease info-final-transition" ng-class="{'no-price':!toBoolean(headline.showPrice) || isEmpty(product.price),
+                     'no-headline': isEmpty(product.subTitle),'no-name':isEmpty(product.name)}">
+            <div style="overflow: hidden;" class="product-name ng-binding inline-wrapper" minfontsize="9" ng-show="!isEmpty(product.name)" ext-text-fit="" multiline="true" truncate="true" valign="true"><span style="font-size: 18px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; width: 100%;">
+              【派遣】コンサルティング
+            </span></div>
+            <div class="price-aligner inline-wrapper" ng-show="toBoolean(headline.showPrice) &amp;&amp; !isEmpty(product.price)">
+              <div class="price-holder">
+                <div style="overflow: hidden; white-space: nowrap; font-size: 26px;" class="product-price-prefix ng-binding ng-hide" ng-show="!isEmpty(headline.pricePrefix)" ext-text-fit="" uniform-text-size="" valign="top" minfontsize="9" multiline="false" truncate="true">
+                  
+                </div>
+                <div style="overflow: hidden; white-space: nowrap; font-size: 26px;" class="product-price ng-binding inline-wrapper" valign="top" ext-text-fit="" uniform-text-size="" minfontsize="9" multiline="false" truncate="true"><span style="font-size: 26px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; vertical-align: top; width: 100%;">
+                  時給3,300円～&nbsp;
+                </span></div>
+              </div>
+            </div>
+            <div style="overflow: hidden; font-size: 9px;" class="sub-title ng-binding inline-wrapper" ext-text-fit="" minfontsize="9" valign="true" ng-show="!isEmpty(product.subTitle)" multiline="true" truncate="true"><span style="font-size: 9px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; width: 100%;">
+              【北新地】大手通信キャリア系企業にてデータサイエンティストを募集
+            </span></div>
+          </div>
+          <div class="colored-corner top"></div>
+          <div class="colored-corner bottom"></div>
+        </div>
+        <div class="product-image-container">
+          <div style="overflow: hidden;" class="product-image" ng-show="checkUrl(product.imageUrl)" observed-image-fit="" loc="product.imageUrl" scaletype="fill" aligntype="center"><img style="position: inherit; left: 0px; top: -18px;" src="Hotel_SingleItem_ImageFill_03_728x90_data/17080810088179414376_14309675033636680001.png" height="110" width="110"></div>
+        </div>
+
+        <div class="product-image-exit" data-interaction="urlchange" data-product-index="0">
+        </div>
+
+        <div class="footer" ng-class="{'thin-logo':isThin(design.logoImageUrl), 'no-logo':!checkUrl(design.logoImageUrl),
+                 'no-cta':isEmpty(headline.cta),'has-disclaimer':!isEmpty(headline.disclaimer)}">
+          <div class="actions column inline-wrapper transition-ease bottom-final-transition" ng-show="!isEmpty(headline.cta)" title="求人詳細">
+            <span class="round noShad button" data-interaction="urlchange" data-product-index="0">
+                <span style="overflow: hidden; white-space: nowrap;" class="ng-binding" ext-text-fit="" minfontsize="11" multiline="false" truncate="true"><span style="font-size: 18px; overflow: inherit; text-overflow: clip; white-space: inherit;">
+                  求人詳細
+                </span></span>
+            </span>
+          </div>
+          <div style="padding: 2px;" class="logo-holder column transition-ease bottom-final-transition" ng-show="checkUrl(design.logoImageUrl)">
+            <div style="overflow: hidden;" class="logo inline-wrapper" logo-fit="" loc="design.logoImageUrl" scaletype="fit"><img style="position: inherit; left: 30px; top: 0px;" src="Hotel_SingleItem_ImageFill_03_728x90_data/10635542497279916469.png" height="58" width="95"></div>
+          </div>
+          <div style="overflow: hidden; white-space: nowrap;" class="disclaimer ng-binding ng-hide" ng-show="!isEmpty(headline.disclaimer)" ext-text-fit="" minfontsize="8" multiline="false" truncate="true">
+            
+          </div>
+        </div>
+      </div>
+    </div><!-- end ngRepeat: product in products | limitTo: 1 -->
+    <script src="Hotel_SingleItem_ImageFill_03_728x90_data/angular.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_728x90_data/utils_min.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_728x90_data/addata.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_728x90_data/layouts_bootstrap_v3.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_728x90_data/common_scripts_v4.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_728x90_data/Hotel_SingleItem_ImageFill_03.js"></script>
+  
+
+</body></html>

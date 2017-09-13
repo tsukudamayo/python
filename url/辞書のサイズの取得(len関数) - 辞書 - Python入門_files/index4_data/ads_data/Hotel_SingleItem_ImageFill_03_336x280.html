@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="Hotel_SingleItem_ImageFill_03_336x280_data/common_styles.css">
+    <link rel="stylesheet" href="Hotel_SingleItem_ImageFill_03_336x280_data/Hotel_SingleItem_ImageFill_03_common.css">
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      .cf:before,
+      .cf:after {
+        content: " ";
+        display: table;
+      }
+
+      .cf:after {
+        clear: both;
+      }
+
+      .cf {
+        *zoom: 1;
+      }
+
+      .col {
+        float: left;
+      }
+
+      .layout {
+        height: 280px;
+        position: relative;
+        width: 336px;
+      }
+
+      .content {
+        height: auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .image-container {
+        height: 114px;
+        padding: 0 6px;
+      }
+
+      .product-image {
+        height: 100%;
+      }
+
+      .info-container {
+        -webkit-animation: text-fade-in .5s ease-in .5s both;
+        -moz-animation: text-fade-in .5s ease-in .5s both;
+        animation: text-fade-in .5s ease-in .5s both;
+        height: 86px;
+        padding: 4px;
+      }
+
+      .product-name,
+      .sub-title {
+        text-align: center;
+      }
+
+      .product-name {
+        height: 22px;
+      }
+
+      .price-aligner {
+        height: 28px;
+        text-align: center;
+      }
+
+      .price-holder {
+        display: inline-block;
+        font-size: 0;
+        vertical-align: middle;
+      }
+
+      .price-holder div {
+        display: inline-block;
+        max-width: 135px;
+        vertical-align: top;
+      }
+
+      .price-holder div.price {
+        max-width: 160px;
+      }
+
+      .sub-title {
+        font-weight: bold;
+        height: 26px;
+      }
+
+      .price-prefix,
+      .price {
+        font-size: 30px;
+        max-height: 28px;
+      }
+
+      .price-prefix {
+        padding: 0 2px 0 0;
+      }
+
+      .price {
+        font-size: 28px;
+        font-weight: normal;
+        line-height: 1.3 !important;
+        padding-left: 2px;
+      }
+
+      .ribbon-fold {
+        border-style: solid;
+        height: 0;
+        position: absolute;
+        width: 0;
+        z-index: 1;
+      }
+
+      .ribbon-fold {
+        border-width: 5px;
+        bottom: 100%;
+        margin-bottom: 1.5px;
+        right: 0;
+      }
+
+      .ribbon-fold.left {
+        border-left-color: transparent;
+        border-top-color: transparent;
+        left: -1px;
+        top: 105px;
+      }
+
+      .ribbon-fold.right {
+        border-right-color: transparent;
+        border-top-color: transparent;
+        top: 105px;
+      }
+
+      .footer {
+        height: 80px;
+        padding: 3px;
+        width: 336px;
+      }
+
+      .footer .col {
+        width: 50%;
+      }
+
+      .logo-container,
+      .cta-container {
+        height: 64px;
+      }
+
+      .no-disclaimer .logo-container,
+      .no-disclaimer .cta-container {
+        height: 78px;
+      }
+
+      .logo {
+        -webkit-animation: cta-fade-in .5s ease-in-out .6s both;
+        -moz-animation: cta-fade-in .5s ease-in-out .6s both;
+        animation: cta-fade-in .5s ease-in-out .6s both;
+      }
+
+      .cta-container {
+        display: table;
+      }
+
+      .no-logo.no-disclaimer .cta-container {
+        height: 73px;
+      }
+
+      .cta-inner {
+        display: table-cell;
+        padding-top: 2px;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .cta-btn {
+        -webkit-animation: cta-fade-in .5s ease-in-out .5s both;
+        -moz-animation: cta-fade-in .5s ease-in-out .5s both;
+        animation: cta-fade-in .5s ease-in-out .5s both;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        height: 34px;
+        max-width: 140px;
+        padding: 0 6px 0;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all .15s ease-in;
+        transition: all .15s ease-in;
+      }
+
+      .cta-btn:hover {
+        border-bottom-width: 1px;
+        margin-top: 2px;
+      }
+
+      .disclaimer {
+        clear: both;
+        height: 16px;
+        padding: 0 20px;
+      }
+
+      .product-name span,
+      .sub-title span {
+        vertical-align: middle;
+      }
+
+      .details-content {
+        height: 100%;
+        width: 100%;
+      }
+
+      /* CSS Animations */
+
+      @-webkit-keyframes text-fade-in {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-moz-keyframes text-fade-in {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes text-fade-in {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes cta-fade-in {
+
+        from {
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0;
+        }
+
+        to {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @-moz-keyframes cta-fade-in {
+
+        from {
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0;
+        }
+
+        to {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @-keyframes cta-fade-in {
+
+        from {
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0;
+        }
+
+        to {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes logo-fade-in {
+
+        from {
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0;
+        }
+
+        to {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @-moz-keyframes logo-fade-in {
+
+        from {
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0;
+        }
+
+        to {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @-keyframes logo-fade-in {
+
+        from {
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+          opacity: 0;
+        }
+
+        to {
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      /* END: CSS Animations */
+
+      /* Conditional CSS */
+
+      .info-container.no-sub-title,
+      .info-container.no-product-name {
+        padding: 10px 5px;
+      }
+
+      .info-container.no-product-name .sub-title {
+        padding-left: 8px;
+        padding-right: 8px
+      }
+
+      .info-container.no-price {
+        padding: 4px 3px;
+      }
+
+      .info-container.no-price.no-product-name,
+      .info-container.no-sub-title.no-product-name {
+        padding: 6px 0;
+      }
+
+      .info-container.no-sub-title.no-price {
+        padding: 6px;
+      }
+
+      .info-container.no-product-name.no-price .sub-title,
+      .info-container.no-sub-title.no-product-name .price-aligner,
+      .info-container.no-sub-title.no-price .product-name {
+        height: 100%;
+        margin-top: 0;
+        max-height: 60px;
+      }
+
+      .info-container.no-price .product-name,
+      .info-container.no-price .sub-title,
+      .info-container.no-sub-title .price-aligner,
+      .info-container.no-sub-title .product-name,
+      .info-container.no-product-name .price-aligner,
+      .info-container.no-product-name .sub-title {
+        height: auto;
+        margin-top: 0;
+        max-height: 35px;
+      }
+
+      .info-container.no-price .details-content,
+      .info-container.no-sub-title .details-content,
+      .info-container.no-product-name .details-content {
+        display: inline-block;
+        height: auto;
+        max-height: 100%;
+        vertical-align: middle;
+      }
+
+      .info-container.no-sub-title .product-name span,
+      .info-container.no-price .product-name span {
+        vertical-align: top;
+      }
+
+      .info-container.no-price-prefix .price {
+        float: none;
+        text-align: center;
+        width: 322px;
+      }
+
+      .footer.no-cta .col,
+      .footer.no-logo .col {
+        width: 100%;
+      }
+
+      .no-cta.no-logo .image-container {
+        height: 175px;
+      }
+
+      .no-cta.no-logo .ribbon-fold {
+        top: 166px;
+      }
+
+      .footer.no-cta.no-logo .disclaimer {
+        height: 17px;
+        padding-top: 2px;
+      }
+
+      /* END: Conditional CSS */
+
+    </style>
+  <style type="text/css">@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+
+ng\:form {
+  display: block;
+}
+
+.ng-animate-shim {
+  visibility:hidden;
+}
+
+.ng-anchor {
+  position:absolute;
+}
+</style><script src="../../index4_data_003/ads_data/ads_data/T8Ys39_ecZUP0z5o0qwgiftCx6c5Z_CDv350QIo51NY.js" type="text/javascript"></script><style>
+      .layout {
+        background-color: #ffffff;
+        border: 1px solid #cbcbcb;
+      }
+
+      .info-container {
+        background-color: #e6e6e6;
+        border-bottom: 2px solid rgb(138,138,138);
+        border-top: 2px solid rgb(138,138,138);
+      }
+
+      .product-image {
+        background: #ffffff;
+      }
+
+      .sub-title {
+        color: #4d4d4d;
+        font-size: 16px;
+      }
+
+      .price-prefix {
+        color: #0073ed;
+      }
+
+      .price {
+        color: #0073ed;
+      }
+
+      .product-name {
+        color: #4d4d4d;
+        font-size: 18px;
+      }
+
+      .ribbon-fold {
+        border-color: rgb(92,92,92);
+      }
+
+      .disclaimer {
+        color: #555555;
+      }
+
+      .cta-btn {
+        background-color: #ff0000;
+        border-bottom: 3px solid rgb(153,0,0);
+        color: #ffffff;
+      }
+
+      .cta-btn.noShad {
+        border-bottom: 3px solid #ff0000;
+      }
+
+      
+    </style></head>
+  <body class="ng-scope" ng-controller="layout.controller">
+    <div class="ng-binding" dynamic-style="" style="display:none"></div>
+    <!-- ngRepeat: product in products | limitTo: 1 --><div id="ad-container" class="layout square" ng-class="{'no-cta':isEmpty(headline.cta), 'no-logo':!checkUrl(design.logoImageUrl)}" field-reference="Product_0_url" ng-mouseover="stopAnimation=true" ng-repeat="product in products | limitTo: 1">
+      <div class="content" data-interaction="urlchange" data-product-index="0">
+        <div class="image-container">
+          <div style="overflow: hidden;" class="product-image" ng-show="checkUrl(product.imageUrl)" observed-image-fit="" loc="product.imageUrl" scaletype="fill" aligntype="center"><img style="position: inherit; left: 0px; top: -104px;" src="Hotel_SingleItem_ImageFill_03_336x280_data/17080810088179414376_14309675033636680001.png" height="322" width="322"></div>
+        </div>
+        <div class="info-container inline-wrapper no-price-prefix" ng-class="{
+                  'no-sub-title': isEmpty(product.subTitle),
+                  'no-price': !toBoolean(headline.showPrice) || isEmpty(product.price),
+                  'no-product-name': isEmpty(product.name),
+                  'no-price-prefix': isEmpty(headline.pricePrefix)
+                 }">
+          <div class="details-content">
+            <div style="overflow: hidden;" class="product-name ng-binding inline-wrapper" ext-text-fit="" minfontsize="9" multiline="true" truncate="true" valign="true" ng-show="!isEmpty(product.name)"><span style="font-size: 18px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; width: 100%;">【派遣】コンサルティング</span></div>
+            <div class="price-aligner inline-wrapper" ng-show="toBoolean(headline.showPrice) &amp;&amp; !isEmpty(product.price)">
+              <div class="price-holder">
+                <div style="overflow: hidden; white-space: nowrap; font-size: 21px;" class="price-prefix ng-binding ng-hide" minfontsize="9" ext-text-fit="" uniform-text-size="" multiline="false" truncate="true" ng-show="!isEmpty(headline.pricePrefix)" valign="top">
+                  
+                </div>
+                <div style="overflow: hidden; white-space: nowrap; font-size: 21px;" class="price ng-binding inline-wrapper" valign="top" ext-text-fit="" uniform-text-size="" minfontsize="9" multiline="false" truncate="true"><span style="font-size: 21px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; vertical-align: top; width: 100%;">
+                  時給3,300円～&nbsp;
+                </span></div>
+              </div>
+            </div>
+            <div style="overflow: hidden; font-size: 11px;" class="sub-title ng-binding inline-wrapper" ext-text-fit="" minfontsize="9" multiline="true" truncate="true" valign="true" ng-show="!isEmpty(product.subTitle)"><span style="font-size: 11px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; width: 100%;">
+              【北新地】大手通信キャリア系企業にてデータサイエンティストを募集
+            </span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ribbon-fold left"></div>
+      <div class="ribbon-fold right"></div>
+      <div class="footer cf no-disclaimer" ng-class="{
+          'no-logo': !checkUrl(design.logoImageUrl),
+          'no-cta': isEmpty(headline.cta),
+          'no-disclaimer': isEmpty(headline.disclaimer)}">
+        <div style="padding: 2px;" class="logo-container col" ng-show="checkUrl(design.logoImageUrl)">
+          <div style="overflow: hidden;" class="logo inline-wrapper" logo-fit="" loc="design.logoImageUrl" scaletype="fit"><img style="position: inherit; left: 20px; top: 0px;" src="Hotel_SingleItem_ImageFill_03_336x280_data/10635542497279916469.png" height="74" width="121"></div>
+        </div>
+        <div class="cta-container col" ng-show="!isEmpty(headline.cta)">
+          <div class="cta-inner">
+            <div style="overflow: hidden; white-space: nowrap;" class="round noShad cta-btn inline-wrapper" ng-show="!isEmpty(headline.cta)" title="求人詳細" data-interaction="urlchange" data-product-index="0" ext-text-fit="" minfontsize="11" multiline="false" truncate="true" valign="middle"><span style="font-size: 18px; overflow: inherit; text-overflow: clip; white-space: inherit; display: inline-block; height: auto; vertical-align: middle; width: 100%;">
+              求人詳細
+            </span></div>
+          </div>
+        </div>
+        <div style="overflow: hidden; white-space: nowrap;" class="disclaimer ng-binding ng-hide" ext-text-fit="" minfontsize="8" multiline="false" truncate="true" ng-show="!isEmpty(headline.disclaimer)">
+          
+        </div>
+      </div>
+    </div><!-- end ngRepeat: product in products | limitTo: 1 -->
+    <script src="Hotel_SingleItem_ImageFill_03_336x280_data/angular.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_336x280_data/utils_min.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_336x280_data/addata.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_336x280_data/layouts_bootstrap_v3.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_336x280_data/common_scripts_v4.js"></script>
+    <script src="Hotel_SingleItem_ImageFill_03_336x280_data/Hotel_SingleItem_ImageFill_03.js"></script>
+  
+
+</body></html>

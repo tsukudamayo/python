@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html class="mdl-js" lang="ja"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<link href="http://pagead2.googlesyndication.com/" rel="dns-prefetch">
+<link href="http://googleads.g.doubleclick.net/" rel="dns-prefetch">
+<link href="http://www.gstatic.com/" rel="dns-prefetch">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com/" crossorigin="">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="">
+<link rel="preconnect" href="https://googleads.g.doubleclick.net/" crossorigin="">
+<link rel="preconnect" href="https://stats.g.doubleclick.net/" crossorigin="">
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/apple-icon-120x120.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://pythondatascience.plavox.info/wp-content/themes/realistic/icon/favicon-16x16.png">
+<meta name="theme-color" content="#f44336">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://pythondatascience.plavox.info/xmlrpc.php">
+
+<script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/cbgapi.loaded_2"></script><script src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/async-ads.js" async=""></script><script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/p.js" type="text/javascript"></script><script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/cbgapi.loaded_1"></script><script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/cbgapi.loaded_0"></script><script src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/cse.js" async="" type="text/javascript"></script><script src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/ca-pub-6801897182966827.js"></script><script src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/async-buttons.js" id="async-buttons" type="text/javascript"></script><script src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/analytics.js" async=""></script><script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6801897182966827",
+    enable_page_level_ads: true
+  });
+</script>
+
+<title>matplotlib で指定可能な色の名前と一覧 – Python でデータサイエンス</title>
+<link rel="alternate" type="application/rss+xml" title="Python でデータサイエンス » フィード" href="http://pythondatascience.plavox.info/feed">
+<link rel="alternate" type="application/rss+xml" title="Python でデータサイエンス » コメントフィード" href="http://pythondatascience.plavox.info/comments/feed">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/pythondatascience.plavox.info\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+			!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/wp-emoji-release.js"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="crayon-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/crayon.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-github-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/github.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="roboto_google_font-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="materialcss-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/material.css" type="text/css" media="all">
+<link rel="stylesheet" id="materialicons-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/icon.css" type="text/css" media="all">
+<link rel="stylesheet" id="material-style-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="fonticons-css" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/fontello.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.4.6 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-74090685-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/jquery.js"></script>
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/jquery-migrate.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/pythondatascience.plavox.info\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u8cbc\u308a\u4ed8\u3051\u306b\u30b3\u30d4\u30fc\u3001%s\u306b%s\u3092\u62bc\u3057\u3066\u3001","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/crayon.js"></script>
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/material.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://pythondatascience.plavox.info/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://pythondatascience.plavox.info/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.4.2">
+<link rel="canonical" href="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d">
+<link rel="shortlink" href="http://pythondatascience.plavox.info/?p=784">
+<link rel="alternate" type="application/json+oembed" href="http://pythondatascience.plavox.info/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fpythondatascience.plavox.info%2Fmatplotlib%2F%25e8%2589%25b2%25e3%2581%25ae%25e5%2590%258d%25e5%2589%258d">
+<link rel="alternate" type="text/xml+oembed" href="http://pythondatascience.plavox.info/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fpythondatascience.plavox.info%2Fmatplotlib%2F%25e8%2589%25b2%25e3%2581%25ae%25e5%2590%258d%25e5%2589%258d&amp;format=xml">
+<script charset="utf-8" type="text/javascript">var switchTo5x=true;</script>
+<script charset="utf-8" type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/buttons.js"></script>
+<script charset="utf-8" type="text/javascript">stLight.options({"publisher":"c79bb2db-40d0-47b6-b396-1cc10abe0183"});var st_type="wordpress4.4.2";</script>
+		<script type="text/javascript">
+		jQuery(document).ready(function() {
+
+			// Buttons
+			jQuery('button, html input[type="button"], input[type="reset"], input[type="submit"], .next_prev_post a').addClass('mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored');
+			jQuery('.search-submit, .post-actions').removeClass('mdl-button--raised mdl-js-ripple-effect mdl-button--colored');
+
+			//Textfields
+			jQuery('input[type="text"], input[type="password"],textarea').addClass('mdl-textfield__input');
+			
+			// Extracting main & accent colors & dynamically set the background-color/color style for some elements.
+			var mainColor = jQuery('header').css( "background-color" );
+			jQuery(".featured").css("background-color", mainColor );
+			jQuery(".widget .thin-bar").css("border-color", mainColor );
+
+			jQuery(".main-navigation li ul li").mouseenter(function() {
+				jQuery(this).css("background-color", mainColor );
+			}).mouseleave(function() {
+				 jQuery(this).css("background-color", "transparent" );
+			});
+
+			// Adding MDL buttons classes to nav-links and its links.
+			jQuery('.nav-links a').addClass('mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect');
+			jQuery('.page-numbers.dots').addClass('mdl-button mdl-js-button mdl-button--raised');
+			jQuery('.nav-links .current').addClass('mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect');
+		});
+		</script>
+		<style type="text/css">
+				 body { background: url(http://pythondatascience.plavox.info/wp-content/themes/realistic/images/patterns/1.jpg) repeat left bottom;}			</style>
+	
+<link href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/buttons.css" type="text/css" rel="stylesheet"><script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/jsapi"></script><iframe style="display:none;" sandbox="allow-scripts allow-same-origin" scrolling="no" name="stSegmentFrame" id="stSegmentFrame" frameborder="0" height="0px" width="0px"></iframe><link rel="stylesheet" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/defaultja.css" type="text/css"><link rel="stylesheet" href="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/default.css" type="text/css"><script src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/defaultja.js" type="text/javascript"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+border-color: #D9D9D9;
+}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+border-color: #F54237;
+background-color: #F54237;
+background-image: none;
+filter: none;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-color: #F54237;
+border-bottom-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #F54237;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #0000CC;
+}
+.gsc-cursor-page {
+color: #0000CC;
+}
+a.gsc-trailing-more-results:link {
+color: #0000CC;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #000000;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #F54237;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #0000CC;
+}
+.gsc-completion-snippet {
+color: #000000;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-moz-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gsq_a{padding:0}.gscsep_a{display:none}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 9px}.gsib_a{padding-right:8px;padding-left:8px}.gsst_a{padding-top:3px}.gssb_e{border:0}.gssb_l{margin:5px 0}#gsc-i-id1::-webkit-input-placeholder{font-size:14px}#gsc-i-id1:-moz-placeholder{font-size:14px}#gsc-i-id1::-moz-placeholder{font-size:14px}#gsc-i-id1:-ms-input-placeholder{font-size:14px}#gsc-i-id1:focus::-webkit-input-placeholder{color:transparent}#gsc-i-id1:focus:-moz-placeholder{color:transparent}#gsc-i-id1:focus::-moz-placeholder{color:transparent}#gsc-i-id1:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style><style>.gc-bubbleDefault{background-color:transparent !important;text-align:left;padding:0 !important;margin:0 !important;border:0 !important;table-layout:auto !important}.gc-reset{background-color:transparent !important;border:0 !important;padding:0 !important;margin:0 !important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc !important}.pls-topTail,.pls-vertShimLeft,.pls-contentLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif) !important}.pls-topTail{background-repeat:repeat-x !important;background-position:bottom !important}.pls-vertShim{background-color:#fff !important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5 !important}.pls-vertShimLeft{background-repeat:repeat-y !important;background-position:right !important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2 !important}.pls-contentWrap{background-color:#fff !important;position:relative !important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:right;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png) !important;background-repeat:repeat-y !important;vertical-align:top}.pls-vert,.pls-tailleft,.pls-dropTR .pls-dropBR,.pls-dropBL,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png) !important;background-repeat:repeat-x !important;width:100%;vertical-align:top}.pls-topLeft{background:inherit !important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit !important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit !important;text-align:right}.pls-bottomRight{background:inherit !important;text-align:left;vertical-align:top}.pls-tailtop,.pls-tailright,.pls-tailbottom,.pls-tailleft{display:none;position:relative}.pls-tailbottom,.pls-tailtop,.pls-tailright,.pls-tailleft,.pls-dropTR,.pls-dropBR,.pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png) !important;background-repeat:no-repeat}.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailtop,.tbl-grey .pls-tailright,.tbl-grey .pls-tailleft,.tbl-grey .pls-dropTR,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png) !important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-topLeft img,.pls-topRight img,.pls-tailbottom{vertical-align:bottom}.pls-bottomLeft img,.bubbleDropTR,.pls-dropBottomL img,.pls-dropBottom img,.pls-dropBottomR img,.pls-bottomLeft{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacertop,.pls-spacerright,.pls-spacerbottom,.pls-spacerleft{position:static !important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0} </style></head>
+
+<body class="page page-id-784 page-child parent-pageid-553 page-template-default"><div data-upgraded=",MaterialButton,MaterialRipple" id="move-to-top" class="animate mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent hiding"><i class="material-icons">expand_less</i><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+
+<div class="mdl-layout__container"><div data-upgraded=",MaterialLayout" id="page" class="hfeed mdl-layout mdl-js-layout mdl-layout--fixed-header is-small-screen has-drawer is-upgraded">
+	<header id="masthead" class="site-header mdl-layout__header is-casting-shadow" role="banner"><div class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div>
+		<div class="site-branding mdl-layout__header-row">
+			<span class="site-title mdl-layout-title">
+								<a href="http://pythondatascience.plavox.info/" rel="home">Python でデータサイエンス</a>
+					</span>
+
+			<span class="site-tagline" style="display: none;"></span>
+
+			<div class="mdl-layout-spacer"></div>
+
+			<nav id="site-navigation" class="main-navigation mdl-navigation mdl-layout--large-screen-only" role="navigation">
+							</nav>
+
+			<form role="search" method="get" class="search-form" action="http://pythondatascience.plavox.info/">
+				<div data-upgraded=",MaterialTextfield" class="search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width is-upgraded">
+				<label data-upgraded=",MaterialButton" class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+					<i class="material-icons">search</i>
+				</label>
+				<div class="search-form mdl-textfield__expandable-holder">
+					<input class="search-field  mdl-textfield__input" id="search-field" name="s" type="search">
+				</div>
+				</div>
+			</form>
+
+		</div>
+	</header>
+
+	<div class="mdl-layout__drawer">
+			<nav id="site-navigation" class="mobile-navigation mdl-navigation" role="navigation">
+			<ul id="mobile-menu" class="menu"><li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="http://pythondatascience.plavox.info/">Python でデータサイエンス</a></li>
+<li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-22"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">Python のインストール</a>
+<ul class="sub-menu">
+	<li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab-windows">Anaconda を利用した Python のインストール (Windows)</a></li>
+	<li id="menu-item-851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-851"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/anaconda-ubuntu-linux">Anaconda を利用した Python のインストール (Ubuntu Linux)</a></li>
+	<li id="menu-item-353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-353"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/anaconda%e3%82%92%e5%88%a9%e7%94%a8%e3%81%97%e3%81%9fpython%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">Anaconda を利用した Python パッケージのインストール</a></li>
+</ul>
+</li>
+<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83">Python の開発環境</a>
+<ul class="sub-menu">
+	<li id="menu-item-73" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/pycharm%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">PyCharm のインストール</a></li>
+	<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/pycharm%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%8b">PyCharm を使ってみる</a></li>
+	<li id="menu-item-1164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1164"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/pycharm%e3%81%ae%e4%be%bf%e5%88%a9%e3%81%aa%e4%bd%bf%e3%81%84%e6%96%b9">PyCharm の便利な使い方</a></li>
+	<li id="menu-item-375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-375"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/jupyter-notebook%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%88%e3%81%86">Jupyter Notebook を使ってみよう</a></li>
+	<li id="menu-item-1098" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1098"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/rodeo">Rodeo のインストールと使い方</a></li>
+</ul>
+</li>
+<li id="menu-item-98" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-98"><a href="http://pythondatascience.plavox.info/numpy">NumPy で行列計算</a>
+<ul class="sub-menu">
+	<li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><a href="http://pythondatascience.plavox.info/numpy/%e8%a1%8c%e5%88%97%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%88%e3%81%86">NumPy で行列を作ってみよう</a></li>
+	<li id="menu-item-124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-124"><a href="http://pythondatascience.plavox.info/numpy/%e8%a1%8c%e5%88%97%e3%82%92%e6%93%8d%e4%bd%9c%e3%81%99%e3%82%8b">NumPy で行列を操作する</a></li>
+	<li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184"><a href="http://pythondatascience.plavox.info/numpy/%e6%95%b0%e5%ad%a6%e7%b3%bb%e3%81%ae%e9%96%a2%e6%95%b0">NumPy で数学系の関数を使ってみよう</a></li>
+	<li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="http://pythondatascience.plavox.info/numpy/%e7%b7%9a%e5%bd%a2%e4%bb%a3%e6%95%b0">NumPy で線形代数</a></li>
+	<li id="menu-item-809" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-809"><a href="http://pythondatascience.plavox.info/numpy/%e4%b9%b1%e6%95%b0%e3%82%92%e7%94%9f%e6%88%90">Numpy で乱数を生成する</a></li>
+	<li id="menu-item-189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="http://pythondatascience.plavox.info/numpy/%e9%87%91%e8%9e%8d%e3%83%bb%e8%b2%a1%e5%8b%99%e7%b3%bb%e3%81%ae%e8%a8%88%e7%ae%97">NumPy で金融・財務系の計算を試してみよう</a></li>
+</ul>
+</li>
+<li id="menu-item-201" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-201"><a href="http://pythondatascience.plavox.info/pandas">Pandas でデータフレームを扱う</a>
+<ul class="sub-menu">
+	<li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="http://pythondatascience.plavox.info/pandas/pandas%e3%81%a7%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%88%e3%81%86">Pandas でデータフレームを作ってみよう</a></li>
+	<li id="menu-item-215" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-215"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e7%a2%ba%e8%aa%8d">Pandas のデータフレームを確認する</a></li>
+	<li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="http://pythondatascience.plavox.info/pandas/%e8%a1%8c%e3%83%bb%e5%88%97%e3%81%ae%e6%8a%bd%e5%87%ba">Pandas でデータフレームから特定の行・列を取得する</a></li>
+	<li id="menu-item-233" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-233"><a href="http://pythondatascience.plavox.info/pandas/pandas%e3%81%ae%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%81%ab%e8%a1%8c%e3%82%84%e5%88%97%e3%82%92%e8%bf%bd%e5%8a%a0%e3%81%99%e3%82%8b">Pandas のデータフレームに行や列 (カラム) を追加する</a></li>
+	<li id="menu-item-435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-435"><a href="http://pythondatascience.plavox.info/pandas/%e8%a1%8c%e3%83%bb%e5%88%97%e3%82%92%e5%89%8a%e9%99%a4">Pandas のデータフレームの特定の行・列を削除する</a></li>
+	<li id="menu-item-470" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-470"><a href="http://pythondatascience.plavox.info/pandas/%e8%a1%8c%e3%83%bb%e5%88%97%e3%81%ae%e9%95%b7%e3%81%95%e3%82%92%e7%a2%ba%e8%aa%8d">Pandas のデータフレームの行・列の長さを確認する</a></li>
+	<li id="menu-item-422" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-422"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%81%ae%e8%bb%a2%e7%bd%ae">Pandas のデータフレームの行⇔列を入れ替える</a></li>
+	<li id="menu-item-423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e3%82%bd%e3%83%bc%e3%83%88%e3%81%99%e3%82%8b">Pandas のデータフレームをソートする</a></li>
+	<li id="menu-item-238" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238"><a href="http://pythondatascience.plavox.info/pandas/pandas%e3%81%a7%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e7%b5%90%e5%90%88">Pandas でデータフレームの結合 (マージ, JOIN)</a></li>
+	<li id="menu-item-310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310"><a href="http://pythondatascience.plavox.info/pandas/csv%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%81%ae%e8%aa%ad%e3%81%bf%e8%be%bc%e3%81%bf">Pandas で CSV ファイルやテキストファイルを読み込む</a></li>
+	<li id="menu-item-352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e5%87%ba%e5%8a%9b%e3%81%99%e3%82%8b">Pandas のデータフレームを CSV ファイルやテキストファイルに出力する</a></li>
+</ul>
+</li>
+<li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-248"><a href="http://pythondatascience.plavox.info/scikit-learn">scikit-learn で機械学習</a>
+<ul class="sub-menu">
+	<li id="menu-item-981" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="http://pythondatascience.plavox.info/scikit-learn/%e7%b7%9a%e5%bd%a2%e5%9b%9e%e5%b8%b0">scikit-learn で線形回帰 (単回帰分析・重回帰分析)</a></li>
+	<li id="menu-item-404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404"><a href="http://pythondatascience.plavox.info/scikit-learn/%e3%82%af%e3%83%a9%e3%82%b9%e3%82%bf%e5%88%86%e6%9e%90-k-means">scikit-learn でクラスタ分析 (K-means 法)</a></li>
+	<li id="menu-item-297" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-297"><a href="http://pythondatascience.plavox.info/scikit-learn/scikit-learn%e3%81%a7%e6%b1%ba%e5%ae%9a%e6%9c%a8%e5%88%86%e6%9e%90">scikit-learn で決定木分析 (CART 法)</a></li>
+	<li id="menu-item-265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-265"><a href="http://pythondatascience.plavox.info/scikit-learn/scikit-learn%e3%81%ab%e4%bb%98%e5%b1%9e%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%83%87%e3%83%bc%e3%82%bf%e3%82%bb%e3%83%83%e3%83%88">scikit-learn に付属しているデータセット</a></li>
+</ul>
+</li>
+<li id="menu-item-563" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-563"><a href="http://pythondatascience.plavox.info/matplotlib">matplotlib でグラフ作成</a>
+<ul class="sub-menu">
+	<li id="menu-item-1303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1303"><a href="http://pythondatascience.plavox.info/matplotlib/jupyter-notebook">Jupyter Notebook で matplotlib のグラフを出力する</a></li>
+	<li id="menu-item-1304" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1304"><a href="http://pythondatascience.plavox.info/matplotlib/pycharm">PyCharm で matplotlib のグラフを出力する</a></li>
+	<li id="menu-item-564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564"><a href="http://pythondatascience.plavox.info/matplotlib/%e6%95%a3%e5%b8%83%e5%9b%b3">matplotlib で散布図 (Scatter plot) を描く</a></li>
+	<li id="menu-item-598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-598"><a href="http://pythondatascience.plavox.info/matplotlib/%e6%a3%92%e3%82%b0%e3%83%a9%e3%83%95">matplotlib で棒グラフを描く</a></li>
+	<li id="menu-item-616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-616"><a href="http://pythondatascience.plavox.info/matplotlib/%e6%8a%98%e3%82%8c%e7%b7%9a%e3%82%b0%e3%83%a9%e3%83%95">matplotlib で折れ線グラフを描く</a></li>
+	<li id="menu-item-662" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-662"><a href="http://pythondatascience.plavox.info/matplotlib/%e5%86%86%e3%82%b0%e3%83%a9%e3%83%95">matplotlib で円グラフ (pie chart) を描く</a></li>
+	<li id="menu-item-698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-698"><a href="http://pythondatascience.plavox.info/matplotlib/%e3%83%92%e3%82%b9%e3%83%88%e3%82%b0%e3%83%a9%e3%83%a0">matplotlib でヒストグラムを描く</a></li>
+	<li id="menu-item-793" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-784 current_page_item menu-item-793"><a href="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d">matplotlib で指定可能な色の名前と一覧</a></li>
+	<li id="menu-item-803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-803"><a href="http://pythondatascience.plavox.info/matplotlib/%e3%83%9e%e3%83%bc%e3%82%ab%e3%83%bc%e3%81%ae%e5%90%8d%e5%89%8d">matplotlib で指定可能なマーカーの名前</a></li>
+</ul>
+</li>
+<li id="menu-item-1316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1316"><a href="http://pythondatascience.plavox.info/seaborn">Seaborn でグラフ作成</a>
+<ul class="sub-menu">
+	<li id="menu-item-1487" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1487"><a href="http://pythondatascience.plavox.info/seaborn/seaborn-install">Seaborn のインストール</a></li>
+	<li id="menu-item-1317" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1317"><a href="http://pythondatascience.plavox.info/seaborn/pycharm">PyCharm を使って Seaborn のグラフを出力する</a></li>
+	<li id="menu-item-1348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1348"><a href="http://pythondatascience.plavox.info/seaborn/%e6%a3%92%e3%82%b0%e3%83%a9%e3%83%95">Seaborn で件数や平均値を棒グラフで可視化する</a></li>
+	<li id="menu-item-1401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1401"><a href="http://pythondatascience.plavox.info/seaborn/%e6%95%a3%e5%b8%83%e5%9b%b3%e3%83%bb%e5%9b%9e%e5%b8%b0%e3%83%a2%e3%83%87%e3%83%ab">Seaborn で散布図・回帰モデルを可視化する</a></li>
+	<li id="menu-item-1477" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1477"><a href="http://pythondatascience.plavox.info/seaborn/heatmap">Seaborn でヒートマップを作成する</a></li>
+</ul>
+</li>
+<li id="menu-item-887" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-887"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0">TensorFlow でディープラーニング</a>
+<ul class="sub-menu">
+	<li id="menu-item-888" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-888"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/ubuntu-linux%e3%81%ab%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">Ubuntu Linux に TensorFlow をインストール</a></li>
+	<li id="menu-item-1123" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1123"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/ubuntu-linux%e3%81%ab%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab-virtualenv">Tensorflow をインストール (Ubuntu) – Virtualenv を利用</a></li>
+	<li id="menu-item-924" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-924"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/tensorflow%e3%81%a7%e6%89%8b%e6%9b%b8%e3%81%8d%e6%96%87%e5%ad%97%e8%aa%8d%e8%ad%98">TensorFlow で手書き文字認識 (Softmax 法)</a></li>
+	<li id="menu-item-1012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1012"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/tensorflow%e3%81%a7%e7%94%bb%e5%83%8f%e8%aa%8d%e8%ad%98">TensorFlow で画像認識 (CNN 法)</a></li>
+</ul>
+</li>
+<li id="menu-item-489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-489"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84">Python と R の違い・関数の対応表</a>
+<ul class="sub-menu">
+	<li id="menu-item-490" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-490"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0">Python と R の違い (データフレーム編)</a></li>
+	<li id="menu-item-496" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-496"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e6%95%b0%e5%ad%a6%e9%96%a2%e6%95%b0%e3%83%bb%e3%83%87%e3%83%bc%e3%82%bf%e6%95%b4%e5%bd%a2%e5%8a%a0%e5%b7%a5">Python と R の違い (数学関数・データ整形加工編)</a></li>
+	<li id="menu-item-503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-503"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e6%97%a5%e4%bb%98%e3%83%bb%e6%99%82%e9%96%93%e3%81%ae%e5%87%a6%e7%90%86">Python と R の違い (日付・時間の処理)</a></li>
+	<li id="menu-item-545" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-545"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%87%e3%83%bc%e3%82%bf%e5%8f%af%e8%a6%96%e5%8c%96%e3%83%bb%e3%82%b0%e3%83%a9%e3%83%95%e4%bd%9c%e6%88%90">Python と R の違い (データ可視化・グラフ作成編)</a></li>
+	<li id="menu-item-758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-758"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e6%b1%ba%e5%ae%9a%e6%9c%a8%e5%88%86%e6%9e%90">Python と R の違い (決定木分析)</a></li>
+	<li id="menu-item-754" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-754"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%82%b5%e3%83%9d%e3%83%bc%e3%83%88%e3%83%99%e3%82%af%e3%82%bf%e3%83%bc%e3%83%9e%e3%82%b7%e3%83%b3">Python と R の違い (サポートベクターマシン)</a></li>
+	<li id="menu-item-753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-753"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%8a%e3%82%a4%e3%83%bc%e3%83%96%e3%83%99%e3%82%a4%e3%82%ba">Python と R の違い (ナイーブベイズ分類器)</a></li>
+	<li id="menu-item-755" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-755"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%a9%e3%83%b3%e3%83%80%e3%83%a0%e3%83%95%e3%82%a9%e3%83%ac%e3%82%b9%e3%83%88%e6%b3%95">Python と R の違い (ランダムフォレスト法)</a></li>
+	<li id="menu-item-756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-756"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e7%b7%9a%e5%bd%a2%e5%9b%9e%e5%b8%b0">Python と R の違い (線形回帰による予測)</a></li>
+	<li id="menu-item-757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-757"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/k-nn%e6%b3%95">Python と R の違い (k-NN 法による分類器)</a></li>
+</ul>
+</li>
+</ul>		</nav><!-- #site-navigation -->
+	</div>
+	<div id="content" class="site-content mdl-layout__content mdl-grid">
+
+	<div id="primary" class="content-area mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+		<main id="main" class="site-main" role="main">
+
+			
+				
+<article id="post-784" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col post-784 page type-page status-publish hentry" style="padding:8px">
+	<header class="entry-header">
+		<h1 class="entry-title mdl-cell mdl-cell--12-col" style="border-bottom: 1px solid #eee; padding-bottom: 8px;">matplotlib で指定可能な色の名前と一覧</h1>	</header><!-- .entry-header -->
+
+<!-- Last update -->
+<p style="padding:5px 10px; text-align:right; color:#606060; background: #f0f0f0; border-radius: 5px;">
+Last update: 2016-06-26</p>
+<!-- End last update-->
+
+<!-- Start Google Ad -->
+<div style="text-align:center; margin:auto 8px;">
+<!-- python-responsive -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 60px;" data-ad-client="ca-pub-6801897182966827" data-ad-slot="1399913214" data-ad-format="auto"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:555px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:555px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:555px;height:60px;" frameborder="0" height="60" width="555"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<!-- End Google Ad -->
+
+
+	<div class="entry-content mdl-cell mdl-cell--12-col">
+		<p>本ページでは、Python のグラフ描画 (データ可視化) ライブラリである、matplotlib でグラフの線や棒の色に指定可能な色の名前 (カラーコード) とその方法について紹介します。</p>
+<h3>色の名前で指定</h3>
+<p>以下のように色の名前を用いて指定できます。指定可能な色の名前は <code>matplotlib.colors.cnames</code> で確認できます。</p>
+<p><b>指定可能な色の名前</b></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59ab6fbc2823f973698226" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 13px ! important; line-height: 16px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 16px !important;"><div class="crayon-num" data-line="crayon-59ab6fbc2823f973698226-1">1</div><div class="crayon-num" data-line="crayon-59ab6fbc2823f973698226-2">2</div><div class="crayon-num" data-line="crayon-59ab6fbc2823f973698226-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 16px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59ab6fbc2823f973698226-1"><span class="crayon-o">&gt;&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">matplotlib</span></div><div class="crayon-line" id="crayon-59ab6fbc2823f973698226-2"><span class="crayon-o">&gt;&gt;&gt;</span><span class="crayon-h"> </span><span class="crayon-v">matplotlib</span><span class="crayon-sy">.</span><span class="crayon-v">colors</span><span class="crayon-sy">.</span><span class="crayon-i">cnames</span></div><div class="crayon-line" id="crayon-59ab6fbc2823f973698226-3"><span class="crayon-sy">{</span><span class="crayon-s">'orangered'</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'#FF4500'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'sienna'</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'#A0522D'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'mistyrose'</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'#FFE4E1'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0033 seconds] -->
+<p></p>
+<p><b>指定可能な色の名前 (一覧)</b><br>
+<a href="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette.png" rel="attachment wp-att-785"><img src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/colorpalette-300x252.png" alt="colorpalette" class="alignnone size-medium wp-image-785" srcset="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-300x252.png 300w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-768x645.png 768w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-1024x860.png 1024w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette.png 1466w" sizes="(max-width: 300px) 100vw, 300px" height="252" width="300"></a><br>
+※ <a href="http://matplotlib.org/examples/color/named_colors.html">color example code: named_colors.py — Matplotlib 1.5.1 documentation</a> を参考に作成</p>
+<hr>
+<h3>1 文字で指定</h3>
+<p>matplotlib の Color API ページによると、以下の主要な色については 1 文字で指定可能です。光の三原色 (RGB) と色の三原色 (CMY) に黒と白 (KW) を合わせた 8 色です。</p>
+<table>
+<tbody><tr>
+<th>b</th>
+<td>青 (Blue)</td>
+</tr>
+<tr>
+<th>g</th>
+<td>緑 (Green)</td>
+</tr>
+<tr>
+<th>r</th>
+<td>赤 (Red)</td>
+</tr>
+<tr>
+<th>c</th>
+<td>シアン (Cyan)</td>
+</tr>
+<tr>
+<th>m</th>
+<td>マゼンタ (Magenta)</td>
+</tr>
+<tr>
+<th>y</th>
+<td>黄 (Yellow)</td>
+</tr>
+<tr>
+<th>k</th>
+<td>黒 (Black) </td>
+</tr>
+<tr>
+<th>w</th>
+<td>白 (White)</td>
+</tr>
+</tbody></table>
+<p><b>出力イメージ</b></p>
+<p><a href="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-singleletter.png" rel="attachment wp-att-789"><img src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/colorpalette-singleletter-300x222.png" alt="colorpalette-singleletter" class="alignnone size-medium wp-image-789" srcset="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-singleletter-300x222.png 300w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-singleletter-768x569.png 768w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-singleletter.png 800w" sizes="(max-width: 300px) 100vw, 300px" height="222" width="300"></a></p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59ab6fbc28249470650336" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 13px ! important; line-height: 16px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 16px !important;"><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-1">1</div><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-2">2</div><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-3">3</div><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-4">4</div><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-5">5</div><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-6">6</div><div class="crayon-num" data-line="crayon-59ab6fbc28249470650336-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 16px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59ab6fbc28249470650336-1"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">matplotlib</span><span class="crayon-sy">.</span><span class="crayon-e">pyplot </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-e">plt</span></div><div class="crayon-line" id="crayon-59ab6fbc28249470650336-2"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-e">numpy </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-e">np</span></div><div class="crayon-line" id="crayon-59ab6fbc28249470650336-3">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc28249470650336-4"><span class="crayon-v">colorlist</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">"r"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"g"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"b"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"c"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"m"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"y"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"k"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"w"</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28249470650336-5"><span class="crayon-v">x</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">np</span><span class="crayon-sy">.</span><span class="crayon-e">arange</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">9</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc28249470650336-6"><span class="crayon-v">height</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">np</span><span class="crayon-sy">.</span><span class="crayon-e">repeat</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">8</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc28249470650336-7"><span class="crayon-v">plt</span><span class="crayon-sy">.</span><span class="crayon-e">bar</span><span class="crayon-sy">(</span><span class="crayon-v">x</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">height</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">color</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">tick_label</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">align</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0019 seconds] -->
+<p></p>
+<hr>
+<h3>16 進数のカラーコードで指定</h3>
+<p>#ff0000 (赤), #000000 (黒) のような、HTML や CSS で用いられる 16 進数で指定することもできます。</p>
+<p><b>出力イメージ</b></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59ab6fbc2824d130407458" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 13px ! important; line-height: 16px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 16px !important;"><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-1">1</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-2">2</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-3">3</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-4">4</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-5">5</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-6">6</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-7">7</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-8">8</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-9">9</div><div class="crayon-num" data-line="crayon-59ab6fbc2824d130407458-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 16px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-1"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">matplotlib</span><span class="crayon-sy">.</span><span class="crayon-e">pyplot </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-e">plt</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-2"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-e">numpy </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-e">np</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-3">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-4"><span class="crayon-v">fig</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">plt</span><span class="crayon-sy">.</span><span class="crayon-e">figure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-5"><span class="crayon-v">fig</span><span class="crayon-sy">.</span><span class="crayon-v">patch</span><span class="crayon-sy">.</span><span class="crayon-e">set_facecolor</span><span class="crayon-sy">(</span><span class="crayon-s">'white'</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-6">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-7"><span class="crayon-v">colorlist</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'#e41a1c'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#377eb8'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#4daf4a'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#984ea3'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#ff7f00'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#ffff33'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#a65628'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'#f781bf'</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-8"><span class="crayon-v">x</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">np</span><span class="crayon-sy">.</span><span class="crayon-e">arange</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">9</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-9"><span class="crayon-v">height</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">np</span><span class="crayon-sy">.</span><span class="crayon-e">arange</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">9</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc2824d130407458-10"><span class="crayon-v">plt</span><span class="crayon-sy">.</span><span class="crayon-e">barh</span><span class="crayon-sy">(</span><span class="crayon-v">x</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">height</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">color</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">tick_label</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">align</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0025 seconds] -->
+<p></p>
+<p><a href="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-hex.png" rel="attachment wp-att-786"><img src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/colorpalette-hex-300x222.png" alt="colorpalette-hex" class="alignnone size-medium wp-image-786" srcset="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-hex-300x222.png 300w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-hex-768x569.png 768w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-hex.png 800w" sizes="(max-width: 300px) 100vw, 300px" height="222" width="300"></a></p>
+<hr>
+<h3>RGB で指定</h3>
+<p>RGB それぞれのを色の要素を 0.0 ～ 1.0 のタプルで指定することも可能です。</p>
+<p><b>出力イメージ</b></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59ab6fbc28250439120897" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 13px ! important; line-height: 16px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 16px !important;"><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-1">1</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-2">2</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-3">3</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-4">4</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-5">5</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-6">6</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-7">7</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-8">8</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-9">9</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-10">10</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-11">11</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-12">12</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-13">13</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-14">14</div><div class="crayon-num" data-line="crayon-59ab6fbc28250439120897-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 16px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59ab6fbc28250439120897-1"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">matplotlib</span><span class="crayon-sy">.</span><span class="crayon-e">pyplot </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-e">plt</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-2"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-e">numpy </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-e">np</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-3">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-4"><span class="crayon-v">fig</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">plt</span><span class="crayon-sy">.</span><span class="crayon-e">figure</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-5"><span class="crayon-v">fig</span><span class="crayon-sy">.</span><span class="crayon-v">patch</span><span class="crayon-sy">.</span><span class="crayon-e">set_facecolor</span><span class="crayon-sy">(</span><span class="crayon-s">'white'</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-6">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-7"><span class="crayon-v">col1</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">0.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0.0</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-8"><span class="crayon-v">col2</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">1.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0.0</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-9"><span class="crayon-v">col3</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">0.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0.0</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-10"><span class="crayon-v">col4</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">0.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0.0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1.0</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-11"><span class="crayon-v">colorlist</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-v">col1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">col2</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">col3</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">col4</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-12">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-13"><span class="crayon-v">x</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">np</span><span class="crayon-sy">.</span><span class="crayon-e">arange</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-14"><span class="crayon-v">height</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">np</span><span class="crayon-sy">.</span><span class="crayon-e">arange</span><span class="crayon-sy">(</span><span class="crayon-cn">1</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-59ab6fbc28250439120897-15"><span class="crayon-v">plt</span><span class="crayon-sy">.</span><span class="crayon-e">bar</span><span class="crayon-sy">(</span><span class="crayon-v">x</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">height</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">color</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">tick_label</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">align</span><span class="crayon-o">=</span><span class="crayon-s">"center"</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0033 seconds] -->
+<p></p>
+<p><a href="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-rgb.png" rel="attachment wp-att-788"><img src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/colorpalette-rgb-300x222.png" alt="colorpalette-rgb" class="alignnone size-medium wp-image-788" srcset="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-rgb-300x222.png 300w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-rgb-768x569.png 768w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-rgb.png 800w" sizes="(max-width: 300px) 100vw, 300px" height="222" width="300"></a></p>
+<hr>
+<h3>グレースケールで指定</h3>
+<p>‘0.0’ (黒) ～ ‘1.0’ (白) のグレースケールで指定することもできます。作成した資料を白黒印刷する場合に便利です。</p>
+<p><b>出力イメージ</b></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59ab6fbc28254666956104" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 13px ! important; line-height: 16px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 13px !important;height: 19.5px !important; line-height: 19.5px !important;"><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 18.2px !important; line-height: 18.2px !important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 13px !important; line-height: 16px !important;"><div class="crayon-num" data-line="crayon-59ab6fbc28254666956104-1">1</div><div class="crayon-num" data-line="crayon-59ab6fbc28254666956104-2">2</div><div class="crayon-num" data-line="crayon-59ab6fbc28254666956104-3">3</div><div class="crayon-num" data-line="crayon-59ab6fbc28254666956104-4">4</div><div class="crayon-num" data-line="crayon-59ab6fbc28254666956104-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 13px !important; line-height: 16px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-59ab6fbc28254666956104-1"><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-v">matplotlib</span><span class="crayon-sy">.</span><span class="crayon-e">pyplot </span><span class="crayon-st">as</span><span class="crayon-h"> </span><span class="crayon-i">plt</span></div><div class="crayon-line" id="crayon-59ab6fbc28254666956104-2">&nbsp;</div><div class="crayon-line" id="crayon-59ab6fbc28254666956104-3"><span class="crayon-v">x</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">10</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28254666956104-4"><span class="crayon-v">colorlist</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">"0.1"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.2"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.3"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.4"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.5"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.6"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.7"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.8"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"0.9"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"1.0"</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-59ab6fbc28254666956104-5"><span class="crayon-v">plt</span><span class="crayon-sy">.</span><span class="crayon-e">pie</span><span class="crayon-sy">(</span><span class="crayon-v">x</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">labels</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">counterclock</span><span class="crayon-o">=</span><span class="crayon-t">False</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">startangle</span><span class="crayon-o">=</span><span class="crayon-cn">90</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">colors</span><span class="crayon-o">=</span><span class="crayon-v">colorlist</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0022 seconds] -->
+<p></p>
+<p><a href="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-mono.png" rel="attachment wp-att-787"><img src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/colorpalette-mono-300x269.png" alt="colorpalette-mono" class="alignnone size-medium wp-image-787" srcset="http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-mono-300x269.png 300w, http://pythondatascience.plavox.info/wp-content/uploads/2016/06/colorpalette-mono.png 662w" sizes="(max-width: 300px) 100vw, 300px" height="269" width="300"></a></p>
+<p>参考: <a href="http://matplotlib.org/api/colors_api.html">colors — Matplotlib 1.5.1 documentation</a></p>
+<p class="no-break"><span st_processed="yes" class="st_facebook_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/facebook_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_twitter_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/twitter_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_linkedin_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/linkedin_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_googleplus_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/googleplus_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_pocket_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/pocket_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_hatena_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/hatena_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_evernote_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/evernote_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_yammer_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/yammer_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_email_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/email_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_sharethis_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/sharethis_32.png&quot;);" class="stLarge"></span></span></span>
+<span st_processed="yes" class="st_pinterest_large" st_title="matplotlib で指定可能な色の名前と一覧" st_url="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span style="background-image: url(&quot;http://w.sharethis.com/images/2017/pinterest_32.png&quot;);" class="stLarge"></span></span></span></p>		
+<!-- Start Google Ad -->
+<h3>See also</h3>
+<div style="text-align:center; margin:8px auto;">
+<script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/adsbygoogle.js"></script>
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: block; height: 383px;" data-ad-format="autorelaxed" data-ad-client="ca-pub-6801897182966827" data-ad-slot="1022586416"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:383px;margin:0;padding:0;position:relative;visibility:visible;width:548px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:383px;margin:0;padding:0;position:relative;visibility:visible;width:548px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:548px;height:383px;" frameborder="0" height="383" width="548"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+<!-- End Google Ad -->
+
+	</div><!-- .entry-content -->
+</article><!-- #post-## -->
+
+
+				
+			
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area mdl-cell mdl-cell--4-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone" role="complementary">
+
+	<aside id="text-2" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>Advertisement</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="text-align:center;margin:10px auto;">
+<script async="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/adsbygoogle.js"></script>
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-6801897182966827" data-ad-slot="4353379618"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+		</aside><aside id="text-6" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>Search</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="margin:10px">
+<script>
+  (function() {
+    var cx = '006399046916930193914:mm_wthimbuo';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div id="___gcse_0"><div dir="ltr" class="gsc-control-searchbox-only gsc-control-searchbox-only-ja"><form accept-charset="utf-8" class="gsc-search-box gsc-search-box-tools"><table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-input"><div id="gsc-iw-id1" class="gsc-input-box"><table class="gstl_50 " id="gs_id50" style="width: 100%; padding: 0px;" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsib_a" id="gs_tti50"><input placeholder="カスタム検索" spellcheck="false" dir="ltr" x-webkit-grammar="builtin:search" x-webkit-speech="" id="gsc-i-id1" style="width: 100%; padding: 0px; border: medium none; margin: 0px; height: auto; outline: medium none; background: rgb(255, 255, 255) url(&quot;http://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) no-repeat scroll left center; text-indent: 48px;" title="検索" name="search" class="gsc-input" size="10" autocomplete="off" lang="ja" type="text"></td><td class="gsib_b"><div dir="ltr" id="gs_st50" class="gsst_b"><a style="display: none;" href="javascript:void(0)" class="gsst_a"><span id="gs_cb50" class="gscb_a">×</span></a></div></td></tr></tbody></table></div><input id="bgresponse" name="bgresponse" type="hidden"></td><td class="gsc-search-button"><input title="検索" class="gsc-search-button gsc-search-button-v2" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/search_box_icon.png" type="image"></td><td class="gsc-clear-button"><div title="結果をクリア" class="gsc-clear-button">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img srcset="https://www.google.com/cse/static/images/2x/googlelogo_grey_46x15dp.png 2x" class="gsc-branding-img" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/googlelogo_grey_46x15dp.png"></td></tr></tbody></table></form></div></div>
+</div></div>
+		</aside><aside id="text-10" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>PR</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="text-align:center;margin:10px auto;">
+<script>
+ var a8_ads= [
+ '<a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6RHFL" target="_blank" rel="nofollow"><img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=161230206563&wid=001&eno=01&mid=s00000016735001136000&mc=1"></a><img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=2NZQ0U+9B72CY+3L4M+6RHFL" alt="">',
+ '<a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6SZG1" target="_blank" rel="nofollow"><img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=161230206563&wid=001&eno=01&mid=s00000016735001143000&mc=1"></a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=2NZQ0U+9B72CY+3L4M+6SZG1" alt="">',
+ '<a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6PZF5" target="_blank" rel="nofollow"><img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=161230206563&wid=001&eno=01&mid=s00000016735001129000&mc=1"></a><img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=2NZQ0U+9B72CY+3L4M+6PZF5" alt="">',
+ '<a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6T75T" target="_blank" rel="nofollow"><img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=161230206563&wid=001&eno=01&mid=s00000016735001144000&mc=1"></a><img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=2NZQ0U+9B72CY+3L4M+6T75T" alt="">',
+ '<a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6MZE9" target="_blank" rel="nofollow"><img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=161230206563&wid=001&eno=01&mid=s00000016735001115000&mc=1"></a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2NZQ0U+9B72CY+3L4M+6MZE9" alt="">',
+ '<a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6OWU9" target="_blank" rel="nofollow"><img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=161230206563&wid=001&eno=01&mid=s00000016735001124000&mc=1"></a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=2NZQ0U+9B72CY+3L4M+6OWU9" alt="">'
+ ]
+ if(document.body.classList.contains("page-id-1209")){
+  a8_ads= [
+   '<a href="https://www.udemy.com/python-jp/?aff_code=Ewh3Y11STXwBSh91MkBPbG1RGXFfVVh8Al4ZeU5TTXYBRRFxVz5XMRM=&deal_code=JPPYTHONFIXED&utm_source=ad_pds&utm_campaign=JPPYTHONFIXED&utm_medium=pub" target="_blank"><img src="http://pythondatascience.plavox.info/wp-content/uploads/2017/04/udemy_banner01-300x250.png" alt="udemy_banner01" width="300" height="250" /></a>',
+   '<a href="https://www.udemy.com/learning-ai/?aff_code=Ewh3Y11STXwBSh91MkBPbG1RGXFfVVh8Al4ZeU5TTXYBRRFxVz5XMRM=&deal_code=JPPYTHONFIXED&utm_source=ad_pds&utm_campaign=JPPYTHONFIXED&utm_medium=pub" target="_blank"><img src="http://pythondatascience.plavox.info/wp-content/uploads/2017/04/udemy_banner02-300x250.png" alt="udemy_banner02" width="300" height="250" /></a>',
+   '<a href="https://www.udemy.com/python-scikit-learn/?aff_code=Ewh3Y11STXwBSh91MkBPbG1RGXFfVVh8Al4ZeU5TTXYBRRFxVz5XMRM=&deal_code=JPPYTHONFIXED&utm_source=ad_pds&utm_campaign=JPPYTHONFIXED&utm_medium=pub" target="_blank"><img src="http://pythondatascience.plavox.info/wp-content/uploads/2017/04/udemy_banner03-300x250.png" alt="udemy_banner03" width="300" height="250" /></a>'
+//   '<a href="https://www.udemy.com/python-jp/?pmtag=jp01pds28&#038;aff_code=Ewh3Y11STXwBSh91MkBPbG1RGXFfVVh8Al4ZeU5TTXYBRRFxVz5XMRM=&#038;utm_source=ad_pds&#038;utm_campaign=cp1&#038;utm_medium=1704" target="_blank"><img src="http://pythondatascience.plavox.info/wp-content/uploads/2017/05/udemy_banner01_0516.png" alt="udemy_banner01" width="300" height="250" /></a>',
+//   '<a href="https://www.udemy.com/learning-ai/?pmtag=jp01pds28&#038;aff_code=Ewh3Y11STXwBSh91MkBPbG1RGXFfVVh8Al4ZeU5TTXYBRRFxVz5XMRM=&#038;utm_source=ad_pds&#038;utm_campaign=cp1&#038;utm_medium=1704" target="_blank"><img src="http://pythondatascience.plavox.info/wp-content/uploads/2017/05/udemy_banner02_0516.png" alt="udemy_banner02" width="300" height="250" /></a>',
+//   '<a href="https://www.udemy.com/python-scikit-learn/?pmtag=jp01pds28&#038;aff_code=Ewh3Y11STXwBSh91MkBPbG1RGXFfVVh8Al4ZeU5TTXYBRRFxVz5XMRM=&#038;utm_source=ad_pds&#038;utm_campaign=cp1&#038;utm_medium=1704" target="_blank"><img src="http://pythondatascience.plavox.info/wp-content/uploads/2017/05/udemy_banner03_0516.png" alt="udemy_banner03" width="300" height="250" /></a>'
+  ]
+ }
+
+ document.write(a8_ads[Math.floor(Math.random()*a8_ads.length)])
+</script><a href="https://px.a8.net/svt/ejp?a8mat=2NZQ0U+9B72CY+3L4M+6OWU9" target="_blank" rel="nofollow"><img alt="" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/bgt.gif" height="250" width="300" border="0"></a><img src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/0.gif" alt="" height="1" width="1" border="0">
+</div></div>
+		</aside><aside id="text-8" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>YouTube チャンネル登録</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="margin:10px auto">
+<script gapi_processed="true" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/platform.js"></script>
+
+<div id="___ytsubscribe_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 170px; height: 48px;"><iframe data-gapiattached="true" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/subscribe_embed.html" name="I0_1504407485420" id="I0_1504407485420" vspace="0" tabindex="0" style="position: static; top: 0px; width: 170px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 48px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div>
+</div>
+</div>
+		</aside><aside id="nav_menu-2" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_nav_menu"><div class="widget-title"><h3>Menu</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div><div class="menu-menu-container"><ul id="menu-menu" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="http://pythondatascience.plavox.info/">Python でデータサイエンス</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-22"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">Python のインストール</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab-windows">Anaconda を利用した Python のインストール (Windows)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-851"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/anaconda-ubuntu-linux">Anaconda を利用した Python のインストール (Ubuntu Linux)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-353"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/anaconda%e3%82%92%e5%88%a9%e7%94%a8%e3%81%97%e3%81%9fpython%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">Anaconda を利用した Python パッケージのインストール</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83">Python の開発環境</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/pycharm%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">PyCharm のインストール</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/pycharm%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%8b">PyCharm を使ってみる</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1164"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/pycharm%e3%81%ae%e4%be%bf%e5%88%a9%e3%81%aa%e4%bd%bf%e3%81%84%e6%96%b9">PyCharm の便利な使い方</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-375"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/jupyter-notebook%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%88%e3%81%86">Jupyter Notebook を使ってみよう</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1098"><a href="http://pythondatascience.plavox.info/python%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/rodeo">Rodeo のインストールと使い方</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-98"><a href="http://pythondatascience.plavox.info/numpy">NumPy で行列計算</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><a href="http://pythondatascience.plavox.info/numpy/%e8%a1%8c%e5%88%97%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%88%e3%81%86">NumPy で行列を作ってみよう</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-124"><a href="http://pythondatascience.plavox.info/numpy/%e8%a1%8c%e5%88%97%e3%82%92%e6%93%8d%e4%bd%9c%e3%81%99%e3%82%8b">NumPy で行列を操作する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184"><a href="http://pythondatascience.plavox.info/numpy/%e6%95%b0%e5%ad%a6%e7%b3%bb%e3%81%ae%e9%96%a2%e6%95%b0">NumPy で数学系の関数を使ってみよう</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="http://pythondatascience.plavox.info/numpy/%e7%b7%9a%e5%bd%a2%e4%bb%a3%e6%95%b0">NumPy で線形代数</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-809"><a href="http://pythondatascience.plavox.info/numpy/%e4%b9%b1%e6%95%b0%e3%82%92%e7%94%9f%e6%88%90">Numpy で乱数を生成する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="http://pythondatascience.plavox.info/numpy/%e9%87%91%e8%9e%8d%e3%83%bb%e8%b2%a1%e5%8b%99%e7%b3%bb%e3%81%ae%e8%a8%88%e7%ae%97">NumPy で金融・財務系の計算を試してみよう</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-201"><a href="http://pythondatascience.plavox.info/pandas">Pandas でデータフレームを扱う</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="http://pythondatascience.plavox.info/pandas/pandas%e3%81%a7%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%88%e3%81%86">Pandas でデータフレームを作ってみよう</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-215"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e7%a2%ba%e8%aa%8d">Pandas のデータフレームを確認する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="http://pythondatascience.plavox.info/pandas/%e8%a1%8c%e3%83%bb%e5%88%97%e3%81%ae%e6%8a%bd%e5%87%ba">Pandas でデータフレームから特定の行・列を取得する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-233"><a href="http://pythondatascience.plavox.info/pandas/pandas%e3%81%ae%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%81%ab%e8%a1%8c%e3%82%84%e5%88%97%e3%82%92%e8%bf%bd%e5%8a%a0%e3%81%99%e3%82%8b">Pandas のデータフレームに行や列 (カラム) を追加する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-435"><a href="http://pythondatascience.plavox.info/pandas/%e8%a1%8c%e3%83%bb%e5%88%97%e3%82%92%e5%89%8a%e9%99%a4">Pandas のデータフレームの特定の行・列を削除する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-470"><a href="http://pythondatascience.plavox.info/pandas/%e8%a1%8c%e3%83%bb%e5%88%97%e3%81%ae%e9%95%b7%e3%81%95%e3%82%92%e7%a2%ba%e8%aa%8d">Pandas のデータフレームの行・列の長さを確認する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-422"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%81%ae%e8%bb%a2%e7%bd%ae">Pandas のデータフレームの行⇔列を入れ替える</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e3%82%bd%e3%83%bc%e3%83%88%e3%81%99%e3%82%8b">Pandas のデータフレームをソートする</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238"><a href="http://pythondatascience.plavox.info/pandas/pandas%e3%81%a7%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e7%b5%90%e5%90%88">Pandas でデータフレームの結合 (マージ, JOIN)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310"><a href="http://pythondatascience.plavox.info/pandas/csv%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%81%ae%e8%aa%ad%e3%81%bf%e8%be%bc%e3%81%bf">Pandas で CSV ファイルやテキストファイルを読み込む</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352"><a href="http://pythondatascience.plavox.info/pandas/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%82%92%e5%87%ba%e5%8a%9b%e3%81%99%e3%82%8b">Pandas のデータフレームを CSV ファイルやテキストファイルに出力する</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-248"><a href="http://pythondatascience.plavox.info/scikit-learn">scikit-learn で機械学習</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="http://pythondatascience.plavox.info/scikit-learn/%e7%b7%9a%e5%bd%a2%e5%9b%9e%e5%b8%b0">scikit-learn で線形回帰 (単回帰分析・重回帰分析)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404"><a href="http://pythondatascience.plavox.info/scikit-learn/%e3%82%af%e3%83%a9%e3%82%b9%e3%82%bf%e5%88%86%e6%9e%90-k-means">scikit-learn でクラスタ分析 (K-means 法)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-297"><a href="http://pythondatascience.plavox.info/scikit-learn/scikit-learn%e3%81%a7%e6%b1%ba%e5%ae%9a%e6%9c%a8%e5%88%86%e6%9e%90">scikit-learn で決定木分析 (CART 法)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-265"><a href="http://pythondatascience.plavox.info/scikit-learn/scikit-learn%e3%81%ab%e4%bb%98%e5%b1%9e%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%83%87%e3%83%bc%e3%82%bf%e3%82%bb%e3%83%83%e3%83%88">scikit-learn に付属しているデータセット</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-563"><a href="http://pythondatascience.plavox.info/matplotlib">matplotlib でグラフ作成</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1303"><a href="http://pythondatascience.plavox.info/matplotlib/jupyter-notebook">Jupyter Notebook で matplotlib のグラフを出力する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1304"><a href="http://pythondatascience.plavox.info/matplotlib/pycharm">PyCharm で matplotlib のグラフを出力する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564"><a href="http://pythondatascience.plavox.info/matplotlib/%e6%95%a3%e5%b8%83%e5%9b%b3">matplotlib で散布図 (Scatter plot) を描く</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-598"><a href="http://pythondatascience.plavox.info/matplotlib/%e6%a3%92%e3%82%b0%e3%83%a9%e3%83%95">matplotlib で棒グラフを描く</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-616"><a href="http://pythondatascience.plavox.info/matplotlib/%e6%8a%98%e3%82%8c%e7%b7%9a%e3%82%b0%e3%83%a9%e3%83%95">matplotlib で折れ線グラフを描く</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-662"><a href="http://pythondatascience.plavox.info/matplotlib/%e5%86%86%e3%82%b0%e3%83%a9%e3%83%95">matplotlib で円グラフ (pie chart) を描く</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-698"><a href="http://pythondatascience.plavox.info/matplotlib/%e3%83%92%e3%82%b9%e3%83%88%e3%82%b0%e3%83%a9%e3%83%a0">matplotlib でヒストグラムを描く</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-784 current_page_item menu-item-793"><a href="http://pythondatascience.plavox.info/matplotlib/%e8%89%b2%e3%81%ae%e5%90%8d%e5%89%8d">matplotlib で指定可能な色の名前と一覧</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-803"><a href="http://pythondatascience.plavox.info/matplotlib/%e3%83%9e%e3%83%bc%e3%82%ab%e3%83%bc%e3%81%ae%e5%90%8d%e5%89%8d">matplotlib で指定可能なマーカーの名前</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1316"><a href="http://pythondatascience.plavox.info/seaborn">Seaborn でグラフ作成</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1487"><a href="http://pythondatascience.plavox.info/seaborn/seaborn-install">Seaborn のインストール</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1317"><a href="http://pythondatascience.plavox.info/seaborn/pycharm">PyCharm を使って Seaborn のグラフを出力する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1348"><a href="http://pythondatascience.plavox.info/seaborn/%e6%a3%92%e3%82%b0%e3%83%a9%e3%83%95">Seaborn で件数や平均値を棒グラフで可視化する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1401"><a href="http://pythondatascience.plavox.info/seaborn/%e6%95%a3%e5%b8%83%e5%9b%b3%e3%83%bb%e5%9b%9e%e5%b8%b0%e3%83%a2%e3%83%87%e3%83%ab">Seaborn で散布図・回帰モデルを可視化する</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1477"><a href="http://pythondatascience.plavox.info/seaborn/heatmap">Seaborn でヒートマップを作成する</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-887"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0">TensorFlow でディープラーニング</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-888"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/ubuntu-linux%e3%81%ab%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">Ubuntu Linux に TensorFlow をインストール</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1123"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/ubuntu-linux%e3%81%ab%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab-virtualenv">Tensorflow をインストール (Ubuntu) – Virtualenv を利用</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-924"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/tensorflow%e3%81%a7%e6%89%8b%e6%9b%b8%e3%81%8d%e6%96%87%e5%ad%97%e8%aa%8d%e8%ad%98">TensorFlow で手書き文字認識 (Softmax 法)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1012"><a href="http://pythondatascience.plavox.info/tensorflow%e3%81%a7%e3%83%87%e3%82%a3%e3%83%bc%e3%83%97%e3%83%a9%e3%83%bc%e3%83%8b%e3%83%b3%e3%82%b0/tensorflow%e3%81%a7%e7%94%bb%e5%83%8f%e8%aa%8d%e8%ad%98">TensorFlow で画像認識 (CNN 法)</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-489"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84">Python と R の違い・関数の対応表</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-490"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0">Python と R の違い (データフレーム編)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-496"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e6%95%b0%e5%ad%a6%e9%96%a2%e6%95%b0%e3%83%bb%e3%83%87%e3%83%bc%e3%82%bf%e6%95%b4%e5%bd%a2%e5%8a%a0%e5%b7%a5">Python と R の違い (数学関数・データ整形加工編)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-503"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e6%97%a5%e4%bb%98%e3%83%bb%e6%99%82%e9%96%93%e3%81%ae%e5%87%a6%e7%90%86">Python と R の違い (日付・時間の処理)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-545"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%87%e3%83%bc%e3%82%bf%e5%8f%af%e8%a6%96%e5%8c%96%e3%83%bb%e3%82%b0%e3%83%a9%e3%83%95%e4%bd%9c%e6%88%90">Python と R の違い (データ可視化・グラフ作成編)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-758"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e6%b1%ba%e5%ae%9a%e6%9c%a8%e5%88%86%e6%9e%90">Python と R の違い (決定木分析)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-754"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%82%b5%e3%83%9d%e3%83%bc%e3%83%88%e3%83%99%e3%82%af%e3%82%bf%e3%83%bc%e3%83%9e%e3%82%b7%e3%83%b3">Python と R の違い (サポートベクターマシン)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-753"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%8a%e3%82%a4%e3%83%bc%e3%83%96%e3%83%99%e3%82%a4%e3%82%ba">Python と R の違い (ナイーブベイズ分類器)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-755"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e3%83%a9%e3%83%b3%e3%83%80%e3%83%a0%e3%83%95%e3%82%a9%e3%83%ac%e3%82%b9%e3%83%88%e6%b3%95">Python と R の違い (ランダムフォレスト法)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-756"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/%e7%b7%9a%e5%bd%a2%e5%9b%9e%e5%b8%b0">Python と R の違い (線形回帰による予測)</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-757"><a href="http://pythondatascience.plavox.info/python%e3%81%a8r%e3%81%ae%e9%81%95%e3%81%84/k-nn%e6%b3%95">Python と R の違い (k-NN 法による分類器)</a></li>
+</ul>
+</li>
+</ul></div></aside><aside id="text-5" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>Python に関する書籍</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="margin:10px auto;">
+
+<iframe src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/cm.html" marginwidth="0" marginheight="0" border="0" style="border:none;" scrolling="no" frameborder="0" height="250" width="300"></iframe>
+
+</div>
+</div>
+		</aside><aside id="text-4" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>データサイエンスに関する書籍</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="margin:10px auto;">
+
+<script>
+ var amazon_ads2= [
+  '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=pythondatascience-22&o=9&p=12&l=st1&mode=books-jp&search=データサイエンス&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="250" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>',
+  '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=pythondatascience-22&o=9&p=12&l=st1&mode=books-jp&search=データアナリティクス&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="250" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>',
+  '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=pythondatascience-22&o=9&p=12&l=st1&mode=books-jp&search=アナリティクス&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="250" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>',
+  '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=pythondatascience-22&o=9&p=12&l=st1&mode=books-jp&search=データサイエンティスト&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="250" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>',
+  '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=pythondatascience-22&o=9&p=12&l=st1&mode=books-jp&search=データマイニング&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="250" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>',
+  '<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=pythondatascience-22&o=9&p=12&l=st1&mode=books-jp&search=ビッグデータ&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="250" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>'
+ ]
+ document.write(amazon_ads2[Math.floor(Math.random()*amazon_ads2.length)])
+</script><iframe src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/cm_002.html" marginwidth="0" marginheight="0" border="0" style="border:none;" scrolling="no" frameborder="0" height="250" width="300"></iframe>
+
+</div>
+</div>
+		</aside><aside id="text-9" class="widget sidebar-widget mdl-card mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col widget_text"><div class="widget-title"><h3>Link</h3><div style="border-color: rgb(244, 67, 54);" class="thin-bar"></div></div>			<div class="textwidget"><div style="margin:10px auto;">
+ <ul>
+  <li><a href="http://thira.plavox.info/">TH</a></li>
+  <li><a href="http://proenglish.plavox.info/">プロフェッショナルのための英単語帳</a></li>
+ </ul>
+</div>
+</div>
+		</aside></div><!-- #secondary -->
+
+	</div>
+	<footer id="colophon" class="site-footer mdl-mega-footer" role="contentinfo">
+		<div class="site-info mdl-mega-footer--bottom-section">
+							<div id="copyright-note">
+					<div class="left">
+						© Python でデータサイエンス					</div>
+					<div class="right">
+						Realistic theme by <a href="http://themient.com/">Themient</a>					</div>
+				</div>
+					</div><!-- .site-info -->	
+	</footer><!-- #colophon -->
+<div class="mdl-layout__obfuscator"></div></div></div><!-- .mdl-layout -->
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/navigation.js"></script>
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/skip-link-focus-fix.js"></script>
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/custom_scripts.js"></script>
+<script type="text/javascript" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/wp-embed.js"></script>
+
+
+<ins data-adsbygoogle-status="done" style="display: none; width: auto; height: auto;" class="adsbygoogle"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;width:0px;height:0px;" frameborder="0" height="0" width="0"></iframe></ins></ins></ins><iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe><iframe aria-hidden="true" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/postmessageRelay.html" id="oauth2relay499058040" name="oauth2relay499058040"></iframe><iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe><iframe style="display: none;" scrolling="no" allowtransparency="true" hspace="0" vspace="0" marginheight="0" marginwidth="0" frameborder="0"></iframe><table class="gstl_50 gssb_c" style="width: 160px; display: none; top: 492px; left: 645px; position: absolute;" cellpadding="0" cellspacing="0"><tbody><tr><td class="gssb_f"></td><td style="width: 100%;" class="gssb_e"></td></tr></tbody></table><div style="display: block; visibility: hidden; position: absolute; width: 106px; left: -10000px; top: -10000px;"><table dir="ltr" style="width:106px;" frame="void" rules="none" class=" gc-bubbleDefault pls-container" cellpadding="0" cellspacing="0"><tbody><tr class="gc-reset"><td class="pls-topLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/border_3.gif"></td><td class="pls-topTail gc-reset"><img class="pls-tailbottom gc-reset" style="width:15px !important; height:9px !important; max-width: 15px !important; max-height: 9px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacerbottom gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-topRight gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/border_3.gif"></td></tr><tr class="gc-reset"><td class="pls-vertShimLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-vertShim gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-vertShimRight gc-reset"><img class="pls-dropTR gc-reset" style="width:5px !important; height:4px !important; max-width: 5px !important; max-height: 4px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-contentLeft gc-reset"><img class="pls-tailright gc-reset" style="width:9px !important; height:15px !important; max-width: 9px !important; max-height: 15px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacerright gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-contentWrap gc-reset"><div class="goog-bubble-content gc-reset"><iframe src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/subscribe_embed_002.html" name="I0_1504407491728" id="I0_1504407491728" vspace="0" tabindex="0" style="margin:0px;position:absolute;z-index:1;border-style:none;outline:none;width:100px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div></td><td class="pls-dropRight gc-reset"><img class="pls-tailleft gc-reset" style="width:12px !important; height:19px !important; max-width: 12px !important; max-height: 19px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacerleft gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-bottomLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/border_3.gif"></td><td class="gc-reset"><table style="width:100%" class="gc-reset" cellpadding="0" cellspacing="0"><tbody><tr class="gc-reset"><td class="pls-vert gc-reset"><img class="pls-dropBL gc-reset" style="width:4px !important; height:5px !important; max-width: 4px !important; max-height: 5px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-dropBottom gc-reset"><img class="pls-tailtop gc-reset" style="width:19px !important; height:13px !important; max-width: 19px !important; max-height: 13px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacertop gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr></tbody></table></td><td class="pls-vert gc-reset"><img class="pls-dropBR gc-reset" style="width:5px !important; height:5px !important; max-width: 5px !important; max-height: 5px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr></tbody></table></div><div style="position: absolute; top: -1999px; left: -1988px;" id="stcpDiv">ShareThis Copy and Paste</div><div style="display: none;" class="stwrapper stwrapper5x stwrapper5x" id="stwrapper"><iframe src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/index.html" scrolling="no" name="stLframe" class="stLframe" id="stLframe" allowtransparency="true" frameborder="0"></iframe></div><div onclick="javascript:stWidget.closeWidget();" id="stOverlay"></div><div style="display: block; visibility: hidden; position: absolute; width: 106px; left: -10000px; top: -10000px;"><table dir="ltr" style="width:106px;" frame="void" rules="none" class=" gc-bubbleDefault pls-container" cellpadding="0" cellspacing="0"><tbody><tr class="gc-reset"><td class="pls-topLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/border_3.gif"></td><td class="pls-topTail gc-reset"><img class="pls-tailbottom gc-reset" style="width:15px !important; height:9px !important; max-width: 15px !important; max-height: 9px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacerbottom gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-topRight gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/border_3.gif"></td></tr><tr class="gc-reset"><td class="pls-vertShimLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-vertShim gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-vertShimRight gc-reset"><img class="pls-dropTR gc-reset" style="width:5px !important; height:4px !important; max-width: 5px !important; max-height: 4px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-contentLeft gc-reset"><img class="pls-tailright gc-reset" style="width:9px !important; height:15px !important; max-width: 9px !important; max-height: 15px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacerright gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-contentWrap gc-reset"><div class="goog-bubble-content gc-reset"><iframe src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/subscribe_embed_003.html" name="I1_1504407495574" id="I1_1504407495574" vspace="0" tabindex="0" style="margin:0px;position:absolute;z-index:1;border-style:none;outline:none;width:100px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" ng-non-bindable="" frameborder="0" width="100%"></iframe></div></td><td class="pls-dropRight gc-reset"><img class="pls-tailleft gc-reset" style="width:12px !important; height:19px !important; max-width: 12px !important; max-height: 19px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacerleft gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-bottomLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/border_3.gif"></td><td class="gc-reset"><table style="width:100%" class="gc-reset" cellpadding="0" cellspacing="0"><tbody><tr class="gc-reset"><td class="pls-vert gc-reset"><img class="pls-dropBL gc-reset" style="width:4px !important; height:5px !important; max-width: 4px !important; max-height: 5px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td><td class="pls-dropBottom gc-reset"><img class="pls-tailtop gc-reset" style="width:19px !important; height:13px !important; max-width: 19px !important; max-height: 13px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"><img class="pls-spacertop gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr></tbody></table></td><td class="pls-vert gc-reset"><img class="pls-dropBR gc-reset" style="width:5px !important; height:5px !important; max-width: 5px !important; max-height: 5px !important;" src="matplotlib%20%E3%81%A7%E6%8C%87%E5%AE%9A%E5%8F%AF%E8%83%BD%E3%81%AA%E8%89%B2%E3%81%AE%E5%90%8D%E5%89%8D%E3%81%A8%E4%B8%80%E8%A6%A7%20%E2%80%93%20Python%20%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9_files/spacer.gif"></td></tr></tbody></table></div></body></html>

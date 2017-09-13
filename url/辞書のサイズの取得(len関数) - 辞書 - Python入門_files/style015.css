@@ -1,0 +1,794 @@
+@charset "UTF-8";
+/*初期設定
+----------------------------------------------------*/
+
+body,div,h1,h2,h3,pre,p,ul,ol,li{
+margin: 0;
+padding: 0;
+}
+
+body {
+min-width: 320px;
+color: #333;
+font-family:"Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W4", 'メイリオ', "Osaka", "ＭＳ Ｐゴシック ",sans-serif;
+background-image:url("../img/headerback5.png");
+background-repeat:repeat-x;
+background-position:0 0;
+}
+
+img {
+max-width: 100%;
+height: auto;
+margin:10px 0;
+border-width:0;
+vertical-align:bottom;
+}
+
+.ie8 img{
+width: auto;
+}
+
+img.waku{
+border:1px solid #9f9f9f;
+}
+
+p{
+font-size:16px;
+line-height:26px;
+margin:25px 0 25px 0px;
+color:#222;
+}
+
+a:link{color:#1E79A7;}
+a:visited{color:#1E79A7;}
+a:hover, a:active{color:#ff0000;}
+
+/*layout
+----------------------------------------------------*/
+#wrapper{
+  max-width: 1044px;
+  margin: 0 auto;
+}
+
+#header {
+height:110px;
+padding:0;
+}
+
+#header:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+#sitelogoimg{
+float:left;
+width:270px;
+margin-top:29px;
+}
+
+#sitelogoimg img{
+margin:0;
+}
+
+#headerad{
+float:right;
+margin:10px 0 10px 0;
+width:728px;
+}
+
+#content {
+margin: 0 10px 20px 10px;
+}
+
+#content:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+h1 {
+font-size:24px;
+margin:10px 0 5px 0;
+border-bottom:2px solid #808080;
+color:#808080;
+}
+
+h2 {
+font-size:18px;
+margin:20px 0;
+padding:5px 0 2px 8px;
+border-left:7px solid #a9a9a9;
+border-bottom:1px solid #a9a9a9;
+color:#666666;
+}
+
+#navi_left {
+margin-bottom: 20px;
+}
+
+/* sidebar title */
+
+div.menutitle{
+font-size:16px;
+font-weight:bold;
+margin:25px 0 8px 0;
+border-bottom:1px solid #9f9f9f;
+color:#9f9f9f;
+}
+
+/* Profile(右上) */
+
+#profileblock{
+width:300px;
+height:104px;
+}
+
+#profileblock:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+#profilephoto{
+float:left;
+width:60px;
+padding:3px;
+border:1px solid #a0a0a0;
+}
+
+#profilephoto img{
+border-width:0;
+margin:0;
+}
+
+#profiletext{
+float:right;
+width:227px;
+margin:0 0 0 5px;
+padding:0;
+}
+
+#profiletext a {text-decoration:none;}
+#profiletext a:link{color:#0000ff;}
+#profiletext a:visited{color:#0000ff;}
+#profiletext a:hover, a:active{color:#0000ff;}
+
+p.profilemsg{
+font-size:11px;
+margin:5px 0 0 0;
+padding:0;
+line-height:1.4;
+letter-spacing:0;
+}
+
+#profileauthor{
+font-size:12px;
+margin:0;
+padding:0;
+letter-spacing:0;
+}
+
+/* Other */
+
+div.borderdiv{
+margin:10px 0;
+border:1px dashed #c8c8c8;
+background-color:#fafad2;
+padding:10px;
+font-size:16px;
+line-height:1.6;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+width:100%;
+}
+
+div.subtitle{
+font-size:20px;
+font-weight:bold;
+margin:40px 0 20px 0;
+padding:5px 0 3px 10px;
+font-weight:bold;
+color:#222222;
+border-bottom:1px solid #808080;
+border-left:10px solid #808080;
+}
+
+div.sublabel{
+font-size:17px;
+font-weight:bold;
+margin:20px 0 10px 0;
+border-bottom:1px solid #7f7f7f;
+color:#333333;
+}
+
+ul.linktext{
+text-align:left;
+list-style-type:none;
+line-height:1.3em;
+margin:15px 0;
+}
+
+ul.linktext li.title{
+font-size:14px;
+font-weight:bold;
+padding-left:14px;
+background-image:url("../img/ya1.png");
+background-repeat:no-repeat;
+background-position:0px 6px;
+}
+
+span.red{color:#dc143c;}
+span.bold{font-weight:bold;}
+span.redbold{font-weight:bold;color:#dc143c;}
+span.s{font-size:12px;}
+
+/* ---- カスタム検索 ---- */
+
+#searchbox2{
+margin:10px 0;
+width:320px;
+}
+
+#searchbox2 td.gsc-input{
+padding-top:2px;
+}
+
+/* ---- パンくず ---- */
+
+#pankuzubar{
+padding:0;
+height:28px;
+width:100%;
+}
+
+#pankuzu{
+width:100%;
+}
+
+#pankuzu li{
+display:inline;
+list-style-type:none;
+font-size:11px;
+color:#303030;
+}
+
+#pankuzu li img{
+margin:0;
+padding:0;
+vertical-align:middle;
+}
+
+#pankuzu li span{
+border-bottom:1px solid #c0c0c0;
+}
+
+#pankuzu li.s{
+font-size:11px;
+}
+
+#pankuzu li a {text-decoration:none;}
+#pankuzu li a:link{color:#303030;}
+#pankuzu li a:visited{color:#303030;}
+#pankuzu li a:hover, a:active{color:#303030;}
+
+#pankuzu li span.here{
+color:#A0A0A0;
+border-bottom:none;
+}
+
+#pankuzu li span.sya{
+font-size:11px;
+border-bottom:none;
+color:#303030;
+}
+
+/* プロファイル(Written byの箇所) */
+
+#profile{
+margin:15px 0;
+}
+
+#profile p{
+margin:0;
+padding:0;
+color:#9f9f9f;
+padding:0 10px 0 0;
+text-align:right;
+font-size:12px;
+font-style:italic;
+}
+
+#profile p a:link{color:#9f9f9f;}
+#profile p a:visited{color:#9f9f9f;}
+#profile p a:hover, a:active{color:#ff0000;}
+
+/* --記事下ソーシャルボタン-- */
+
+#sarea{
+margin:10px 0 40px 0;
+width:300px;
+}
+
+#sarea:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+#sarea-fb{
+float:left;
+}
+
+#sarea-twitter{
+float:left;
+}
+
+/* ----カテゴリメニュー用---- */
+
+div.menu01,
+div.menu02,
+div.menu03,
+div.menu04,
+div.menu05,
+div.menu06{
+margin:20px 0 35px 0;
+}
+
+ul.catemenu{
+margin:0 0 0 0;
+}
+
+/* ------ */
+
+ul.catemenu li.navi{
+list-style-type: none;
+margin:0 0 5px 0;
+padding:2px 0 0 5px;
+font-size:18px;
+font-weight:bold;
+color:#606060;
+border-bottom:1px solid #a0a0a0;
+}
+
+ul.catemenu li.navi a{color:#1E79A7;};
+
+ul.catemenu li.navi a:link{color:#1E79A7;}
+ul.catemenu li.navi a:visited{color:#1E79A7;}
+ul.catemenu li.navi a:hover, a:active{color:#ff0000;}
+
+/* ------ */
+
+ul.catemenu li.info{
+margin:3px 0 0 0;
+padding:6px 0 6px 20px;
+background:url(../img/cateicon2.png) 5px 10px no-repeat;
+list-style-type:none;
+font-size:16px;
+color:#606060;
+border-bottom:1px solid #f0f0f0;
+}
+
+ul.catemenu li.info a{color:#1E79A7;};
+
+ul.catemenu li.info a:link{color:#1E79A7;}
+ul.catemenu li.info a:visited{color:#1E79A7;}
+ul.catemenu li.info a:hover, a:active{color:#ff0000;}
+
+/* ------ */
+
+ul.catemenu li.more{
+margin:6px 0 0 0;
+padding:0 0 0 15px;
+list-style-type:none;
+font-size:13px;
+color:#20b2aa;
+}
+
+ul.catemenu li.more a{color:#007F0E;};
+
+ul.catemenu li.more a:link{color:#007F0E;}
+ul.catemenu li.more a:visited{color:#007F0E;}
+ul.catemenu li.more a:hover, a:active{color:#ff0000;}
+
+/* ------ */
+
+ul.catemenu li.subinfo{
+margin:3px 0 0 0;
+padding:6px 0 6px 15px;
+background:url(../img/cateicon2.png) 5px 10px no-repeat;
+list-style-type:none;
+font-size:16px;
+color:#606060;
+border-bottom:1px solid #f0f0f0;
+}
+
+ul.catemenu li.subinfo a{color:#1E79A7;};
+
+ul.catemenu li.subinfo a:link{color:#1E79A7;}
+ul.catemenu li.subinfo a:visited{color:#1E79A7;}
+ul.catemenu li.subinfo a:hover, a:active{color:#ff0000;}
+
+/* ------ */
+
+ul.catemenu li.comment{
+list-style-type:none;
+color:#7f7f7f;
+margin:3px 0 0 0;
+padding:0 0 0 20px;
+font-size:11px;
+}
+
+span.ct{font-weight:bold;font-size:16px;color:#FF7F7F;}
+
+/* -- 装飾用 ---- */
+
+pre.fixcode{
+font-size:14px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+background-color:#f8f8ff;
+border:1px solid #dcdcdc;
+padding:10px 20px 10px 15px;
+margin:10px 0;
+overflow:auto;
+}
+
+pre.fixcode16{
+font-size:16px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+background-color:#f8f8ff;
+border:1px solid #dcdcdc;
+padding:10px 20px 10px 15px;
+margin:10px 0;
+overflow:auto;
+}
+
+pre.fixcomment{
+font-size:14px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+background-color:#fffff0;
+border:1px solid #dcdcdc;
+padding:10px 20px 10px 15px;
+margin:10px 0;
+overflow:auto;
+}
+
+pre.fixcomment16{
+font-size:16px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+background-color:#fffff0;
+border:1px solid #dcdcdc;
+padding:10px 20px 10px 15px;
+margin:10px 0;
+overflow:auto;
+}
+
+pre.fixcommand{
+font-size:14px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+background-color:#000000;
+color:#ffffff;
+border-top:10px solid #AAC5E0;
+padding:10px 20px 10px 15px;
+margin:10px 0;
+overflow:auto;
+}
+
+pre.mheader{
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+font-size:14px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+border:1px solid #C8C8C8;
+background-color:#eee8aa;
+margin:10px 0 0 0;
+padding:5px 10px;
+width:100%;
+overflow:auto;
+}
+
+pre.mexplain{
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+font-size:12px;
+font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, Meiryo, 'ＭＳ ゴシック', monospace;
+line-height:1.5;
+border-bottom:1px solid #C8C8C8;
+border-right:1px solid #C8C8C8;
+border-left:1px solid #C8C8C8;
+background-color:#f5f5dc;
+margin:0 0 10px 0;
+padding:5px 10px;
+width:100%;
+overflow:auto;
+}
+
+table.pro{
+border:none;
+font-size:14px;
+border-collapse:collapse;
+width:100%;
+}
+
+table.pro th{
+border:1px solid #888888;
+padding:8px;
+background-color:#f0f8ff;
+}
+
+table.pro td{
+border:1px solid #888888;
+padding:8px;
+}
+
+blockquote.other{
+margin:10px 0 10px 15px;
+border-left:3px solid #d0d0d0;
+padding-left:8px;
+font-size:12px;
+}
+
+/* Footer */
+
+#footer{
+border-top:1px solid #cccccc;
+padding:5px 0;
+}
+
+#footerbox{
+width:100%;
+height:30px;
+margin: 0 auto;
+text-align:center;
+}
+
+#footerbox:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+#orginfo{
+float:left;
+font-size:12px;
+color:#606060;
+margin:2px 10px 0 0;
+}
+
+#orginfo a:link{color:#606060;}
+#orginfo a:visited{color:#606060;}
+#orginfo a:hover, a:active{color:#606060;}
+
+#orginfo img{
+margin:0;
+padding:0;
+width:20px;
+height:20px;
+}
+
+#copyright{
+float:left;
+margin:0px;
+padding:0px;
+color:#606060;
+font-size:12px;
+}
+
+#copyright a:link{color:#606060;}
+#copyright a:visited{color:#606060;}
+#copyright a:hover, a:active{color:#606060;}
+
+/* --記事上広告(336x300用)-- */
+
+#adtoplabel{
+width:320px;
+padding:0;
+font-size:11px;
+color:#696969;
+}
+
+#adtop{
+padding:5px 0;
+}
+
+/* --記事下広告-- */
+
+#adbottom{
+margin-top:10px;
+}
+
+/* --右サイドバー広告-- */
+
+div.adright{
+margin:5px 0;
+width:300px;
+}
+
+/* --最上部右広告-- */
+
+div.adtopright{
+margin:0;
+width:729px;
+height:90px;
+}
+
+/* --右サイドバー広告(Admin専用)-- */
+
+#adrightarea{
+width:320px;
+margin:5px 0;
+}
+
+#adrightarea:after{
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+#adright120{
+float:left;
+width:120px;
+}
+
+#adrightrakuten{
+float:left;
+width:160px;
+margin-left:10px;
+}
+
+#adrightrakuten img{
+margin:0;
+}
+
+#relatedareaside{
+margin:20px 0;
+}
+
+/* ホームディレクトリへ戻る */
+
+#backhome{
+font-size:18px;
+}
+
+#backhome img{
+vertical-align:middle;
+}
+
+/* クラス構成表示用(JavaDrive等) */
+
+div.classwaku{
+border:1px solid #f0f0f0;
+padding:8px;
+margin:10px 0;
+background-color:#fafafa;
+}
+
+ul.classdirectory{
+font-size:12px;
+margin:0px 5px;
+list-style-type:none;
+}
+
+ul.classdirectory li.top{
+padding-left:2px;
+}
+
+ul.classdirectory li.detail{
+padding-left:2px;
+margin:15px 5px 0px 0px;
+}
+
+ul.classdirectory li.row1,
+ul.classdirectory li.row2,
+ul.classdirectory li.row3,
+ul.classdirectory li.row4,
+ul.classdirectory li.row5,
+ul.classdirectory li.row6,
+ul.classdirectory li.row7,
+ul.classdirectory li.row8{
+background-image:url("../img/tree.png");
+background-repeat:no-repeat;
+}
+
+ul.classdirectory li.row1{
+padding-left:32px;
+background-position:10px 0px;
+}
+
+ul.classdirectory li.row2{
+padding-left:62px;
+background-position:40px 0px;
+}
+
+ul.classdirectory li.row3{
+padding-left:92px;
+background-position:70px 0px;
+}
+
+ul.classdirectory li.row4{
+padding-left:122px;
+background-position:100px 0px;
+}
+
+ul.classdirectory li.row5{
+padding-left:152px;
+background-position:130px 0px;
+}
+
+ul.classdirectory li.row6{
+padding-left:182px;
+background-position:160px 0px;
+}
+
+ul.classdirectory li.row7{
+padding-left:212px;
+background-position:190px 0px;
+}
+
+ul.classdirectory li.row8{
+padding-left:242px;
+background-position:220px 0px;
+}
+
+/*media Queries
+----------------------------------------------------*/
+@media only screen and (max-width: 1040px) {
+  div.restitle {
+    display:none;
+  }
+
+  #adrightrakuten{
+    display:none;
+  }
+
+  #headerad{
+    display:none;
+  }
+
+  #relatedareaside{
+    display:none;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #mainbox {
+    float: left;
+    width: 100%;
+    margin-right: -368px;
+  }
+
+  #main {
+    margin-right: 368px;
+  }
+
+  #navi_left {
+    float: right;
+    width: 320px;
+/*    padding:0 10px 10px 10px; */
+    padding:0 0 10px 0;
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  #wrapper {
+    margin-bottom: 20px;
+  }
+}
