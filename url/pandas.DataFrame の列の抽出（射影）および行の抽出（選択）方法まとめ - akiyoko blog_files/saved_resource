@@ -1,3 +1,0 @@
-(function(){
-	Shisuh.originalTemplate = '<div class="ssPanel"><div class="ssOriginalTemplateImgContainer"><a class="ssTitleAnchor"><img class="ssImg"></a></div><div style="float:none;"><a class="ssTitleAnchor"><div class="ssTitle"></div></a></div></div>';
-})();
