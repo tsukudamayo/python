@@ -49,7 +49,7 @@ def main(t):
     calc_total_time = (start_time, end_time)
 
     # popup message
-    user32.MessageBoxA(0,
+    user32.MessageBoxW(0,
                        "finish",
                        "popup timer",
                        0x00000040
@@ -70,20 +70,3 @@ if __name__ == '__main__':
 
     # main
     main(args.time[0])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
